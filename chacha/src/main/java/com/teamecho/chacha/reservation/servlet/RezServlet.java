@@ -1,6 +1,8 @@
 package com.teamecho.chacha.reservation.servlet;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -10,11 +12,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.teamecho.chacha.parking.domain.ParkingLot;
+import com.teamecho.chacha.reservation.domain.Reservation;
+import com.teamecho.chacha.reservation.service.ReservationService;
+
 @WebServlet("/reservation/rez.do")
 public class RezServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    // 주차장서비스 객체 생성
+    private ReservationService service = ReservationService.getInstance();
+    
 	RequestDispatcher dispatcher = null;
+	ParkingLot parking = null;
+//	User user = null;
 	
 	public void init(ServletConfig config) throws ServletException {
 		
@@ -25,32 +34,103 @@ public class RezServlet extends HttpServlet {
 		
 		// 1. 홈 파라메터 얻기
 		String pId = request.getParameter("pid"); // 주차장정보창에서 예약하기 클릭시 pid코드 받아옴
+//		String userId = (String)session.getAttribute("userId"); // 로그인에서 던져준 session의 유저아이디값 받아옴
+//		user = // 위에서 받은 userId로 유저 객체 찾아서 넣어줌
 		
 		// 2. 유효성 검증 및 변환
 		
 		// 3. 비즈니스 서비스 호출
-		// 주차장 서비스의 메소드 사용해서 주차장 객체 받아오기
+		parking = service.getParkingLotByCode(pId);
 		
 		// 4. NextPage
-		// request.setAttribute("", ); // 3에서 만든 주차장 객체를 던져주기
+		request.setAttribute("parking", parking); // 3에서 만든 주차장 객체를 던져주기
 		dispatcher = request.getRequestDispatcher("reservation.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		Date date = new Date();
+		Timestamp timestamp_start = null;
+		Timestamp timestamp_end = null;
+		String dateStr = "";
+		int cost;
 		
 		// 1. 홈 파라메터 얻기
+		
 		String type = request.getParameter("type");
-		if(type == "A") {
-			String start_time = request.getParameter("startTime");
-			String end_time = request.getParameter("endTime");
-		} else if(type == "B") { // 종일권이라면 월,일만
-			String month = request.getParameter("startMonth");
-			String date = request.getParameter("startDate");
+		String month = request.getParameter("startMonth");
+		String start_date = request.getParameter("startDate");
+		String start_time = request.getParameter("startTime");
+		String end_time = request.getParameter("endTime");
+		System.out.println(type);
+		System.out.println(month);
+		System.out.println(start_date);
+		System.out.println(start_time);
+		System.out.println(end_time);
+		
+		if(type.equals("A")) {
+			// 시작시간
+			dateStr = "2022-" + month + "-" + start_date + " " + start_time +":00:00";
+			timestamp_start = Timestamp.valueOf(dateStr);
+			
+			// 종료시간
+			dateStr = "2022-" + month + "-" + start_date + " " + end_time +":00:00";
+			timestamp_end = Timestamp.valueOf(dateStr);
+			
+			// 요금
+			cost = (Integer.parseInt(end_time) - Integer.parseInt(start_time)) * (int)parking.getTimeCost();
+		} else if(type.equals("B")) { // 종일권이라면 월,일만
+			// 시작시간
+			dateStr = "2022-" + month + "-" + start_date + " 00:00:00";
+			timestamp_start = Timestamp.valueOf(dateStr);
+			
+			// 종료시간
+			dateStr = "2022-" + month + "-" + (start_date + 1) + " 00:00:00";
+			timestamp_end = Timestamp.valueOf(dateStr);
+			
+			// 요금
+			cost = (int)parking.getDayCost();
 		} else { // 정기권이라면 월만
-			String month = request.getParameter("startMonth");
+			// 시작시간
+			dateStr = "2022-" + month + "-01 00:00:00";
+			timestamp_start = Timestamp.valueOf(dateStr);
+			System.out.println(dateStr);
+			
+			// 종료시간
+			String end_date = null;
+			if(month.equals("02")) {
+				end_date = "28";
+			} else if(month.equals("01") || month.equals("03") || month.equals("05") || month.equals("07") ||
+					month.equals("08") || month.equals("10") || month.equals("12")) {
+				end_date = "31";
+			} else {
+				end_date = "30";
+			}
+			dateStr = "2022-" + month + "-" + end_date + " 00:00:00";
+			timestamp_end = Timestamp.valueOf(dateStr);
+			
+			// 요금
+			cost = (int)parking.getMonthCost();
 		}
+		
+		// 2. 유효성 검사
+		Reservation rez = new Reservation();
+		rez.setStart_time(timestamp_start);
+		rez.setEnd_time(timestamp_end);
+		rez.setCost(0);
+		rez.setCost(cost);
+		rez.setVoucher_use("N");
+//		rez.setUid();
+		rez.setPid(parking.getPid());
+		
+		// 3. 비즈니스 서비스 호출
+		service.addReservation(rez);
+		
+		// 4. NextPage
+		request.setAttribute("rez", rez);
+		dispatcher = request.getRequestDispatcher("rez_success.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

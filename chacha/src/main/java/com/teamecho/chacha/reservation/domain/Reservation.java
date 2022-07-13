@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 예약 클래스
- * @author knh
+ * @author 김나혜
  *
  */
 public class Reservation {
@@ -15,18 +15,9 @@ public class Reservation {
 	private String voucher_use;
 	private long uid;
 	private long pid;
-	private static Reservation reservation = new Reservation();
-	
-	private Reservation() {
+
+	public Reservation() {
 		
-	}
-	
-	/**
-	 * 싱글톤 객체 얻는 메소드
-	 * @return reservation객체
-	 */
-	public Reservation getInstance() {
-		return reservation;
 	}
 
 	public long getRid() {
@@ -83,14 +74,6 @@ public class Reservation {
 
 	public void setPid(long pid) {
 		this.pid = pid;
-	}
-
-	public Reservation getReservation() {
-		return reservation;
-	}
-
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
 	}
 	
 }

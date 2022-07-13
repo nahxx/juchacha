@@ -26,7 +26,7 @@
         </table>
       </div>
 
-      <form class="rez" action="/reservation/rez" method="post">
+      <form class="rez" action="rez.do" method="post">
         <p>주차타입</p>
         <label><input type="radio" name="type" value="A" checked>시간당</label>
         <label><input type="radio" name="type" value="B">종일권</label>
@@ -38,15 +38,15 @@
         <p>예약일자</p>
         <label>
           <select class="startMonth" name="startMonth">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            <option value="01">1</option>
+            <option value="02">2</option>
+            <option value="03">3</option>
+            <option value="04">4</option>
+            <option value="05">5</option>
+            <option value="06">6</option>
+            <option value="07">7</option>
+            <option value="08">8</option>
+            <option value="09">9</option>
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
@@ -157,7 +157,7 @@
     <script type="text/javascript">
    		 $(function() {
     	  let date = new Date();
-    	  let month = date.getMonth() + 1; // 현재 월
+    	  let month = "0" + (date.getMonth() + 1); // 현재 월
     	  let day = date.getDate(); // 현재 일자
     	  let hour = date.getHours(); // 현재 시
     	  
