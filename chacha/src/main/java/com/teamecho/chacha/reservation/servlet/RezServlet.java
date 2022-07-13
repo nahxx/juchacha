@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.teamecho.chacha.parking.domain.ParkingLot;
 import com.teamecho.chacha.reservation.domain.Reservation;
@@ -31,11 +32,11 @@ public class RezServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+		HttpSession session = request.getSession(false);
 		// 1. 홈 파라메터 얻기
 		String pId = request.getParameter("pid"); // 주차장정보창에서 예약하기 클릭시 pid코드 받아옴
-//		String userId = (String)session.getAttribute("userId"); // 로그인에서 던져준 session의 유저아이디값 받아옴
-//		user = // 위에서 받은 userId로 유저 객체 찾아서 넣어줌
+		String userId = (String) session.getAttribute("userId"); // 로그인에서 던져준 session의 유저아이디값 받아옴
+//		user =  // 위에서 받은 userId로 유저 객체 찾아서 넣어줌
 		
 		// 2. 유효성 검증 및 변환
 		

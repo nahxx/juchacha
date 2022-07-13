@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주차차</title>
 <script type="text/javascript" src="../js/jquery.js"></script>
 </head>
 <body>
