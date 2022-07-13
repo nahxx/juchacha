@@ -9,7 +9,7 @@
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 //
-//import com.teamecho.chacha.parking.domain.ParkingLot;
+//import com.teamecho.chacha.parking.-domain.ParkingLot;
 //import com.teamecho.chacha.review.dao.ReviewDao;
 //import com.teamecho.chacha.review.domain.Review;
 //import com.teamecho.chacha.review.service.ReviewService;
