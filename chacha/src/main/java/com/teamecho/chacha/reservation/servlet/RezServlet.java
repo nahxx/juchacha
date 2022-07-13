@@ -63,11 +63,6 @@ public class RezServlet extends HttpServlet {
 		String start_date = request.getParameter("startDate");
 		String start_time = request.getParameter("startTime");
 		String end_time = request.getParameter("endTime");
-		System.out.println(type);
-		System.out.println(month);
-		System.out.println(start_date);
-		System.out.println(start_time);
-		System.out.println(end_time);
 		
 		if(type.equals("A")) {
 			// 시작시간
