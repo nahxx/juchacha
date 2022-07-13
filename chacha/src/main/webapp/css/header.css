@@ -7,6 +7,10 @@
 	font-size: 20px;
 	background: #417D7A;
 }
+#header.login_on {
+	position: fixed;
+	z-index: 10;
+}
 
 .header-wrap {
 	height: 100%;

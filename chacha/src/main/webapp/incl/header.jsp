@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="header">
+<div id="header" class="login_on">
       <div class="header-wrap">
         <div class="logo">
-          <h1><a href="/chacha" class="juchacha"></a></h1>
+          <h1><a href="/chacha/location/location.jsp" class="juchacha"></a></h1>
         </div>
         <div class="gnb">
           <div class="left-gnb">
             <ul>
-              <li><a href="/chacha">홈</a></li>
+              <li><a href="/chacha/location/location.jsp">홈</a></li>
             </ul>
           </div>
           <div class="right-gnb">
