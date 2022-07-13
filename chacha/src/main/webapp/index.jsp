@@ -110,7 +110,7 @@
         <h3 class="title">로그인</h3>
       </div>
       <div class="form-wrap">
-        <form action="login" method="post">
+        <form action="login.do" method="post">
           <div class="content">
             <input type="text" name="userId" placeholder="아이디" /><br>
           </div>
