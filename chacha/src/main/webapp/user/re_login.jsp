@@ -96,6 +96,13 @@
     .i-btn > .in-btn:hover {
       font-weight: normal;
     }
+    .re_login {
+      margin-top: 10px;
+    }
+    .re_login_txt {
+      font-size: 14px;
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -116,6 +123,9 @@
           </div>
           <div class="content">
             <input type="password" name="passwd" placeholder="비밀번호" /><br>
+          </div>
+          <div class="content re_login">
+            <span class="re_login_txt">* 아이디나 비밀번호가 잘못되었습니다. 다시입력해주세요.</span>
           </div>
           <div class="btn-group">
             <div class="i-btn">

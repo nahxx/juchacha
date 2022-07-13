@@ -22,8 +22,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		String passwd = request.getParameter("passwd");
-		System.out.println(userId);
-		System.out.println(passwd);
+		
 		if(!userService.isValidUser(userId, passwd)) {
 			request.getRequestDispatcher("/user/re_login.jsp").forward(request, response);
 			return;
@@ -34,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("userId", userId);
 		
 		// 로그인 성공 후 next page
-		response.sendRedirect("main");
+		response.sendRedirect("/parkinglot/get_parking.do");
 	}
 
 }
