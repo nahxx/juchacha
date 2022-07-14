@@ -124,7 +124,7 @@ public class UserDao {
 	}
 	
 	public void updateUser(User user) {
-		String sql = "UPDATE User SET passwd=?, userName=?, userPhone=?, addr=?, licenseNumber=? WHERE userId = ?";
+		String sql = "UPDATE UserInfo SET passwd=?, userName=?, userPhone=?, addr=?, licenseNumber=? WHERE userId = ?";
 		try  {
 			Connection con = null;
 			PreparedStatement pstmt = null;

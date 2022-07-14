@@ -2,12 +2,12 @@
 <div id="header" class="login_on">
       <div class="header-wrap">
         <div class="logo">
-          <h1><a href="/chacha/parking/get_parking_point.do" class="juchacha"></a></h1>
+          <h1><a href="/chacha/parkinglot/get_parking.do" class="juchacha"></a></h1>
         </div>
         <div class="gnb">
           <div class="left-gnb">
             <ul>
-              <li><a href="/chacha/parking/get_parking_point.do">홈</a></li>
+              <li><a href="/chacha/parkinglot/get_parking.do">홈</a></li>
             </ul>
           </div>
           <div class="right-gnb">
