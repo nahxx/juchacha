@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <title>주차차</title>
   <style>
-  body, html {
+body, html {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
@@ -110,153 +110,216 @@ a:hover {
 	color: white;
 	font-weight: 600;
 }
-    section {
-      height: 100%;
-      overflow: hidden;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      height: 100%;
-      width: 700px;
-      margin: 0 auto;
-      align-items: center;
-    }
-    .container .title-wrap {
-      width: 100%;
-      line-height: 60px;
-      padding-top: 100px;
-    }
-    .container .title-wrap .title {
-      height: 100%;
-      font-size: 36px;
-      text-align: center;
-    }
-    .container > #content-wrapper {
-      display: flex;
-      height: 100%;
-      align-items: flex-start;
-      width: 100%;
-      padding: 0 80px;
-    }
-    .content {
-      width: 100%;
-    }
-    .add_user {
-      padding-top: 20px;
-      width :100%;
-    }
-    .add {
-      height: 60px;
-      width: 100%;
-      display: flex;
-      justify-content: left;
-      align-items: center;
-      margin-top: 10px;
-    }
-    .user_id {
-      flex-wrap: wrap;
-    }
-    span.id {
-    	display: block;
-    	width: 100%;
-  		font-size: 13px;
-  		color: red;
-  		margin-left: 15px;
-  		margin-top: 5px;
-  		text-align: right;
-  	}
-    .phone {
-      height: 60px;
-      flex-wrap: wrap;
-    }
-    .add > input {
-      width: 100%;
-      height: 45px;
-      line-height: 45px;
-      padding-left: 5px;
-      font-size: 15px;
-    }
-    .add > input:focus {
-      outline: none;
-      border-color: rgba(65, 125, 122, .6);
-      box-shadow: 0 0 6px 2px rgba(65, 125, 122, .6);
-    }
-    .add > select.phoneNum_selec:focus {
-      outline: none;
-      border-color: rgba(65, 125, 122, .6);
-      box-shadow: 0 0 6px 2px rgba(65, 125, 122, .6);
-    }
-    select.phoneNum_selec {
-      height: 45px;
-      width: 30%;
-      font-size: 15px;
-    }
-    input.phoneNum {
-      width: 100%;
-    }
-    span.phoneNum_middle {
-      margin: 0 5px;
-    }
-    span.phone {
-    	margin-top: 5px;
-    	display: block;
-    	text-align: right;
-  		font-size: 13px;
-  		color: red;
-  		margin-left: 15px;
-  		width: 100%;
-  	}
-    .address {
-      margin-right: 10px;
-    }
-    .btn-group {
-      display: flex;
-      width: 100%;
-      height: 50px;
-      margin-top: 30px;
-      justify-content: center;
-    }
-    .i-btn {
-      display: flex;
-      justify-content: space-around;
-      height: 100%;
-      width: 60%;
-    }
-    .i-btn .btn {
-      display: flex;
-      justify-content: center;
-      height: 100%;
-      background: #417D7A;
-      border-radius: 30px;
-      width: 150px;
-      height: 50px;
-    }
-    button.btn-inner {
-      color: white;
-      border-style: none;
-      height: 100%;
-      width: 75px;
-      font-size:20px;
-      background: none;
-      cursor: pointer;
-    }
-    .i-btn .in-btn {
-      font-size: 20px;
-      color: white;
-      line-height: 50px;
-      text-align: center;
-    }
-    .i-btn .in-btn:hover {
-      font-weight: normal;
-    }
-    
-  </style>
+
+section {
+	height: 100%;
+	overflow: hidden;
+	padding-bottom: 160px;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	height: 100%;
+	width: 700px;
+	margin: 0 auto;
+	align-items: center;
+}
+
+.container .title-wrap {
+	width: 100%;
+	line-height: 60px;
+	padding-top: 100px;
+}
+
+.container .title-wrap .title {
+	height: 100%;
+	font-size: 36px;
+	text-align: center;
+}
+
+.container>#content-wrapper {
+	display: flex;
+	height: 100%;
+	align-items: flex-start;
+	width: 100%;
+	padding: 0 80px;
+}
+
+.content {
+	width: 100%;
+}
+
+.add_user {
+	padding-top: 20px;
+	width: 100%;
+}
+
+.add {
+	height: 60px;
+	width: 100%;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.user_id {
+	flex-wrap: wrap;
+}
+
+span.id {
+	display: block;
+	width: 100%;
+	font-size: 13px;
+	color: red;
+	margin-left: 15px;
+	margin-top: 5px;
+	text-align: right;
+}
+
+.phone {
+	height: 60px;
+	flex-wrap: wrap;
+}
+
+.add>input {
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	padding-left: 5px;
+	font-size: 15px;
+}
+
+.add>input:focus {
+	outline: none;
+	border-color: rgba(65, 125, 122, .6);
+	box-shadow: 0 0 6px 2px rgba(65, 125, 122, .6);
+}
+
+.add>select.phoneNum_selec:focus {
+	outline: none;
+	border-color: rgba(65, 125, 122, .6);
+	box-shadow: 0 0 6px 2px rgba(65, 125, 122, .6);
+}
+
+select.phoneNum_selec {
+	height: 45px;
+	width: 30%;
+	font-size: 15px;
+}
+
+input.phoneNum {
+	width: 100%;
+}
+
+span.phoneNum_middle {
+	margin: 0 5px;
+}
+
+span.phone {
+	margin-top: 5px;
+	display: block;
+	text-align: right;
+	font-size: 13px;
+	color: red;
+	margin-left: 15px;
+	width: 100%;
+}
+
+.address {
+	margin-right: 10px;
+}
+
+.btn-group {
+	display: flex;
+	width: 100%;
+	height: 50px;
+	margin-top: 30px;
+	justify-content: center;
+}
+
+.i-btn {
+	display: flex;
+	justify-content: space-around;
+	height: 100%;
+	width: 60%;
+}
+
+.i-btn .btn {
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	background: #417D7A;
+	border-radius: 30px;
+	width: 150px;
+	height: 50px;
+}
+
+button.btn-inner {
+	color: white;
+	border-style: none;
+	height: 100%;
+	width: 75px;
+	font-size: 20px;
+	background: none;
+	cursor: pointer;
+}
+
+.i-btn .in-btn {
+	font-size: 20px;
+	color: white;
+	line-height: 50px;
+	text-align: center;
+}
+
+.i-btn .in-btn:hover {
+	font-weight: normal;
+}
+
+#footer {
+	height: 160px;
+	background: #f1f1f1;
+}
+
+.copyright {
+	width: 700px;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 40px;
+}
+
+.copyright-logo {
+	position: absolute;
+	right: 0;
+	top: 40px;
+	width: 80px;
+	height: 80px;
+	background-image: url("/chacha/image/logo.png");
+}
+
+.copyright-txt p {
+	margin-top: 5px;
+}
+.copyright-txt p a {
+	line-height: 0;
+}
+
+.copyright .copyright-logo a {
+	color: transparent;
+}
+
+.copyright a, .copyright p {
+	font-size: 15px;
+	color: #000;
+}
+</style>
 </head>
 <body>
-<% 
-	User user = new User();
-	user = (User)request.getAttribute("user");
+<%
+User user = new User();
+	user = (User) request.getAttribute("user");
 %>
 <header>
     <%@ include file="/incl/header.jsp" %>
@@ -302,6 +365,9 @@ a:hover {
         </div>
       </div>
     </div>
+    <footer>
+      <%@ include file="/incl/footer.jsp" %>
+    </footer>
   </section>
 </body>
 </html>
