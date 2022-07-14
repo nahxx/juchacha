@@ -34,7 +34,7 @@ public class RezServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		// 1. 홈 파라메터 얻기
-		String pId = request.getParameter("pid"); // 주차장정보창에서 예약하기 클릭시 pid코드 받아옴
+		String pId = (String)request.getParameter("pid"); // 주차장정보창에서 예약하기 클릭시 pid코드 받아옴
 		String userId = (String) session.getAttribute("userId"); // 로그인에서 던져준 session의 유저아이디값 받아옴
 //		user =  // 위에서 받은 userId로 유저 객체 찾아서 넣어줌
 		
@@ -42,7 +42,6 @@ public class RezServlet extends HttpServlet {
 		
 		// 3. 비즈니스 서비스 호출
 		parking = service.getParkingLotByCode(pId);
-		
 		// 4. NextPage
 		request.setAttribute("parking", parking); // 3에서 만든 주차장 객체를 던져주기
 		dispatcher = request.getRequestDispatcher("reservation.jsp");
