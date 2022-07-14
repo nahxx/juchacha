@@ -128,7 +128,7 @@ table {
         </tr>
       </tbody>
     </table>
-    <input type="button" class="btn" value="예약페이지" onClick="location.href='/chacha/reservation/reservation.jsp?pid=${ParkingLot.getPid()}'">
+    <input type="button" class="btn" value="예약페이지" onClick="location.href='/chacha/reservation/rez.do?pid=${ParkingLot.getPid()}'">
   </div>
 </body>
 
