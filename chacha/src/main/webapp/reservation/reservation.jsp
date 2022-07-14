@@ -191,8 +191,13 @@
     	  $('.radio').click(function() {
     		  $('input[type=radio]').removeAttr("checked");
     		  $(this).find('input[type=radio]').attr("checked", "checked");
+    		  console.log($(this).find('input[type=radio]').val());
     		  $('.radio').removeClass("on");
     		  $(this).addClass("on");
+    		  
+    		  if($(this).hasClass("on")) {
+    			  if($(this).find('input[type=radio]'))
+    		  }
     	  });
 
     	});

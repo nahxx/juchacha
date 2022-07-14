@@ -23,7 +23,7 @@ public class RezServlet extends HttpServlet {
     private ReservationService service = ReservationService.getInstance();
     
 	RequestDispatcher dispatcher = null;
-	ParkingLot parking = null;
+	ParkingLot parking;
 //	User user = null;
 	
 	public void init(ServletConfig config) throws ServletException {
@@ -33,15 +33,17 @@ public class RezServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
+		
 		// 1. 홈 파라메터 얻기
-		String pId = (String)request.getParameter("pid"); // 주차장정보창에서 예약하기 클릭시 pid코드 받아옴
+		long pId = Long.valueOf(request.getParameter("pid")); // 주차장정보창에서 예약하기 클릭시 pid코드 받아옴
 		String userId = (String) session.getAttribute("userId"); // 로그인에서 던져준 session의 유저아이디값 받아옴
 //		user =  // 위에서 받은 userId로 유저 객체 찾아서 넣어줌
 		
 		// 2. 유효성 검증 및 변환
 		
 		// 3. 비즈니스 서비스 호출
-		parking = service.getParkingLotByCode(pId);
+		parking = service.getParkingLotByPid(pId);
+
 		// 4. NextPage
 		request.setAttribute("parking", parking); // 3에서 만든 주차장 객체를 던져주기
 		dispatcher = request.getRequestDispatcher("reservation.jsp");
@@ -79,10 +81,12 @@ public class RezServlet extends HttpServlet {
 			// 시작시간
 			dateStr = "2022-" + month + "-" + start_date + " 00:00:00";
 			timestamp_start = Timestamp.valueOf(dateStr);
+			System.out.println(dateStr);
 			
 			// 종료시간
-			dateStr = "2022-" + month + "-" + (start_date + 1) + " 00:00:00";
+			dateStr = "2022-" + month + "-" + String.valueOf(Integer.parseInt(start_date) + 1) + " 00:00:00";
 			timestamp_end = Timestamp.valueOf(dateStr);
+			System.out.println(dateStr);
 			
 			// 요금
 			cost = (int)parking.getDayCost();
@@ -117,7 +121,9 @@ public class RezServlet extends HttpServlet {
 		rez.setCost(cost);
 		rez.setVoucher_use("N");
 //		rez.setUid();
-		rez.setPid(parking.getPid());
+		rez.setUid(1); // 임시
+//		rez.setPid(parking.getPid());
+		rez.setPid(3); // 임시
 		
 		// 3. 비즈니스 서비스 호출
 		service.addReservation(rez);

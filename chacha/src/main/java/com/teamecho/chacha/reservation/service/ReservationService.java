@@ -35,6 +35,10 @@ public class ReservationService {
 		return pService.findParkingLotByCode(parkingcode);
 	}
 	
+	public ParkingLot getParkingLotByPid(long pid) {
+		return pService.findParkingLotByPid(pid);
+	}
+	
 	/**
 	 * 예약 추가하는 메소드
 	 * @param rez
