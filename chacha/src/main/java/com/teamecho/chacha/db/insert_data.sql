@@ -11,7 +11,7 @@
  INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)
  VALUES ('hong12', '12345', "홍길동", "010-3213-3241", "대구시 달서구 진천동" , "131라 1244", "Y");
  
- INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, useType)
+ INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)
  VALUES ('jin', '123', "관우", "010-2345-5432", "대구시 수성구 신매동" , "222나 1234", "Y");
  
  INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)

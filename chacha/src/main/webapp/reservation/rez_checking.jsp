@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주차차</title>
 <link rel="stylesheet" href="../css/default.css">
 <link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/footer.css">
 <link rel="stylesheet" href="../css/reservation.css">
 <style type="text/css">
 	.title-wrap {
@@ -39,11 +41,17 @@
 	</header>
 	<div class="wrap">
 		<div class="title-wrap">
-        	<h3 class="title">예약하기</h3>
+        	<h3 class="title">예약현황</h3>
      	</div>
 		<div class="rezInfo">
+			<c:if test="${empty rListStr}">
+				<p class="success">예약현황이 없습니다.</p>
+			</c:if>
 			${rListStr}
 		</div>
 	</div>
+	<footer>
+      <%@ include file="/incl/footer.jsp" %>
+    </footer>
 </body>
 </html>

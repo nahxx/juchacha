@@ -101,7 +101,6 @@ CREATE TABLE Voucher_use (
    CONSTRAINT Voucher_use_Uid_FK FOREIGN KEY (uid) REFERENCES UserInfo(uid),
    CONSTRAINT Voucher_use_Vid_FK FOREIGN KEY (vid) REFERENCES Voucher(vid),
    CONSTRAINT Voucher_use_Rid_FK FOREIGN KEY (rid) REFERENCES Reservation(rid)
-<<<<<<< HEAD
 )AUTO_INCREMENT = 1;
 
 
@@ -133,21 +132,16 @@ SELECT * FROM UserInfo;
 SELECT * FROM ParkingLot;
 SELECT * FROM Favorite;
 
-<<<<<<< HEAD
 DELETE FROM review;
-=======
+
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '좋습니다', 5);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 4);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '별로입니다', 2);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 3);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 3, '굿굿', 4);
->>>>>>> 6bae79f8f929ad3181869d681cfbbfb6fdebbd5a
 
 INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)
  VALUES ('ssj', '98', "서수진", "010-8859-5122", "대구시 중구 광개토대왕" , "111러 4514", "Y");
  
  INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)
  VALUES ('jin', '123', "관우", "010-2345-5432", "대구시 수성구 신매동" , "222나 1234", "Y");
-=======
-)AUTO_INCREMENT = 1;
->>>>>>> b3de5ffe04e8d2107401182d755cb47017018a1a
