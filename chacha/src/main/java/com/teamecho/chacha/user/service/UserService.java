@@ -32,7 +32,7 @@ public class UserService {
 		return userDao.findUserByUserId(userId);
 	}
 	
-	public String findUIdByUserId(String userId) {
+	public Long findUIdByUserId(String userId) {
 		return userDao.findUIdByUserId(userId);
 	}
 	

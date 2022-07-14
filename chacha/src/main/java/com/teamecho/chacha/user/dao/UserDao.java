@@ -96,9 +96,9 @@ public class UserDao {
 		}
 		return user;
 	}
-	public String findUIdByUserId(String userId) {
+	public Long findUIdByUserId(String userId) {
 		String sql = "SELECT uid  FROM UserInfo WHERE userId=?";
-		String uid = null;
+		Long uid = null;
 		
 		try {
 			Connection con = null;
@@ -112,16 +112,13 @@ public class UserDao {
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
-					uid = rs.getString("passwd");
+					uid = rs.getLong("uid");
 				}
 			}finally {
 				dataSource.close(rs, pstmt, con);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
-		if(uid == null) {
-			uid="";
 		}
 		return uid;
 	}
