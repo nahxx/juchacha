@@ -36,9 +36,11 @@
 
       <form class="rez" action="rez.do" method="post">
         <p>주차타입</p>
-        <label class="radio"><input type="radio" name="type" value="A" checked>시간당</label>
-        <label class="radio"><input type="radio" name="type" value="B">종일권</label>
-        <label class="radio"><input type="radio" name="type" value="C">정기권</label>
+        <div class="type">
+        	<label class="radio on"><input type="radio" name="type" value="A" checked>시간당</label>
+        	<label class="radio"><input type="radio" name="type" value="B">종일권</label>
+        	<label class="radio"><input type="radio" name="type" value="C">정기권</label>
+        </div>
 
         <!-- A면 예약 일월, 시작-종료시간 전부 표시
             B면 예약 일월만 표시
@@ -194,19 +196,20 @@
     		  
     		  if($(this).hasClass("on")) {
     			  if($(this).find('input[type=radio]').val() == "A") { // 시간당이라면
-    				  $('.startD').css("display", "inline-block");
-    				  $('.t').css("display", "block");
-    				  $('.startT').css("display", "inline-block");
-    				  $('.endT').css("display", "inline-block");
+    				  $('.startD').removeClass("off");
+    				  $('.t').removeClass("off");
+    				  $('.startT').removeClass("off");
+    				  $('.endT').removeClass("off");
     			  } else if($(this).find('input[type=radio]').val() == "B") { // 종일권이라면
-    				  $('.t').css("display", "none");
-    				  $('.startT').css("display", "none");
-    				  $('.endT').css("display", "none");
+    				  $('.startD').removeClass("off");
+    				  $('.t').addClass("off");
+    				  $('.startT').addClass("off");
+    				  $('.endT').addClass("off");
     			  } else if($(this).find('input[type=radio]').val() == "C") { // 정기권이라면
-    				  $('.startD').css("display", "none");
-    				  $('.t').css("display", "none");
-    				  $('.startT').css("display", "none");
-    				  $('.endT').css("display", "none");
+    				  $('.startD').addClass("off");
+    				  $('.t').addClass("off");
+    				  $('.startT').addClass("off");
+    				  $('.endT').addClass("off");
     			  }
     		  }
     	  });
