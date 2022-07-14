@@ -27,4 +27,16 @@ public class UserService {
 			return false;
 		}
 	}
+	
+	public User findUserByUserId(String userId) {
+		return userDao.findUserByUserId(userId);
+	}
+	
+	public String findUIdByUserId(String userId) {
+		return userDao.findUIdByUserId(userId);
+	}
+	
+	public void updateUser(User user) {
+		userDao.updateUser(user);
+	}
 }

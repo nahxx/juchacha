@@ -18,7 +18,7 @@ public class UserDao {
 	}
 	
 	public void addUser(User user) {
-		String sql = "INSERT INTO UserInfo(userId, passwd, userName, userPhone, licenseNumber) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO UserInfo(userId, passwd, userName, userPhone, addr, licenseNumber) VALUES(?,?,?,?,?,?)";
 		try {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -30,7 +30,8 @@ public class UserDao {
 			pstmt.setString(2, user.getPasswd());
 			pstmt.setString(3, user.getUserName());
 			pstmt.setString(4, user.getUserPhone());
-			pstmt.setString(5, user.getLicenseNumber());
+			pstmt.setString(5, user.getAddr());
+			pstmt.setString(6, user.getLicenseNumber());
 			
 			pstmt.executeUpdate();
 			dataSource.close(pstmt, con);
@@ -64,5 +65,89 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return userIdPW;
+	}
+	public User findUserByUserId(String userId) {
+		String sql = "SELECT userId,passwd,userName,userPhone,addr,licenseNumber FROM UserInfo WHERE userId=?";
+		User user = new User();
+		
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, userId);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					user.setUserId(rs.getString("userId"));
+					user.setPasswd(rs.getString("passwd"));
+					user.setUserName(rs.getString("userName"));
+					user.setUserPhone(rs.getString("userPhone"));
+					user.setAddr(rs.getString("addr"));
+					user.setLicenseNumber(rs.getString("licenseNumber"));
+				}
+			}finally {
+				dataSource.close(rs, pstmt, con);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	public String findUIdByUserId(String userId) {
+		String sql = "SELECT uid  FROM UserInfo WHERE userId=?";
+		String uid = null;
+		
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, userId);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					uid = rs.getString("passwd");
+				}
+			}finally {
+				dataSource.close(rs, pstmt, con);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(uid == null) {
+			uid="";
+		}
+		return uid;
+	}
+	
+	public void updateUser(User user) {
+		String sql = "UPDATE User SET passwd=?, userName=?, userPhone=?, addr=?, licenseNumber=? WHERE userId = ?";
+		try  {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, user.getPasswd());
+			pstmt.setString(2, user.getUserName());
+			pstmt.setString(3, user.getUserPhone());
+			pstmt.setString(4, user.getAddr());
+			pstmt.setString(5, user.getLicenseNumber());
+			pstmt.setString(6, user.getUserId());
+			
+			pstmt.executeUpdate();
+			
+			dataSource.close(pstmt, con);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
