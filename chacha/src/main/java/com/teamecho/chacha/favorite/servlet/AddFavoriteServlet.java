@@ -35,6 +35,11 @@ public class AddFavoriteServlet extends HttpServlet {
 
 		parking = service.getParkingLotByPid(Long.valueOf(p));
 		uId = service.findUIdByUserId(userId);
+		
+		if(!service.isValidPid(Long.valueOf(p))) {
+			System.out.println("등록된 주차장입니다");
+			return;
+		}
 
 
 		String url ="/chacha/parking/get_parking_point.do?pointX="+parking.getPointX()+"&pointY="+parking.getPointY();

@@ -96,7 +96,9 @@ section {
         </div>
 			<div class="content list">
 				<ul class="info-list">
-					<li>${parking.parkingName}</li>
+					<c:forEach items="${list}" var ="list">
+						<li>${list.getPid()}</li>
+					</c:forEach>
 				</ul>
 			</div>
       </div>

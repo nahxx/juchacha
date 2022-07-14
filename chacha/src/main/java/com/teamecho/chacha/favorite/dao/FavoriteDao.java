@@ -72,5 +72,30 @@ public class FavoriteDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean isValidPid(Long pid) {
+		String sql = "SELECT * FROM Favorite WHERE pid = ?";
+		int i = 0;
+		try {
+			Connection con = ds.getConnection();
+			PreparedStatement psmt = con.prepareStatement(sql);
+			ResultSet rs = null;
+			
+			psmt.setLong(1, pid);
+			psmt.executeQuery();
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				i++;
+			}
+			ds.close(psmt, con);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(i>0) {
+			return true;
+		}else {
+			return false;
+		}
 
+	}
 }

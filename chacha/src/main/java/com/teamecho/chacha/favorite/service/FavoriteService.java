@@ -45,5 +45,12 @@ public class FavoriteService {
 	public ParkingLot getParkingLotByPid(long pid) {
 		return pdao.findParkingLotByPid(pid);
 	}
-
+	
+//	public List<ParkingLot> findAllParkingLot() {
+//		return pdao.findAllParkingLot();
+//	}
+	
+	public boolean isValidPid(Long pid) {
+		return dao.isValidPid(pid);
+	}
 }
