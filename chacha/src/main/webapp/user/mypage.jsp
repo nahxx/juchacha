@@ -207,7 +207,7 @@ section {
           <ul class="info-list">
             <li> <a href="/chacha/user_update.do">정보 수정하기</a></li>
             <li><a href="/chacha/reservation/rez_checking.do">예약정보</a></li>
-            <li><a href="#">즐겨찾기 목록</a></li>
+            <li><a href="/chacha/favorite/list.do">즐겨찾기 목록</a></li>
           </ul>
         </div>
       </div>

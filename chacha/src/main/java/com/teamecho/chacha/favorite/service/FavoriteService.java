@@ -4,16 +4,26 @@ import java.util.List;
 
 import com.teamecho.chacha.favorite.dao.FavoriteDao;
 import com.teamecho.chacha.favorite.domain.Favorite;
+import com.teamecho.chacha.parking.dao.ParkingLotDao;
+import com.teamecho.chacha.parking.domain.ParkingLot;
+import com.teamecho.chacha.user.dao.UserDao;
 
 public class FavoriteService {
+	private static FavoriteService service = new FavoriteService();
 	private FavoriteDao dao = new FavoriteDao();
+	private UserDao userdao = new UserDao();
+	private ParkingLotDao pdao = new ParkingLotDao();
 	
 	public FavoriteService(FavoriteDao dao) {
 		this.dao = dao;
 	}
 
 	public FavoriteService() {
-		dao = new FavoriteDao();
+		
+	}
+	
+	public static FavoriteService getInstance() {
+		return service;
 	}
 	
 	public void addFavo(Favorite fv) {
@@ -28,7 +38,12 @@ public class FavoriteService {
 		dao.deleFavo(fv);
 	}
 	
-	public boolean isValidPid(Long pid) {
-		return dao.isValidPid(pid);
+	public long findUIdByUserId(String userId) {
+		return userdao.findUIdByUserId(userId);
 	}
+	
+	public ParkingLot getParkingLotByPid(long pid) {
+		return pdao.findParkingLotByPid(pid);
+	}
+
 }

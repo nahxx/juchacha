@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.teamecho.chacha.favorite.dao.FavoriteDao;
 import com.teamecho.chacha.favorite.domain.Favorite;
 import com.teamecho.chacha.favorite.service.FavoriteService;
+import com.teamecho.chacha.parking.domain.ParkingLot;
 
 @WebServlet("/favorite/list.do")
 public class FavoriteServlet extends HttpServlet {
@@ -25,30 +24,21 @@ public class FavoriteServlet extends HttpServlet {
 		
 		service = new FavoriteService();
 		fvList = service.getAllFavo();
-		
-//		for(Favorite user : fvList) {
-//		System.out.println(user.getPid());
-//		System.out.println(user.getUid());
-//	}
 
 		request.setAttribute("list", fvList);
-		request.getRequestDispatcher("list.jsp").forward(request, response);
+		request.getRequestDispatcher("favorite.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String p = request.getParameter("pid");
-		String u = request.getParameter("uid");
-
 		HttpSession session = request.getSession();
-		session.setAttribute("pid", p);
-		session.setAttribute("uid", u);
-		String pid = (String)session.getAttribute("pid");
-		String uid = (String)session.getAttribute("uid");
-		System.out.println(uid + pid);
-		
-		request.getRequestDispatcher("list.jsp").forward(request, response);
+		ParkingLot parkingName = (ParkingLot) session.getAttribute("parkingName");
+//		session.setAttribute("parkingName", parkingName);
+
+//		ParkingLot pn = service.findParkingLotByPid(parkingName);
+
+		System.out.println(parkingName);
 
 	}
 

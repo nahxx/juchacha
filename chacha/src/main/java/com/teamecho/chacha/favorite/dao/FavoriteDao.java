@@ -48,7 +48,6 @@ public class FavoriteDao {
 				fv.setUid(rs.getLong("uid"));
 				fv.setPid(rs.getLong("pid"));
 				fvList.add(fv);
-				System.out.println(fv.getPid());
 			}
 			System.out.println("SELECTED...");
 			ds.close(rs, psmt, con);
@@ -74,28 +73,4 @@ public class FavoriteDao {
 		}
 	}
 
-	public boolean isValidPid(Long pid) { // id와 pw가 있으면 true 되서 mypage로
-		String sql = "SELECT * FROM Favorite WHERE pid = ?";
-		int i = 0;
-		try {
-			Connection con = ds.getConnection();
-			PreparedStatement psmt = con.prepareStatement(sql);
-			ResultSet rs = null;
-			
-			psmt.setLong(1, pid);
-			psmt.executeQuery();
-			rs = psmt.executeQuery();
-			if(rs.next()) {
-				i++;
-			}
-			ds.close(psmt, con);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if(i>0) {
-			return true;
-		}else {
-			return false;
-		}
-	}
 }

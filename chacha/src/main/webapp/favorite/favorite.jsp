@@ -1,6 +1,6 @@
 <%@page import="java.net.URLEncoder, java.util.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="com.teamecho.chacha.parking.domain.ParkingLot"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -36,95 +36,71 @@ section {
 	text-align: center;
 }
 
-.container>#content-wrapper {
-	display: flex;
-	height: 100%;
-	align-items: flex-start;
-	width: 100%;
-	padding: 0 80px;
-}
+.container > .content-wrapper {
+    display: flex;
+    height: 100%;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 80px;
+    flex-wrap: wrap;
+ }
 
 .content {
-	width: 100%;
-}
-
-.favo {
-	padding-top: 20px;
-	width: 100%;
-}
-
-.inputContainer {
-    margin-bottom: 50px;
-}
-
-.btn-group {
-	display: flex;
-	width: 100%;
 	height: 50px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin-top: 30px;
-	justify-content: center;
 }
 
-.i-btn {
-	display: flex;
-	justify-content: space-around;
-	height: 100%;
-	width: 60%;
+.list {
+	height: 70%;
+	margin-top: 0;
 }
-
-.i-btn .btn {
-	display: flex;
-	justify-content: center;
-	height: 100%;
-	background: #417D7A;
-	border-radius: 30px;
-	width: 150px;
+.info-list {
+	padding: 0 150px;
+}
+.info-list li {
+	width: 100%;
 	height: 50px;
-}
-
-button.btn-inner {
-	color: white;
-	border-style: none;
-	height: 100%;
-	width: 75px;
-	font-size: 20px;
-	background: none;
-	cursor: pointer;
-}
-
-.i-btn .in-btn {
-	font-size: 20px;
-	color: white;
-	line-height: 50px;
 	text-align: center;
+	border-bottom: 1px solid #b1b1b1;
+	margin-left: 0;
+}
+.info-list li > a {
+	color: #000;
+	height: 100%;
+	width: 100%;
+	font-size: 18px;
 }
 
-.i-btn .in-btn:hover {
-	font-weight: normal;
-}
 </style>
 </head>
-</head>
-<body>
-<%
-String uid = (String)session.getAttribute("uid");
+<% 
+	String userId = (String)session.getAttribute("userId");
+	ParkingLot parkingName = (ParkingLot)session.getAttribute("parkingName");
 %>
-	<div id="header">
-		<%@ include file="/incl/no_login_header.jsp"%>
-	</div>
-	<h3 class="title">즐겨찾기</h3>
-	<div class="container">
-		<form action="favorite.do" class="favo" method="post">
-			<div class="inputContainer">
-			사용자 : <input type="text" name="uid" />
-			주차장 : <input type="text" name="pid" />
+<header>
+	<%@ include file="/incl/header.jsp" %>
+</header>
+<body>
+<section>
+    <div class="container">
+      <div class="title-wrap">
+        <h3 class="title">즐겨찾기 리스트</h3>
+      </div>
+      <div class="content-wrapper">
+        <div class="content">
+          <label><h4>회원아이디 :</h4></label>&nbsp;<%= userId %>
+        </div>
+			<div class="content list">
+				<ul class="info-list">
+					<li>${parking.parkingName}</li>
+				</ul>
 			</div>
-			<div class="i-btn">
-				<div class="btn">
-					<button type="submit" class="btn-inner">리스트</button>
-				</div>
-			</div>
-		</form>
-	</div>
-</body>
+      </div>
+    </div>
+  </section>
+
 </html>

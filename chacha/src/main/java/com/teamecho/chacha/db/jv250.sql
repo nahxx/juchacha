@@ -141,3 +141,9 @@ INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '별로입니�
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 3);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 3, '굿굿', 4);
 >>>>>>> 6bae79f8f929ad3181869d681cfbbfb6fdebbd5a
+
+INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)
+ VALUES ('ssj', '98', "서수진", "010-8859-5122", "대구시 중구 광개토대왕" , "111러 4514", "Y");
+ 
+ INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)
+ VALUES ('jin', '123', "관우", "010-2345-5432", "대구시 수성구 신매동" , "222나 1234", "Y");
