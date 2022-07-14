@@ -1,5 +1,7 @@
 package com.teamecho.chacha.review.domain;
 
+import java.sql.Date;
+
 import com.teamecho.chacha.parking.domain.ParkingLot;
 import com.teamecho.chacha.user.domain.User;
 
@@ -9,13 +11,13 @@ public class Review {
 	private ParkingLot parkingLot;
 	private String content;
 	private int star_rating;
+	private Date regDate;
 
 	public Review() {
 		
 	}
 
 	public Review(long rvid, User user, ParkingLot parkingLot, String content, int star_rating) {
-		super();
 		this.rvid = rvid;
 		this.user = user;
 		this.parkingLot = parkingLot;
@@ -62,7 +64,13 @@ public class Review {
 	public void setStar_rating(int star_rating) {
 		this.star_rating = star_rating;
 	}
-	
-	
-	
+
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
 }

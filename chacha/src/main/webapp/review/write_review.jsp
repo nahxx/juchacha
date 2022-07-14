@@ -8,17 +8,42 @@
 <link rel="stylesheet" href="./css/header.css">
 <style>
 	.container {
-      padding-top: 80px;
       display: flex;
       flex-wrap: wrap;
       height: 100%;
       width: 700px;
       margin: 0 auto;
-    }    
-    .inputContainer{
-    	display: flex;
-    	justify-content: center;
-    	text-align: center;
+      align-items: center;
+    }   
+    .container .title-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      padding: 0 80px;
+      height: 100%;
+      width: 100%;
+      line-height: 60px;
+      padding-top: 100px;
+    }
+     .container .title-wrap .title {
+      height: 100%;
+      font-size: 36px;
+      text-align: center;
+    }
+    .ratingsContainer{
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 0 80px;
+    }
+    .textContainer{
+      display: flex;
+      height: 100%;
+      width: 100%;
+      padding: 0 80px;
     }
 	#reviewForm fieldset{
 	    display: inline-block;
@@ -58,8 +83,11 @@
 	.i-btn {
       display: flex;
       justify-content: center;
+      align-items: center;
       margin-top: 30px;
-      height: 50px;
+      padding: 0 80px;
+      height: 100%;
+      width: 100%;
     }
     .i-btn > input {
       justify-content: center;
@@ -75,13 +103,15 @@
 </style>
 </head>
 <body>
-	<div id="header">
+	<header>
 		<%@ include file="/incl/no_login_header.jsp" %>
-	</div>
-	<h3 class="title">리뷰 작성하기</h3>
+	</header>
 	<div class="container">
+		<div class="title-wrap">
+			<h3 class="title">리뷰 작성하기</h3>
+		</div>
 	    <form action="write_review.do" name="reviewForm" id="reviewForm" method="post">
-	    	<div class="inputContainer">
+	    	<div class="ratingsContainer">
 				<fieldset>
 					<span class="text-bold">별점을 선택해주세요</span>
 					<input type="radio" name="star_rating" value="5" id="rate1"><label for="rate1">★</label>
@@ -91,7 +121,7 @@
 					<input type="radio" name="star_rating" value="1" id="rate5"><label for="rate5">★</label>
 				</fieldset>
 			</div>
-			<div>
+			<div class="textContainer">
 				<textarea class="col-auto form-control" name= "content" type="text" id="reviewContents"
 						  placeholder="좋은 리뷰을 남겨주시면 주차차에 큰 힘이 됩니다!"></textarea>
 			</div>

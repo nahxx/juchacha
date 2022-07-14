@@ -1,5 +1,7 @@
 package com.teamecho.chacha.review.service;
 
+import java.util.List;
+
 import com.teamecho.chacha.review.dao.ReviewDao;
 import com.teamecho.chacha.review.domain.Review;
 
@@ -18,4 +20,9 @@ public class ReviewService {
 	public void addReview(Review review) {
 		reviewDao.addReview(review);
 	}
+	
+	public List<Review> getAllReviews(Long pId){
+		return reviewDao.findAll(pId);
+	}
+
 }
