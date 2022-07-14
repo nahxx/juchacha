@@ -169,8 +169,8 @@
                 <option value="011">011</option>
               </select>
               <span class="phoneNum_middle">-</span>
-              <input type="text" class="phoneNum" name="phoneNum" placeholder="휴대폰번호">
-              <span class="phone">* '-'까지 같이 적어주세요</span>
+              <input type="text" class="phoneNum" name="phoneNum" placeholder="휴대폰번호" minlength="9">
+              <span class="phone">* '-'까지 같이 적어주세요</span>
             </div>
             <div class="add">
               <input type="text" name="addr1" placeholder="주소" class="address1">
@@ -185,7 +185,7 @@
                   <button type="submit" class="btn-inner">확인</button>
                 </div>
                 <div class="btn">
-                  <a href="/chacha" class="in-btn">취소</a>
+                  <a href="/chacha" class="in-btn">취소</a>
                 </div>
               </div>
             </div>
