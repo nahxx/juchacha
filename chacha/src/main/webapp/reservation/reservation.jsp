@@ -44,7 +44,7 @@
             B면 예약 일월만 표시
             C면 예약 월만 표시-->
         <p>예약일자</p>
-        <label>
+        <label class="startM">
           <select class="startMonth" name="startMonth">
             <option value="01">1</option>
             <option value="02">2</option>
@@ -61,7 +61,7 @@
           </select>
           월
         </label>
-        <label>
+        <label class="startD">
           <select class="startDate" name="startDate">
             <option value="01">1</option>
             <option value="02">2</option>
@@ -97,8 +97,8 @@
           </select>
           일
         </label>
-        <p>예약시간</p>
-        <label>시작시간
+        <p class="t">예약시간</p>
+        <label class="startT">시작시간
           <select class="startTime" name="startTime">
             <option value="00">00</option>
             <option value="01">01</option> 
@@ -127,7 +127,7 @@
           </select>
           시
         </label>
-        <label>종료시간
+        <label class="endT">종료시간
           <select class="endTime" name="endTime">
           	<option value="00" selected>00</option>
             <option value="01">01</option> 
@@ -153,8 +153,6 @@
 			<option value="21">21</option> 
             <option value="22">22</option>
             <option value="23">23</option>
-            <!-- js에서 주차장의 영업시작시간 및 영업종료시간 받아와서 option 입력
-              https://blog.aacii.net/136 참고 -->
           </select>
           시
         </label>
@@ -191,12 +189,25 @@
     	  $('.radio').click(function() {
     		  $('input[type=radio]').removeAttr("checked");
     		  $(this).find('input[type=radio]').attr("checked", "checked");
-    		  console.log($(this).find('input[type=radio]').val());
     		  $('.radio').removeClass("on");
     		  $(this).addClass("on");
     		  
     		  if($(this).hasClass("on")) {
-    			  if($(this).find('input[type=radio]'))
+    			  if($(this).find('input[type=radio]').val() == "A") { // 시간당이라면
+    				  $('.startD').css("display", "inline-block");
+    				  $('.t').css("display", "block");
+    				  $('.startT').css("display", "inline-block");
+    				  $('.endT').css("display", "inline-block");
+    			  } else if($(this).find('input[type=radio]').val() == "B") { // 종일권이라면
+    				  $('.t').css("display", "none");
+    				  $('.startT').css("display", "none");
+    				  $('.endT').css("display", "none");
+    			  } else if($(this).find('input[type=radio]').val() == "C") { // 정기권이라면
+    				  $('.startD').css("display", "none");
+    				  $('.t').css("display", "none");
+    				  $('.startT').css("display", "none");
+    				  $('.endT').css("display", "none");
+    			  }
     		  }
     	  });
 
