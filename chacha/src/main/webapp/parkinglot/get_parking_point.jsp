@@ -10,8 +10,9 @@
   <title>주차장정보</title>
   <link rel="stylesheet" href="../css/default.css">
   <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
   <style>
-  body, html { overflow: scroll; }
+  	body { overflow: auto; }
     .wrap {
       width: 100%;
       height: calc(100vh - 30px);
@@ -149,9 +150,16 @@
     <%@ include file="/incl/header.jsp" %>
   </header> 
   <div class="wrap">
-       <h1 class="parkingloth1">${ParkingLot.getParkingName()}
-         <input type="radio" name ="heart" id="rate1" onClick="location.href='/chacha/favorite/favorite.do?pid=${ParkingLot.getPid()}'"><label for="rate1">♥</label>
-      </h1>
+  		<c:if test="${favorite == true}">
+  			<h1 class="parkingloth1">${ParkingLot.getParkingName()}
+         		<input type="radio" name ="heart" id="rate1" onClick="location.href='/chacha/favorite/favorite.do?pid=${ParkingLot.getPid()}'" checked><label for="rate1">♥</label>
+      		</h1>
+  		</c:if>
+       <c:if test="${favorite == false}">
+  			<h1 class="parkingloth1">${ParkingLot.getParkingName()}
+         		<input type="radio" name ="heart" id="rate1" onClick="location.href='/chacha/favorite/favorite.do?pid=${ParkingLot.getPid()}'"><label for="rate1">♥</label>
+      		</h1>
+  		</c:if>
     <h2 class="parkingaddr">${ParkingLot.getParkingAddr()}</h2>
     <h4>${ParkingLot.getParkingTel()}</h4>
     <table border="1" class="cost">
@@ -221,8 +229,11 @@
           </c:if>
       </tbody>
     </table>
-   
+     <footer>
+    <%@ include file="/incl/footer.jsp"%>
+  </<footer>
   </div>
+  
 </body>
 
 </html>

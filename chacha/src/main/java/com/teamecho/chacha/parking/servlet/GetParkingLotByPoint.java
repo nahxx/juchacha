@@ -26,6 +26,8 @@ public class GetParkingLotByPoint extends HttpServlet {
 		List<Review> re = ps.getAllReview(pl.getPid());
 		request.setAttribute("ParkingLot", pl);
 		request.setAttribute("space", ps.getParkingLotSpaces(pointx, pointy));
+		request.setAttribute("favorite",true );
+		
 		if (re.size() !=0 || re != null) {
 			request.setAttribute("review", re);
 		}
