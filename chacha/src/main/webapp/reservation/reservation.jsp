@@ -8,6 +8,29 @@
 <link rel="stylesheet" href="../css/default.css">
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/reservation.css">
+<style>
+	.title-wrap {
+	   text-align: center;
+	}
+	.title-wrap .title {
+	   display: inline-block;
+	   height: 100%;
+	   font-size: 36px;
+	   text-align: center;
+	   padding: 0 8px;
+	   position: relative;
+	}
+	.title-wrap .title:before {
+	   position: absolute;
+	   content: '';
+	   width: 100%;
+	   height: 14px;
+	   bottom: 7px;
+	   left: 0;
+	   z-index: -1;
+	   background: #EDE6DB;
+	}
+</style>
 <script type="text/javascript" src="../js/jquery.js"></script>
 </head>
 <body>
@@ -15,7 +38,9 @@
 		<%@ include file="/incl/header.jsp" %>
 	</header>
 	<div class="wrap">
-	  <h3>예약하기</h3>
+	  <div class="title-wrap">
+        <h3 class="title">예약하기</h3>
+      </div>
       <div class="parkingInfo">
       	<p>예약할 주차장</p>
         <table>
