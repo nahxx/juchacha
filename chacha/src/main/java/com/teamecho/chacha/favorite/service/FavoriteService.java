@@ -27,4 +27,8 @@ public class FavoriteService {
 	public void deleFavo(Favorite fv) {
 		dao.deleFavo(fv);
 	}
+	
+	public boolean isValidPid(Long pid) {
+		return dao.isValidPid(pid);
+	}
 }
