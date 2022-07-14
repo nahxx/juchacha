@@ -81,12 +81,10 @@ public class RezServlet extends HttpServlet {
 			// 시작시간
 			dateStr = "2022-" + month + "-" + start_date + " 00:00:00";
 			timestamp_start = Timestamp.valueOf(dateStr);
-			System.out.println(dateStr);
 			
 			// 종료시간
 			dateStr = "2022-" + month + "-" + String.valueOf(Integer.parseInt(start_date) + 1) + " 00:00:00";
 			timestamp_end = Timestamp.valueOf(dateStr);
-			System.out.println(dateStr);
 			
 			// 요금
 			cost = (int)parking.getDayCost();
@@ -94,7 +92,6 @@ public class RezServlet extends HttpServlet {
 			// 시작시간
 			dateStr = "2022-" + month + "-01 00:00:00";
 			timestamp_start = Timestamp.valueOf(dateStr);
-			System.out.println(dateStr);
 			
 			// 종료시간
 			String end_date = null;
@@ -122,8 +119,7 @@ public class RezServlet extends HttpServlet {
 		rez.setVoucher_use("N");
 //		rez.setUid();
 		rez.setUid(1); // 임시
-//		rez.setPid(parking.getPid());
-		rez.setPid(3); // 임시
+		rez.setPid(parking.getPid());
 		
 		// 3. 비즈니스 서비스 호출
 		service.addReservation(rez);
