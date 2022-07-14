@@ -66,18 +66,11 @@ public class ReviewDao {
 					reviewList.add(review);	
 				}
 			}finally {
-				System.out.println(reviewList.get(0).getUser().getUserId());
-				System.out.println(reviewList);
-				System.out.println("리스트받아옴...");
 				ds.close(rs, psmt, con);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		if( reviewList.size() == 0) {
-			return null;
-		}else {
-			return reviewList;
-		}
+		return reviewList;
 	}
 }
