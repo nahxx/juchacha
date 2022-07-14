@@ -14,14 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.teamecho.chacha.parking.domain.ParkingLot;
+import com.teamecho.chacha.parking.service.ParkingLotService;
 import com.teamecho.chacha.reservation.domain.Reservation;
 import com.teamecho.chacha.reservation.service.ReservationService;
 import com.teamecho.chacha.user.domain.User;
+import com.teamecho.chacha.user.service.UserService;
 
 @WebServlet("/reservation/rez.do")
 public class RezServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private ReservationService service = ReservationService.getInstance();
+    private ReservationService rService = ReservationService.getInstance();
+    private ParkingLotService pService = ParkingLotService.getInstance();
+	private UserService uService = UserService.getInstance();
     
 	RequestDispatcher dispatcher = null;
 	ParkingLot parking;
@@ -42,8 +46,8 @@ public class RezServlet extends HttpServlet {
 		// 2. 유효성 검증 및 변환
 		
 		// 3. 비즈니스 서비스 호출
-		parking = service.getParkingLotByPid(pId);
-		uId = service.getUIdByUserId(userId);
+		parking = pService.findParkingLotByPid(pId);
+		uId = uService.findUIdByUserId(userId);
 
 		// 4. NextPage
 		request.setAttribute("parking", parking); // 3에서 만든 주차장 객체를 던져주기
@@ -121,7 +125,7 @@ public class RezServlet extends HttpServlet {
 		rez.setPid(parking.getPid());
 		
 		// 3. 비즈니스 서비스 호출
-		service.addReservation(rez);
+		rService.addReservation(rez);
 		
 		// 4. NextPage
 		request.setAttribute("rez", rez);

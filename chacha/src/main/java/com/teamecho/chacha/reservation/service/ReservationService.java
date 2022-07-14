@@ -26,24 +26,7 @@ public class ReservationService {
 	public static ReservationService getInstance() {
 		return service;
 	}
-	
-	/**
-	 * 좌표로 주차장 객체 얻는 메소드
-	 * @param pointX
-	 * @param pointY
-	 * @return
-	 */
-	public ParkingLot getParkingLotByCode(String parkingcode) {
-		return pService.findParkingLotByCode(parkingcode);
-	}
-	
-	public ParkingLot getParkingLotByPid(long pid) {
-		return pService.findParkingLotByPid(pid);
-	}
-	
-	public long getUIdByUserId(String userId) {
-		return uService.findUIdByUserId(userId);
-	}
+
 	/**
 	 * 예약 추가하는 메소드
 	 * @param rez
