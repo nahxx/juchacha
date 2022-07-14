@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../css/default.css">
   <link rel="stylesheet" href="../css/header.css">
   <style>
-  body, html { overflow: scroll;}
+  body, html { overflow: scroll; }
     .wrap {
       width: 100%;
       height: calc(100vh - 30px);
@@ -20,7 +20,10 @@
     .parkingloth1 {
       margin-top: 40px;
     }
-
+	.parkingaddr {
+		margin-top : 20px;
+		margin-bottom : 20px;
+	}
     h1,
     h2,
     h4 {
@@ -49,8 +52,13 @@
       text-align: center;
       font-size: 20px;
       color: white;
+      cursor: pointer;
     }
-
+	.btn:hover{
+	  color : #417D7A;
+	  background-color: #fff;
+	  border : 1px solid #417D7A;
+	}
     .cost,
     .space,
     .review {
@@ -92,14 +100,14 @@
       margin-top: 20px;
     }
 
-    .review tbody tr:nth-child(1) {
+    .review tbody tr.review-header {
       background-color: #417D7A;
       color: #fff;
       height: 40px;
       text-align: center;
     }
 
-    .review tbody tr.review-header {
+    .review tbody tr.review-title {
       height: 30px;
       text-align: center;
     }
@@ -112,7 +120,27 @@
       background-color: #417D7A;
       color: #fff;
       text-align: center;
+      width: 130px;
     }
+    .parkingloth1 input {
+   display: inline-block;
+   direction: rtl;
+   border: 0;
+}
+
+.parkingloth1 input[type=radio] {
+   display: none;
+}
+
+.parkingloth1 label {
+   font-size: 1.25em;
+   color: transparent;
+   text-shadow: 0 0 0 #f0f0f0;
+}
+
+.parkingloth1 input[type=radio]:checked ~ label {
+   text-shadow: 0 0 0 #ED4652;
+}
   </style>
 </head>
 
@@ -121,8 +149,10 @@
     <%@ include file="/incl/no_login_header.jsp" %>
   </header> 
   <div class="wrap">
-    <h1 class="parkingloth1">${ParkingLot.getParkingName()}</h1>
-    <h2>${ParkingLot.getParkingAddr()}</h2>
+       <h1 class="parkingloth1">${ParkingLot.getParkingName()}
+         <input type="radio" name ="heart" id="rate1" onClick="location.href='/chacha/favorite/favorite.do?pid=${ParkingLot.getPid()}'"><label for="rate1">♥</label>
+      </h1>
+    <h2 class="parkingaddr">${ParkingLot.getParkingAddr()}</h2>
     <h4>${ParkingLot.getParkingTel()}</h4>
     <table border="1" class="cost">
       <thead>
@@ -163,22 +193,21 @@
       </tbody>
     </table>
     <input type="button" class="btn" value="예약페이지" onClick="location.href='/chacha/reservation/rez.do?pid=${ParkingLot.getPid()}'">
-
-    <table border="1" class="review">
+	   <table border="1" class="review">
       <thead>
         <tr>
           <th colspan="3">리뷰</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody>     
+        <c:forEach var="re" items="${review}">
+         <tr class ="review-header">
           <td>사용자</td>
           <td>별점</td>
           <td>작성일</td>
         </tr>
-        <c:forEach var="re" items="${review}">
-          <tr class="review-header">
-            <td>사용자</td>
+          <tr class="review-title">
+            <td>${re.getUser().getUserId()}</td>
             <td>${re.getStar_rating()}</td>
             <td>${re.getRegDate()}</td>
           </tr>

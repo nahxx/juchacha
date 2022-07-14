@@ -123,9 +123,13 @@ INSERT INTO Parkinglot_Use (useSpaces, pid)
 VALUES(17, 3);
 
 SELECT pu.useSpaces FROM ParkingLot p  INNER JOIN Parkinglot_Use pu ON p.pid = pu.pid WHERE p.pointX = 35.8665196 AND p.pointY = 128.5943343;
-
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '좋습니다', 5);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 4);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '별로입니다', 2);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 3);
 
 SELECT * FROM UserInfo;
 SELECT * FROM ParkingLot;
 SELECT * FROM Favorite;
 
+DELETE FROM review;
