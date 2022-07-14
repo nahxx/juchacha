@@ -5,32 +5,40 @@
 <head>
 <meta charset="UTF-8">
 <title>주차차</title>
+<link rel="stylesheet" href="../css/default.css">
+<link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/reservation.css">
 <script type="text/javascript" src="../js/jquery.js"></script>
 </head>
 <body>
+	<header>
+		<%@ include file="/incl/header.jsp" %>
+	</header>
 	<div class="wrap">
+	  <h3>예약하기</h3>
       <div class="parkingInfo">
+      	<p>예약할 주차장</p>
         <table>
           <tr>
             <th>주차장명</th>
-            <td>ooo주차장</td>
+            <td>${parking.parkingName}</td>
           </tr>
           <tr>
             <th>연락처</th>
-            <td>xxx-xxx-xxxx</td>
+            <td>${parking.parkingTel}</td>
           </tr>
           <tr>
             <th>주소</th>
-            <td>xxx-xxx-xxxx</td>
+            <td>${parking.parkingAddr}</td>
           </tr>
         </table>
       </div>
 
       <form class="rez" action="rez.do" method="post">
         <p>주차타입</p>
-        <label><input type="radio" name="type" value="A" checked>시간당</label>
-        <label><input type="radio" name="type" value="B">종일권</label>
-        <label><input type="radio" name="type" value="C">정기권</label>
+        <label class="radio"><input type="radio" name="type" value="A" checked>시간당</label>
+        <label class="radio"><input type="radio" name="type" value="B">종일권</label>
+        <label class="radio"><input type="radio" name="type" value="C">정기권</label>
 
         <!-- A면 예약 일월, 시작-종료시간 전부 표시
             B면 예약 일월만 표시
@@ -55,15 +63,15 @@
         </label>
         <label>
           <select class="startDate" name="startDate">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            <option value="01">1</option>
+            <option value="02">2</option>
+            <option value="03">3</option>
+            <option value="04">4</option>
+            <option value="05">5</option>
+            <option value="06">6</option>
+            <option value="07">7</option>
+            <option value="08">8</option>
+            <option value="09">9</option>
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
@@ -151,7 +159,7 @@
           시
         </label>
 
-        <input type="submit" name="" value="예약하기">
+        <input type="submit" name="submit" value="예약하기">
       </form>
     </div>
     <script type="text/javascript">
@@ -159,14 +167,34 @@
     	  let date = new Date();
     	  let month = "0" + (date.getMonth() + 1); // 현재 월
     	  let day = date.getDate(); // 현재 일자
-    	  let hour = date.getHours(); // 현재 시
+    	  let hour; // 현재 시간
+    	  let nextHour; // 종료 시간담을 변수
+    	  if(date.getHours() == 9) {
+    		  hour = "0" + date.getHours();
+    		  nextHour = 10;
+    	  }
+    	  if(date.getHours() < 10) {
+    		  hour = "0" + date.getHours();
+    		  nextHour = date.getHours() + 1
+    	  } else {
+    		  hour = date.getHours();
+    		  nextHour = date.getHours() + 1
+    	  }
     	  
+    	  console.log(hour);
     	  $('.startMonth').val(month).attr("selected", "selected"); // 현재 월로 selected
     	  $('.startDate').val(day).attr("selected", "selected"); // 현재 일로 selected
     	  $('.startTime').val(hour).attr("selected", "selected"); // 현재 시로 selected
-    	  $('.endTime').val(hour + 1).attr("selected", "selected");  // 현재 시 + 1로 selected
+    	  $('.endTime').val(nextHour).attr("selected", "selected");  // 현재 시 + 1로 selected
     	  
-    	  
+    	  $('input[type=radio]').css("display", "none");
+    	  $('.radio').click(function() {
+    		  $('input[type=radio]').removeAttr("checked");
+    		  $(this).find('input[type=radio]').attr("checked", "checked");
+    		  $('.radio').removeClass("on");
+    		  $(this).addClass("on");
+    	  });
+
     	});
     </script>
 </body>
