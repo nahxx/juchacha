@@ -54,7 +54,11 @@ public class ParkingLotDao {
 		}
 		return parkingdotList;
 	}
-	
+	/**
+	 * 주차장 좌표값으로 주차장 객체 가져오기
+	 * @작성자 : 박동근
+	 * @return
+	 */
 	public ParkingLot findParkingLotByPoint(double pointX, double pointY){	
 		String sql = "SELECT * FROM parkingLot WHERE pointx =? AND pointy =?";
 		ParkingLot parkingLot = null;
@@ -90,7 +94,11 @@ public class ParkingLotDao {
 		}
 		return parkingLot;
 	}
-	
+	/**
+	 * 주차장 코드로 주차장 객체 가져오기
+	 * @작성자 : 박동근
+	 * @return
+	 */
 	public ParkingLot findParkingLotByCode(String parkingcode){	
 		String sql = "SELECT * FROM parkingLot WHERE parkingCode =?";
 		ParkingLot parkingLot = null;
@@ -126,106 +134,34 @@ public class ParkingLotDao {
 		return parkingLot;
 	}
 	
-//	public boolean isValidUser(String userId, String passwd) {
-//		String sql = "SELECT * FROM userinfo WHERE userid = ? and passwd = ?";
-//		int i = 0;
-//		try {
-//			Connection con = null;
-//			PreparedStatement pstmt = null;
-//			ResultSet rs = null;
-//			try {
-//				con = ds.getConnection();
-//				pstmt = con.prepareStatement(sql);
-//				pstmt.setString(1,userId);
-//				pstmt.setString(2,passwd);
-//				rs = pstmt.executeQuery();
-//				while(rs.next()) {
-//					i++;
-//				}
-//			}finally {
-//				ds.close(rs, pstmt, con);
-//			}
-//		}catch(SQLException e) {  
-//			e.printStackTrace();
-//		}
-//		if (i > 0) {
-//			return true;
-//		}else {
-//			return false;
-//		}
-//	}
-//	
-//	public void addUser(User user) {
-//		String sql = "INSERT INTO UserInfo(userid, passwd, username, ssn, email, addr )  VAlUES (?, ?, ?, ?, ?, ?)";
-//		try {
-//			Connection con = null;
-//			PreparedStatement pstmt = null;
-//			con = ds.getConnection();
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.setString(1,user.getUserId());
-//			pstmt.setString(2,user.getPasswd());
-//			pstmt.setString(3,user.getUserName());
-//			pstmt.setString(4,user.getSsn());
-//			pstmt.setString(5,user.getEmail());
-//			pstmt.setString(6,user.getAddr());
-//			pstmt.executeUpdate();
-//			ds.close(pstmt, con);
-//			System.out.println("INSERTED....");
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-//	
-
-//	
-//	public User findUserByName(String ssn){
-//		String sql = "SELECT * FROM UserInfo WHERE username = ?";
-//		User c = null;
-//		try {
-//			Connection con = null;
-//			PreparedStatement pstmt = null;
-//			ResultSet rs = null;
-//			try {
-//				con = ds.getConnection();
-//				pstmt = con.prepareStatement(sql);
-//				pstmt.setString(1,ssn);
-//				rs = pstmt.executeQuery();
-//				if(rs.next()) {
-//					c = new User();
-//					c.setUserId(rs.getString("userId"));
-//					c.setPasswd(rs.getString("passwd"));
-//					c.setUserName(rs.getString("username"));
-//					c.setSsn(rs.getString("ssn"));
-//					c.setEmail(rs.getString("email"));
-//					c.setAddr(rs.getString("addr"));
-//				}
-//
-//			}finally {
-//				ds.close(rs, pstmt, con);
-//			}
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return c;
-//	}
-//	public void updateUser(User user) {
-//		String sql = "UPDATE UserInfo SET passwd =?, username =?, ssn =?, email =?, addr =?  WHERE userid = ?";
-//		try {
-//			Connection con = null;
-//			PreparedStatement pstmt = null;
-//			con = ds.getConnection();
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.setString(1,user.getPasswd());
-//			pstmt.setString(2,user.getUserName());
-//			pstmt.setString(3,user.getSsn());
-//			pstmt.setString(4,user.getEmail());
-//			pstmt.setString(5,user.getAddr());
-//			pstmt.setString(6,user.getUserId());
-//			pstmt.executeUpdate();
-//			ds.close(pstmt, con);
-//			System.out.println("UPDATE....");
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	/**
+	 * 주차장 코드를 받아서 현재 주차중인 차량 수롤 보여주기 위한 메소드
+	 * @param pointX
+	 * @param pointY
+	 * @return
+	 */
+	public int getParkingLotSpaces (double pointX, double pointY){	
+		String sql = "SELECT pu.useSpaces FROM ParkingLot p  INNER JOIN Parkinglot_Use pu ON p.pid = pu.pid WHERE p.pointX = ? AND p.pointY = ?";
+		int space = 0;
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setDouble(1,pointX);
+				pstmt.setDouble(2,pointY);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					space = rs.getInt("useSpaces");
+				}
+			}finally {
+				ds.close(rs, pstmt, con);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return space;
+	}
 }

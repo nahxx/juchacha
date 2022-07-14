@@ -27,4 +27,7 @@ public class ParkingLotService {
 	public ParkingLot findParkingLotByCode(String parkingcode) {
 		return parkingLotDao.findParkingLotByCode(parkingcode);
 	}
+	public int getParkingLotSpaces(double pointX, double pointY) {
+		return parkingLotDao.getParkingLotSpaces(pointX, pointY);
+	}
 }

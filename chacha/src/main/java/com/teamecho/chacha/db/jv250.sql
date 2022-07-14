@@ -111,4 +111,20 @@ VALUES ('A0002', '시원유료주차장', '대구광역시 중구 덕산동 124-
 INSERT INTO ParkingLot (parkingCode, parkingName, parkingAddr, parkingTel, timeCost, dayCost, monthCost, parkingSpace, pointX, pointY)
 VALUES ('A0003', '동아민영주차장', '대구광역시 중구 남산동 939-7', '000-000-0000', 1300, 9000, 30000, 30, 35.8648274, 128.5915409);
 
-SELECT * FROM ParkingLot;
+
+INSERT INTO Parkinglot_Use (useSpaces, pid)
+VALUES(10, 1);
+
+INSERT INTO Parkinglot_Use (useSpaces, pid)
+VALUES(14, 2);
+
+INSERT INTO Parkinglot_Use (useSpaces, pid)
+VALUES(17, 3);
+
+SELECT pu.useSpaces FROM ParkingLot p  INNER JOIN Parkinglot_Use pu ON p.pid = pu.pid WHERE p.pointX = 35.8665196 AND p.pointY = 128.5943343;
+
+
+
+
+
+

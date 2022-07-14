@@ -17,12 +17,12 @@ public class GetParkingLotByPoint extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ParkingLotService ps = ParkingLotService.getInstance();
-		double pointx = 35.8665196;
-		double pointy = 128.5943343;
-		
+		double pointx = Double.valueOf(request.getParameter("pointX"));
+		double pointy = Double.valueOf(request.getParameter("pointY"));
+
 		ParkingLot pl = ps.findParkingLotByPoint(pointx, pointy);
-		System.out.println(pl.getParkingName());
 		request.setAttribute("ParkingLot", pl);
+		request.setAttribute("space", ps.getParkingLotSpaces(pointx, pointy));
 		//지도에서 포인트 값을 던져주면 받아서 값을 가져오고 지도에 뿌려준다.
 		request.getRequestDispatcher("/parkinglot/get_parking_point.jsp").forward(request, response);
 	}
