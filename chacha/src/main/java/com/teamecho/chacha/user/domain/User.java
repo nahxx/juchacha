@@ -10,6 +10,9 @@ public class User implements Serializable {
 	private String addr;
 	private String licenseNumber;
 	
+	public User() {
+		
+	}
 	
 	public User(String userId) {
 		this.userId = userId;

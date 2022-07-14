@@ -21,8 +21,10 @@ public class GetParkingLotByPoint extends HttpServlet {
 		double pointy = Double.valueOf(request.getParameter("pointY"));
 
 		ParkingLot pl = ps.findParkingLotByPoint(pointx, pointy);
+		
 		request.setAttribute("ParkingLot", pl);
 		request.setAttribute("space", ps.getParkingLotSpaces(pointx, pointy));
+		request.setAttribute("review", ps.getAllReview(pl.getPid()));
 		//지도에서 포인트 값을 던져주면 받아서 값을 가져오고 지도에 뿌려준다.
 		
 		request.getRequestDispatcher("/parkinglot/get_parking_point.jsp").forward(request, response);

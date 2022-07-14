@@ -4,13 +4,17 @@ import java.util.List;
 
 import com.teamecho.chacha.parking.dao.ParkingLotDao;
 import com.teamecho.chacha.parking.domain.ParkingLot;
+import com.teamecho.chacha.review.dao.ReviewDao;
+import com.teamecho.chacha.review.domain.Review;
 
 public class ParkingLotService {
 	private static final ParkingLotService parkingLotService = new ParkingLotService();
 	private ParkingLotDao parkingLotDao;
+	private ReviewDao reviewDao;
 	
 	private ParkingLotService() {
 		parkingLotDao = new ParkingLotDao();
+		reviewDao = new ReviewDao();
 	}
 	
 	public static ParkingLotService getInstance() {
@@ -33,5 +37,9 @@ public class ParkingLotService {
 	
 	public ParkingLot findParkingLotByPid(Long pid) {
 		return parkingLotDao.findParkingLotByPid(pid);
+	}
+	
+	public List<Review> getAllReview(Long pid){
+		return reviewDao.findAll(pid);
 	}
 }
