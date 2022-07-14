@@ -110,7 +110,7 @@
 		<div class="title-wrap">
 			<h3 class="title">리뷰 작성하기</h3>
 		</div>
-	    <form action="write_review.do" name="reviewForm" id="reviewForm" method="post">
+	    <form action="write_review.do?pid=2" name="reviewForm" id="reviewForm" method="post">
 	    	<div class="ratingsContainer">
 				<fieldset>
 					<span class="text-bold">별점을 선택해주세요</span>
