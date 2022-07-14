@@ -129,3 +129,8 @@ SELECT * FROM UserInfo;
 SELECT * FROM ParkingLot;
 SELECT * FROM Favorite;
 
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '좋습니다', 5);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 4);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '별로입니다', 2);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 3);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 3, '굿굿', 4);

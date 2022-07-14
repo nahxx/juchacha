@@ -7,10 +7,12 @@ import com.teamecho.chacha.parking.domain.ParkingLot;
 import com.teamecho.chacha.parking.service.ParkingLotService;
 import com.teamecho.chacha.reservation.dao.ReservationDao;
 import com.teamecho.chacha.reservation.domain.Reservation;
+import com.teamecho.chacha.user.service.UserService;
 
 public class ReservationService {
 	private static ReservationService service = new ReservationService();
 	private ParkingLotService pService = ParkingLotService.getInstance();
+	private UserService uService = UserService.getInstance();
 	ReservationDao rDao = new ReservationDao();
 	
 	private ReservationService() {
@@ -39,6 +41,9 @@ public class ReservationService {
 		return pService.findParkingLotByPid(pid);
 	}
 	
+	public long getUIdByUserId(String userId) {
+		return uService.findUIdByUserId(userId);
+	}
 	/**
 	 * 예약 추가하는 메소드
 	 * @param rez

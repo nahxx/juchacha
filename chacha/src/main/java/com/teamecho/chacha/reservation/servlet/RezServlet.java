@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.teamecho.chacha.parking.domain.ParkingLot;
 import com.teamecho.chacha.reservation.domain.Reservation;
 import com.teamecho.chacha.reservation.service.ReservationService;
+import com.teamecho.chacha.user.domain.User;
 
 @WebServlet("/reservation/rez.do")
 public class RezServlet extends HttpServlet {
@@ -24,7 +25,7 @@ public class RezServlet extends HttpServlet {
     
 	RequestDispatcher dispatcher = null;
 	ParkingLot parking;
-//	User user = null;
+	long uId;
 	
 	public void init(ServletConfig config) throws ServletException {
 		
@@ -37,12 +38,12 @@ public class RezServlet extends HttpServlet {
 		// 1. 홈 파라메터 얻기
 		long pId = Long.valueOf(request.getParameter("pid")); // 주차장정보창에서 예약하기 클릭시 pid코드 받아옴
 		String userId = (String) session.getAttribute("userId"); // 로그인에서 던져준 session의 유저아이디값 받아옴
-//		user =  // 위에서 받은 userId로 유저 객체 찾아서 넣어줌
 		
 		// 2. 유효성 검증 및 변환
 		
 		// 3. 비즈니스 서비스 호출
 		parking = service.getParkingLotByPid(pId);
+		uId = service.getUIdByUserId(userId);
 
 		// 4. NextPage
 		request.setAttribute("parking", parking); // 3에서 만든 주차장 객체를 던져주기
@@ -57,7 +58,6 @@ public class RezServlet extends HttpServlet {
 		Timestamp timestamp_end = null;
 		String dateStr = "";
 		int cost;
-		
 		// 1. 홈 파라메터 얻기
 		
 		String type = request.getParameter("type");
@@ -117,8 +117,7 @@ public class RezServlet extends HttpServlet {
 		rez.setCost(0);
 		rez.setCost(cost);
 		rez.setVoucher_use("N");
-//		rez.setUid();
-		rez.setUid(1); // 임시
+		rez.setUid(uId);
 		rez.setPid(parking.getPid());
 		
 		// 3. 비즈니스 서비스 호출
