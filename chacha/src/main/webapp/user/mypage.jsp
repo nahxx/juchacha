@@ -97,13 +97,13 @@ ul li:first-child {
 	margin-left: 0;
 }
 
-a {
+#header a {
 	line-height: 70px;
 	font-size: 20px;
 	color: white;
 }
 
-a:hover {
+#header a:hover {
 	color: white;
 	font-weight: 600;
 }
@@ -111,6 +111,7 @@ a:hover {
 section {
 	height: 100%;
 	overflow: hidden;
+  	padding-bottom: 160px;
 }
 
 .container {
@@ -170,20 +171,52 @@ section {
 	margin-top: 0;
 }
 .info-list {
-	padding: 0 150px;
+  width: 100%;
+  padding: 0 150px;
 }
 .info-list li {
 	width: 100%;
 	height: 50px;
 	text-align: center;
 	border-bottom: 1px solid #b1b1b1;
+  position: relative;
 	margin-left: 0;
 }
 .info-list li > a {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
 	color: #000;
-	height: 100%;
 	width: 100%;
 	font-size: 18px;
+}
+#footer {
+  height: 160px;
+  background: #f1f1f1;
+}
+.copyright {
+  width: 700px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 40px;
+}
+.copyright-logo {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 80px;
+  height: 80px;
+  background-image: url("/chacha/image/logo.png");
+}
+.copyright-txt p {
+  margin-top: 5px;
+}
+.copyright .copyright-logo a {
+  color: transparent;
+}
+.copyright a, .copyright p {
+  font-size: 15px;
 }
 </style>
 </head>
@@ -205,13 +238,16 @@ section {
         </div>
         <div class="content list">
           <ul class="info-list">
-            <li> <a href="/chacha/user_update.do">정보 수정하기</a></li>
+            <li><a href="/chacha/user_update.do">정보 수정하기</a></li>
             <li><a href="/chacha/reservation/rez_checking.do">예약정보</a></li>
             <li><a href="/chacha/favorite/list.do">즐겨찾기 목록</a></li>
           </ul>
         </div>
       </div>
     </div>
+    <footer>
+      <%@ include file="/incl/footer.jsp" %>
+    </footer>
   </section>
 </body>
 </html>

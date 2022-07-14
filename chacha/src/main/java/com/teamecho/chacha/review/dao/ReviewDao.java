@@ -22,7 +22,7 @@ public class ReviewDao {
 	
 	public ReviewDao() {
 		NamingService namingService = NamingService.getInstance();
-		ds = (DataSource)namingService.getAttribute("dataSource");
+		ds = (DataSource)namingService.getAttribute("dataSource");	
 	}
 	
 	public void addReview(Review review) {
@@ -30,10 +30,9 @@ public class ReviewDao {
 				+ " VALUES (?, ?, ?, ?);";
 		try {
 			Connection con = ds.getConnection();
-			PreparedStatement psmt = con.prepareStatement(sql);
+			PreparedStatement psmt = con.prepareStatement(sql);			
 			psmt.setLong(1, 1);
-			psmt.setLong(2, 2);
-//			psmt.setLong(2, review.getParkingLot().getPid());
+			psmt.setLong(2, review.getParkingLot().getPid());
 			psmt.setString(3, review.getContent());
 			psmt.setInt(4, review.getStar_rating());
 			psmt.executeUpdate();
@@ -67,9 +66,6 @@ public class ReviewDao {
 					reviewList.add(review);	
 				}
 			}finally {
-				System.out.println(reviewList.get(0).getUser().getUserId());
-				System.out.println(reviewList);
-				System.out.println("리스트받아옴...");
 				ds.close(rs, psmt, con);
 			}
 		}catch(SQLException e) {

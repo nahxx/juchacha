@@ -101,6 +101,7 @@ CREATE TABLE Voucher_use (
    CONSTRAINT Voucher_use_Uid_FK FOREIGN KEY (uid) REFERENCES UserInfo(uid),
    CONSTRAINT Voucher_use_Vid_FK FOREIGN KEY (vid) REFERENCES Voucher(vid),
    CONSTRAINT Voucher_use_Rid_FK FOREIGN KEY (rid) REFERENCES Reservation(rid)
+<<<<<<< HEAD
 )AUTO_INCREMENT = 1;
 
 
@@ -147,3 +148,6 @@ INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, 
  
  INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)
  VALUES ('jin', '123', "관우", "010-2345-5432", "대구시 수성구 신매동" , "222나 1234", "Y");
+=======
+)AUTO_INCREMENT = 1;
+>>>>>>> b3de5ffe04e8d2107401182d755cb47017018a1a

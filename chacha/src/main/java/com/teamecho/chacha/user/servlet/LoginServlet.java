@@ -19,6 +19,11 @@ public class LoginServlet extends HttpServlet {
 		userService = new UserService();
 	}
 	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 페이지로 들어와서 login페이지로 보냄
+		request.getRequestDispatcher("./").forward(request, response);
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		String passwd = request.getParameter("passwd");
