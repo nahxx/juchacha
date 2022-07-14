@@ -18,7 +18,7 @@
     }
 
     .parkingloth1 {
-      margin-top: 40px;
+      margin-top: 90px;
     }
 	.parkingaddr {
 		margin-top : 20px;
@@ -146,7 +146,7 @@
 
 <body>
   <header>
-    <%@ include file="/incl/no_login_header.jsp" %>
+    <%@ include file="/incl/header.jsp" %>
   </header> 
   <div class="wrap">
        <h1 class="parkingloth1">${ParkingLot.getParkingName()}
@@ -193,6 +193,7 @@
       </tbody>
     </table>
     <input type="button" class="btn" value="예약페이지" onClick="location.href='/chacha/reservation/rez.do?pid=${ParkingLot.getPid()}'">
+  
 	   <table border="1" class="review">
       <thead>
         <tr>
@@ -200,6 +201,7 @@
         </tr>
       </thead>
       <tbody>     
+        <c:if test="${not empty review}">
         <c:forEach var="re" items="${review}">
          <tr class ="review-header">
           <td>사용자</td>
@@ -216,8 +218,10 @@
             <td colspan="2">${re.getContent()}</td>
           </tr>
         </c:forEach>
+          </c:if>
       </tbody>
     </table>
+   
   </div>
 </body>
 
