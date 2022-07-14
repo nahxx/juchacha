@@ -75,6 +75,8 @@ CREATE TABLE Favorite (
    CONSTRAINT Favorite_Pid_FK FOREIGN KEY (pid) REFERENCES ParkingLot(pid)
 )AUTO_INCREMENT = 1;
 
+INSERT INTO Favorite (uid, pid) VALUES (1, 2);
+
 CREATE TABLE Review (
    rvid				BIGINT			PRIMARY KEY AUTO_INCREMENT,      
    uid				BIGINT			NOT NULL,
@@ -111,4 +113,6 @@ VALUES ('A0002', '시원유료주차장', '대구광역시 중구 덕산동 124-
 INSERT INTO ParkingLot (parkingCode, parkingName, parkingAddr, parkingTel, timeCost, dayCost, monthCost, parkingSpace, pointX, pointY)
 VALUES ('A0003', '동아민영주차장', '대구광역시 중구 남산동 939-7', '000-000-0000', 1300, 9000, 30000, 30, 35.8648274, 128.5915409);
 
+SELECT * FROM UserInfo;
 SELECT * FROM ParkingLot;
+SELECT * FROM Favorite;

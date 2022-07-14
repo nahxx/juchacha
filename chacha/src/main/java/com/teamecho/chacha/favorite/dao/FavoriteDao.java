@@ -25,8 +25,8 @@ public class FavoriteDao {
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);
-			psmt.setLong(1, fv.getPid());
-			psmt.setLong(2, fv.getUid());
+			psmt.setLong(1, fv.getUid());
+			psmt.setLong(2, fv.getPid());
 			psmt.executeUpdate();
 			System.out.println("INSTERTED...");
 			ds.close(psmt, con);
@@ -34,7 +34,6 @@ public class FavoriteDao {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	public List<Favorite> findFavo() {
 		String sql = "SELECT * FROM Favorite";
@@ -46,9 +45,10 @@ public class FavoriteDao {
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
 				Favorite fv = new Favorite();
-				fv.setPid(rs.getLong("pid"));
 				fv.setUid(rs.getLong("uid"));
+				fv.setPid(rs.getLong("pid"));
 				fvList.add(fv);
+				System.out.println(fv.getPid());
 			}
 			System.out.println("SELECTED...");
 			ds.close(rs, psmt, con);
@@ -64,8 +64,8 @@ public class FavoriteDao {
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);
-			psmt.setLong(1, fv.getPid());
-			psmt.setLong(2, fv.getUid());
+			psmt.setLong(1, fv.getUid());
+			psmt.setLong(2, fv.getPid());
 			psmt.executeUpdate();
 			System.out.println("DELETE...");
 			ds.close(psmt, con);
@@ -74,4 +74,28 @@ public class FavoriteDao {
 		}
 	}
 
+	public boolean isValidPid(Long pid) { // id와 pw가 있으면 true 되서 mypage로
+		String sql = "SELECT * FROM Favorite WHERE pid = ?";
+		int i = 0;
+		try {
+			Connection con = ds.getConnection();
+			PreparedStatement psmt = con.prepareStatement(sql);
+			ResultSet rs = null;
+			
+			psmt.setLong(1, pid);
+			psmt.executeQuery();
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				i++;
+			}
+			ds.close(psmt, con);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(i>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

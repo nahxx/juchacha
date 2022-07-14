@@ -14,34 +14,25 @@ import com.teamecho.chacha.favorite.dao.FavoriteDao;
 import com.teamecho.chacha.favorite.domain.Favorite;
 import com.teamecho.chacha.favorite.service.FavoriteService;
 
-
-@WebServlet("/favorite/favorite.do")
+@WebServlet("/favorite/list.do")
 public class FavoriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	private FavoriteService service;
-//	private List<Favorite> list = service.getAllFavo();
+	private List<Favorite> fvList;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String p = request.getParameter("pid");
-		String u = request.getParameter("uid");
-		Long pid = Long.valueOf(p);
-		Long uid = Long.valueOf(u);
-
-		FavoriteDao dao = new FavoriteDao();
-
-		Favorite fv = new Favorite();
-		fv.setPid(pid);
-		fv.setUid(uid);
 		
-		service = new FavoriteService(dao);
-		service.addFavo(fv);
-		request.setAttribute("fv", fv);
+		service = new FavoriteService();
+		fvList = service.getAllFavo();
+		
+//		for(Favorite user : fvList) {
+//		System.out.println(user.getPid());
+//		System.out.println(user.getUid());
+//	}
 
-		// 4. NextPage
+		request.setAttribute("list", fvList);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -49,9 +40,17 @@ public class FavoriteServlet extends HttpServlet {
 		
 		String p = request.getParameter("pid");
 		String u = request.getParameter("uid");
-		Long pid = Long.valueOf(p);
-		Long uid = Long.valueOf(u);
+
+		HttpSession session = request.getSession();
+		session.setAttribute("pid", p);
+		session.setAttribute("uid", u);
+		String pid = (String)session.getAttribute("pid");
+		String uid = (String)session.getAttribute("uid");
+		System.out.println(uid + pid);
+		
+		request.getRequestDispatcher("list.jsp").forward(request, response);
 
 	}
 
 }
+ 
