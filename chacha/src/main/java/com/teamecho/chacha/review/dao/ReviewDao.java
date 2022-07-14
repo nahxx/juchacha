@@ -31,8 +31,8 @@ public class ReviewDao {
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);			
-			psmt.setLong(1, 1);
-			psmt.setLong(2, review.getParkingLot().getPid());
+			psmt.setLong(1, review.getUid());
+			psmt.setLong(2, review.getPid());
 			psmt.setString(3, review.getContent());
 			psmt.setInt(4, review.getStar_rating());
 			psmt.executeUpdate();

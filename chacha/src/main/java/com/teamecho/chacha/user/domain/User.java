@@ -3,6 +3,7 @@ package com.teamecho.chacha.user.domain;
 import java.io.Serializable;
 
 public class User implements Serializable {
+	private Long uId;
 	private String userId;
 	private String passwd;
 	private String userName;
@@ -13,9 +14,14 @@ public class User implements Serializable {
 	public User() {
 		
 	}
-	
 	public User(String userId) {
 		this.userId = userId;
+	}
+	public Long getuId() {
+		return uId;
+	}
+	public void setuId(Long uId) {
+		this.uId = uId;
 	}
 	public String getUserId() {
 		return userId;

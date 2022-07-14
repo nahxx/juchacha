@@ -14,6 +14,7 @@ import com.teamecho.chacha.parking.domain.ParkingLot;
 import com.teamecho.chacha.review.dao.ReviewDao;
 import com.teamecho.chacha.review.domain.Review;
 import com.teamecho.chacha.review.service.ReviewService;
+import com.teamecho.chacha.user.domain.User;
 
 @WebServlet("/review/write_review.do")
 public class AddReviewServlet extends HttpServlet {
@@ -34,14 +35,14 @@ public class AddReviewServlet extends HttpServlet {
 		parking = reviewService.getParkingLotByPid(pId);
 		uId = reviewService.getUIdByUserId(userId);
 		
-		
+		request.setAttribute("parking", parking);
+		dispatcher = request.getRequestDispatcher("write_review.jsp");
+		dispatcher.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession(false);
-		
 		
 		String pid = request.getParameter("pid");
 		String star__rating = request.getParameter("star_rating");
@@ -52,7 +53,9 @@ public class AddReviewServlet extends HttpServlet {
 		ReviewDao reviewDao = new ReviewDao();
 		
 		Review review = new Review();
-		review.setParkingLot(new ParkingLot(Long.valueOf(pid)));
+		review.setUid(uId);
+		review.setPid(parking.getPid());
+//		review.setParkingLot(new ParkingLot(Long.valueOf(pid)));
 		review.setStar_rating(star_rating);
 		review.setContent(content);
 		
@@ -60,8 +63,9 @@ public class AddReviewServlet extends HttpServlet {
 		reviewService.addReview(review);
 		
 		request.setAttribute("review", review);
-		dispatcher = request.getRequestDispatcher("success.jsp");
-		dispatcher.forward(request, response);
+//		dispatcher = request.getRequestDispatcher("success.jsp");
+//		dispatcher.forward(request, response);
+		String url = "/chacha/parking/get_parking_point.do?pointX=" + parking.getPointX() + "&pointY=" + parking.getPointY();
+		response.sendRedirect(url);
 	}
-
 }

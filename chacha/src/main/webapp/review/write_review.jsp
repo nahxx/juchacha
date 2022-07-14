@@ -4,27 +4,24 @@
 <head>
 <meta charset="UTF-8">
 <title>주차차</title>
-<link rel="stylesheet" href="./css/default.css">
-<link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="../css/default.css">
+<link rel="stylesheet" href="../css/header.css">
 <style>
-	.container {
-      display: flex;
-      flex-wrap: wrap;
-      height: 100%;
-      width: 700px;
+	.wrap {
+      width: 100%;
+      height: calc(100vh - 30px);
+    }
+    .container{
+      width: 800px;
       margin: 0 auto;
-      align-items: center;
-    }   
+    } 
     .container .title-wrap {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 30px;
       padding: 0 80px;
-      height: 100%;
-      width: 100%;
       line-height: 60px;
-      padding-top: 100px;
+      padding-top: 200px;
     }
      .container .title-wrap .title {
       height: 100%;
@@ -104,31 +101,33 @@
 </head>
 <body>
 	<header>
-		<%@ include file="/incl/no_login_header.jsp" %>
-	</header>
-	<div class="container">
-		<div class="title-wrap">
-			<h3 class="title">리뷰 작성하기</h3>
+    <%@ include file="/incl/no_login_header.jsp" %>
+   </header>
+   	<div class="wrap">
+   		<div class="container">
+			<div class="title-wrap">
+				<h3 class="title">리뷰 작성하기</h3>
+			</div>
+		    <form action="write_review.do" name="reviewForm" id="reviewForm" method="post">
+		    	<div class="ratingsContainer">
+					<fieldset>
+						<span class="text-bold">별점을 선택해주세요</span>
+						<input type="radio" name="star_rating" value="5" id="rate1"><label for="rate1">★</label>
+						<input type="radio" name="star_rating" value="4" id="rate2"><label for="rate2">★</label>
+						<input type="radio" name="star_rating" value="3" id="rate3"><label for="rate3">★</label>
+						<input type="radio" name="star_rating" value="2" id="rate4"><label for="rate4">★</label>
+						<input type="radio" name="star_rating" value="1" id="rate5"><label for="rate5">★</label>
+					</fieldset>
+				</div>
+				<div class="textContainer">
+					<textarea class="col-auto form-control" name= "content" type="text" id="reviewContents"
+							  placeholder="좋은 리뷰을 남겨주시면 주차차에 큰 힘이 됩니다!"></textarea>
+				</div>
+				<div class="i-btn">
+		        	<input type="submit" value="리뷰작성" class="in-btn"/>
+		      	</div>
+			</form>
 		</div>
-	    <form action="write_review.do?pid=2" name="reviewForm" id="reviewForm" method="post">
-	    	<div class="ratingsContainer">
-				<fieldset>
-					<span class="text-bold">별점을 선택해주세요</span>
-					<input type="radio" name="star_rating" value="5" id="rate1"><label for="rate1">★</label>
-					<input type="radio" name="star_rating" value="4" id="rate2"><label for="rate2">★</label>
-					<input type="radio" name="star_rating" value="3" id="rate3"><label for="rate3">★</label>
-					<input type="radio" name="star_rating" value="2" id="rate4"><label for="rate4">★</label>
-					<input type="radio" name="star_rating" value="1" id="rate5"><label for="rate5">★</label>
-				</fieldset>
-			</div>
-			<div class="textContainer">
-				<textarea class="col-auto form-control" name= "content" type="text" id="reviewContents"
-						  placeholder="좋은 리뷰을 남겨주시면 주차차에 큰 힘이 됩니다!"></textarea>
-			</div>
-			<div class="i-btn">
-	        	<input type="submit" value="리뷰작성" class="in-btn"/>
-	      	</div>
-		</form>
-	</div>
+   	</div>
 </body>
 </html>
