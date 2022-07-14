@@ -132,4 +132,12 @@ SELECT * FROM UserInfo;
 SELECT * FROM ParkingLot;
 SELECT * FROM Favorite;
 
+<<<<<<< HEAD
 DELETE FROM review;
+=======
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '좋습니다', 5);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 4);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '별로입니다', 2);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 3);
+INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 3, '굿굿', 4);
+>>>>>>> 6bae79f8f929ad3181869d681cfbbfb6fdebbd5a

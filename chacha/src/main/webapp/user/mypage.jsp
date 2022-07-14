@@ -170,13 +170,13 @@ section {
 	margin-top: 0;
 }
 .info-list {
+	padding: 0 150px;
 }
 .info-list li {
 	width: 100%;
 	height: 50px;
-	align-items: top;
 	text-align: center;
-	border-bottom: 1px solid #f1f1f1;
+	border-bottom: 1px solid #b1b1b1;
 	margin-left: 0;
 }
 .info-list li > a {
@@ -206,7 +206,8 @@ section {
         <div class="content list">
           <ul class="info-list">
             <li> <a href="/chacha/user_update.do">정보 수정하기</a></li>
-            <li><a href="#">예약정보</a></li>
+            <li><a href="/chacha/reservation/rez_checking.do">예약정보</a></li>
+            <li><a href="#">즐겨찾기 목록</a></li>
           </ul>
         </div>
       </div>
