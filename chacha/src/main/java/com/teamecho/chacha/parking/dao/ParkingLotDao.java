@@ -135,6 +135,46 @@ public class ParkingLotDao {
 	}
 	
 	/**
+	 * 주차장 코드로 주차장 객체 가져오기
+	 * @작성자 : 박동근
+	 * @return
+	 */
+	public ParkingLot findParkingLotByPid(Long pid){	
+		String sql = "SELECT * FROM parkingLot WHERE pid =?";
+		ParkingLot parkingLot = null;
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1,pid);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					parkingLot = new ParkingLot();
+					parkingLot.setPid(rs.getLong("pid"));
+					parkingLot.setParkingCode(rs.getString("parkingCode"));
+					parkingLot.setParkingName(rs.getString("parkingName"));
+					parkingLot.setParkingAddr(rs.getString("parkingAddr"));
+					parkingLot.setParkingTel(rs.getString("parkingTel"));
+					parkingLot.setTimeCost(rs.getDouble("timeCost"));
+					parkingLot.setDayCost(rs.getDouble("dayCost"));
+					parkingLot.setMonthCost(rs.getDouble("monthCost"));
+					parkingLot.setParkingSpace(rs.getInt("parkingSpace"));
+					parkingLot.setPointX(rs.getDouble("pointX"));
+					parkingLot.setPointY(rs.getDouble("pointY"));
+				}
+			}finally {
+				ds.close(rs, pstmt, con);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return parkingLot;
+	}
+	
+	/**
 	 * 주차장 코드를 받아서 현재 주차중인 차량 수롤 보여주기 위한 메소드
 	 * @param pointX
 	 * @param pointY

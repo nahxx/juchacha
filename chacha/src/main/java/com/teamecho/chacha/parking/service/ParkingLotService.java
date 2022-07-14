@@ -30,4 +30,8 @@ public class ParkingLotService {
 	public int getParkingLotSpaces(double pointX, double pointY) {
 		return parkingLotDao.getParkingLotSpaces(pointX, pointY);
 	}
+	
+	public ParkingLot findParkingLotByPid(Long pid) {
+		return parkingLotDao.findParkingLotByPid(pid);
+	}
 }

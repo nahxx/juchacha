@@ -17,6 +17,10 @@ public class ParkingLot {
 		
 	}
 	
+	public ParkingLot(Long pid) {
+		this.pid = pid;
+	}
+	
 	public ParkingLot(String parkingCode, String parkingName, String parkingAddr, String parkingTel, double timeCost,
 			double dayCost, double monthCost, int parkingSpace, double pointX, double pointY) {
 		this.parkingCode = parkingCode;
