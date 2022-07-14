@@ -9,6 +9,11 @@ public class User implements Serializable {
 	private String userPhone;
 	private String addr;
 	private String licenseNumber;
+	
+	
+	public User(String userId) {
+		this.userId = userId;
+	}
 	public String getUserId() {
 		return userId;
 	}

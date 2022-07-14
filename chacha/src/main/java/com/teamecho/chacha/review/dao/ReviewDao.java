@@ -32,7 +32,7 @@ public class ReviewDao {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);
 			psmt.setLong(1, 1);
-			psmt.setLong(1, 2);
+			psmt.setLong(2, 2);
 //			psmt.setLong(2, review.getParkingLot().getPid());
 			psmt.setString(3, review.getContent());
 			psmt.setInt(4, review.getStar_rating());
@@ -45,7 +45,8 @@ public class ReviewDao {
 	}
 	
 	public List<Review> findAll(Long pId){
-		String sql = "SELECT * FROM Review WHERE pid = ?";
+		String sql = "SELECT r.pid, r.content, r.star_rating, r.regDate, u.userId FROM Review r INNER JOIN UserInfo u ON r.uid = u.uid WHERE r.pid = ?";
+
 		List<Review> reviewList = new ArrayList<>();
 		try {
 			Connection con = null;
@@ -59,15 +60,14 @@ public class ReviewDao {
 				while(rs.next()) {
 					Review review = new Review();
 					review.setParkingLot(new ParkingLot(rs.getLong("pid")));
-//					review.setUser(new User(rs.getString("userId")));
 					review.setContent(rs.getString("content"));
 					review.setStar_rating(rs.getInt("star_rating"));
 					review.setRegDate(rs.getDate("regDate"));
+					review.setUser(new User(rs.getString("userId")));
 					reviewList.add(review);	
 				}
 			}finally {
-//				System.out.println(reviewList.get(0).getUser().getUserId());
-				System.out.println(reviewList.get(0).getParkingLot().getPid());
+				System.out.println(reviewList.get(0).getUser().getUserId());
 				System.out.println(reviewList);
 				System.out.println("리스트받아옴...");
 				ds.close(rs, psmt, con);
