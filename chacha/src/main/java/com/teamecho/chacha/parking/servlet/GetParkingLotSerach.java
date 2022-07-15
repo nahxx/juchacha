@@ -20,17 +20,7 @@ public class GetParkingLotSerach extends HttpServlet {
 		ParkingLotService ps = ParkingLotService.getInstance();
 		String search_str = (String) request.getParameter("keyword");
 		
-//		if(search_str == null || search_str.length() == 0) {
-//			List<ParkingLot> list = ps.findAllParkingLot();
-//			request.setAttribute("search_str", search_str);
-//			request.setAttribute("ParkingLotList", list);
-//			request.setAttribute("ON", "on");
-//			request.getRequestDispatcher("/location/location.jsp").forward(request, response);
-//			return ;
-//		}
-		
 		List<ParkingLot> list = ps.findSearchParkingLot(search_str);
-		
 		request.setAttribute("search_str", search_str);
 		request.setAttribute("ParkingLotList", list);
 		request.setAttribute("ON", "on");
