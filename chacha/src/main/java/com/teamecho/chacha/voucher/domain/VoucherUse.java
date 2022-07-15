@@ -30,6 +30,13 @@ public class VoucherUse {
 	public void setUseTime(int useTime) {
 		this.useTime = useTime;
 	}
+	
+	public String getVuse() {
+		return vuse;
+	}
+	public void setVuse(String vuse) {
+		this.vuse = vuse;
+	}
 	public long getUid() {
 		return uid;
 	}

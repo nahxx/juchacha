@@ -2,7 +2,9 @@ package com.teamecho.chacha.voucher.service;
 
 import java.util.*;
 
+import com.teamecho.chacha.voucher.domain.Voucher;
 import com.teamecho.chacha.voucher.domain.VoucherUse;
+import com.teamecho.chacha.voucher.domain.VoucherUseList;
 import com.teamecho.chacha.user.dao.UserDao;
 import com.teamecho.chacha.voucher.dao.VoucherDao;
 import com.teamecho.chacha.voucher.dao.VoucherUseDao;
@@ -33,5 +35,16 @@ public class VoucherService {
 	
 	public long getUid(String userId) {
 		return userDao.findUIdByUserId(userId);
+	}
+	
+	public List<VoucherUse> findVoucherByUid(long uid) {
+	    return voucherUseDao.findVoucherByUid(uid);
+	}
+	
+	public Voucher getVoucherByVid(long vid) {
+		return voucherDao.findVoucherByVid(vid);
+	}
+	public List<VoucherUseList> getVoucherUseList(long uid){
+		return voucherUseDao.findVoucherUseList(uid);
 	}
 }
