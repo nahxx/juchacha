@@ -53,7 +53,6 @@ public class VoucherServlet extends HttpServlet {
 			buyTime = Integer.parseInt(voucherar[i].split("\\.")[1]);
 			VoucherUse voucherUse = new VoucherUse();
 			voucherUse.setVid(voucherService.getVid(vType, buyTime));
-			voucherUse.setUseTime(buyTime);
 			voucherUse.setUid(voucherService.getUid(userId));
 			voucherUseList.add(voucherUse);
 		}

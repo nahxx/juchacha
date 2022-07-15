@@ -17,16 +17,15 @@ public class VoucherUseDao {
 
 	public void addVoucherUse(List<VoucherUse> voucherUseList) {
 		for(VoucherUse voucherUse : voucherUseList) {
-			String sql = "INSERT INTO Voucher_Use(useTime, uid, vid)  VAlUES (?, ?, ?)";
+			String sql = "INSERT INTO Voucher_Use(useTime, uid, vid)  VAlUES (0, ?, ?)";
 			try {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				con = ds.getConnection();
 				try {
 					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1,voucherUse.getUseTime());
-					pstmt.setLong(2,voucherUse.getUid());
-					pstmt.setLong(3,voucherUse.getVid());
+					pstmt.setLong(1,voucherUse.getUid());
+					pstmt.setLong(2,voucherUse.getVid());
 					pstmt.executeUpdate();
 				}finally {
 					System.out.println("INSERTED....");
