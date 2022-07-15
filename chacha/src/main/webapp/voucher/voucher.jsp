@@ -7,19 +7,22 @@
 <title>주차차</title>
 <link rel="stylesheet" href="../css/default.css">
 <link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/footer.css">
 <style>
-@font-face {
-     src: url("/chacha/css/Jalnan.ttf");
-     font-family: "Jalnan";
-   }
-   .gnb ul li a {
-     line-height: 70px;
-     font-size: 20px;
-     color: white;
-     font-family: "Jalnan";
-   } 
-   
-.title-wrap {
+	 @font-face {
+      src: url("/chacha/css/Jalnan.ttf");
+      font-family: "Jalnan";
+    }
+    .gnb ul li a {
+      line-height: 70px;
+      font-size: 20px;
+      color: white;
+      font-family: "Jalnan";
+    } 
+    body {
+		overflow: auto;
+	}
+	.title-wrap {
 	   text-align: center;
 	   margin-bottom: 30px;
 	}
@@ -30,98 +33,103 @@
 	   text-align: center;
 	   padding: 0 8px;
 	   position: relative;
+	   font-family: "Jalnan";
 	}
 	.title-wrap .title:before {
 	   position: absolute;
 	   content: '';
 	   width: 100%;
 	   height: 14px;
-	   bottom: 7px;
+	   bottom: -4px;
 	   left: 0;
 	   z-index: -1;
 	   background: #EDE6DB;
 	}
 
-.wrapper {
-	width: 975px;
-	margin: 100px auto 	0;
-}
-
-.form .option_item{
-	display: block;
-	position: relative;
-	width: 175px;
-	height: 175px;
-	margin: 10px;
-}
-
-.option_item .option_inner {
-	width: 100%;
-	height: 100%;
-	background: #fff;
-	border-radius: 5px;
-	text-align: center;
-	padding: 58px 40px;
-	cursor: pointer;
-	display: block;
-	border: 5px solid #1D5C63;
-	position: relative;
-}
-
-.option_item .checkbox {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-}
-
-.option_item .option_inner .icon {
-	margin-bottom: 10px;
-}
-.option_item .option_inner .icon .fab {
-	font-size: 32px;
-}
-
-.option_item .option_inner .name {
-	user-select: none;
-	font-size: 20px;
-}
-
-.option_item .checkbox:checked ~ .option_inner{
-	border-color: #417D7A;
-	color: black;
-}
-
-.option_item .option_inner .tickmark{
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	border: 20px solid;
-	border-color: #417D7A;
-	display: none;
-}
-
-.option_item .checkbox:checked ~ .option_inner .tickmark{
-	display: block;
-}
-
-.option_item .option_inner .tickmark:before{
-	content: "";
-	position: absolute;
-	top: -11px;
-	left: -8px;
-	width: 15px;
-	height: 5px;
-	border: 3px solid;
-	border-color: transparent transparent #fff #fff;
-	transform: rotate(-45deg);
-}
-.wrap {
-width: 1000px;
-height: 200px;
-display : flex; 
-}
-
-.i-btn {
+	.wrapper {
+		width: 975px;
+		margin: 100px auto 	0;
+		height: calc(100vh - 340px);
+	}
+	
+	.form .option_item{
+		display: block;
+		position: relative;
+		width: 175px;
+		height: 175px;
+		margin: 10px;
+	}
+	
+	.option_item .option_inner {
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		border-radius: 5px;
+		text-align: center;
+		padding: 58px 40px;
+		cursor: pointer;
+		display: block;
+		border: 5px solid #1D5C63;
+		position: relative;
+		font-family: "Jalnan";
+	}
+	
+	.option_item .checkbox {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+	
+	.option_item .option_inner .icon {
+		margin-bottom: 10px;
+	}
+	.option_item .option_inner .icon .fab {
+		font-size: 32px;
+	}
+	
+	.option_item .option_inner .name {
+		user-select: none;
+		font-size: 20px;
+	}
+	
+	.option_item .checkbox:checked ~ .option_inner{
+		border-color: #417D7A;
+		color: black;
+	}
+	
+	.option_item .option_inner .tickmark{
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		border: 20px solid;
+		border-color: #417D7A;
+		display: none;
+	}
+	
+	.option_item .checkbox:checked ~ .option_inner .tickmark{
+		display: block;
+	}
+	
+	.option_item .option_inner .tickmark:before{
+		content: "";
+		position: absolute;
+		top: -11px;
+		left: -8px;
+		width: 15px;
+		height: 5px;
+		border: 3px solid;
+		border-color: transparent transparent #fff #fff;
+		transform: rotate(-45deg);
+	}
+	.wrap {
+	width: 1000px;
+	height: 200px;
+	display : flex;
+	justify-content: center;
+	margin: 100px 0;
+	}
+	
+	.i-btn {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -130,7 +138,7 @@ display : flex;
       height: 100%;
       width: 100%;
     }
-    .i-btn > input:first-child {
+    .i-btn > input {
       justify-content: center;
       border-style: none;
       font-size: 20px;
@@ -140,18 +148,7 @@ display : flex;
       width: 150px;
       height: 50px;
       cursor: pointer;
-    }
-    .i-btn > input:last-child {
-      justify-content: center;
-      margin-left: 75px;
-      border-style: none;
-      font-size: 20px;
-      background: #417D7A;
-      color: white;
-      border-radius: 30px;
-      width: 150px;
-      height: 50px;
-      cursor: pointer;
+      font-family: "Jalnan";
     }
     .i-btn > button > a {
         line-height: 56px;
@@ -231,5 +228,8 @@ display : flex;
 	 </div>
 	</form>	
 </div>
+<footer>
+	<%@ include file="/incl/footer.jsp" %>
+</footer>
 </body>
 </html>

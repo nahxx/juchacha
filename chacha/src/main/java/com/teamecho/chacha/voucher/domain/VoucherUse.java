@@ -1,10 +1,5 @@
 package com.teamecho.chacha.voucher.domain;
 
-import java.sql.Date;
-
-import com.teamecho.chacha.parking.domain.ParkingLot;
-import com.teamecho.chacha.user.domain.User;
-
 public class VoucherUse {
 	private long vuid;
 	private int useTime;
