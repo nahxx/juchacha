@@ -47,7 +47,7 @@ public class RezServlet extends HttpServlet {
 		if(userId == null || userId.length() == 0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('로그인 후 예약해 주세요.'); location.href='/chacha';</script>"); // 경고창 띄우기
+			writer.println("<script>alert('로그인 후 사용 해주시기 바랍니다.'); location.href='/chacha';</script>"); // 경고창 띄우기
 			writer.close(); // close를 해주면 response.reDirect가 안되므로 alert에서 location.href 속성을 사용하여 페이지를 이동시켜준다.
 			return;
 		}
