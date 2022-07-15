@@ -30,8 +30,8 @@ public class FavoriteService {
 		dao.addFavo(pid, uid);
 	}
 	
-	public List<Favorite> getAllFavo(){
-		return dao.findFavo();
+	public List<Favorite> getAllFavo(Long uid){
+		return dao.findFavo(uid);
 	}
 	
 	public void deleFavo(Long pid, Long uid) {
@@ -46,9 +46,9 @@ public class FavoriteService {
 		return pdao.findParkingLotByPid(pid);
 	}
 	
-//	public List<ParkingLot> findAllParkingLot() {
-//		return pdao.findAllParkingLot();
-//	}
+	public List<ParkingLot> findAllParkingLot() {
+		return pdao.findAllParkingLot();
+	}
 	
 	public boolean isValidFavorite(Long pid, Long uid) {
 		return dao.isValidFavorite(pid, uid);

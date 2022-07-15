@@ -24,8 +24,8 @@ public class FavoriteDao {
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);
-			psmt.setLong(1, pid);
-			psmt.setLong(2, uid);
+			psmt.setLong(1, uid);
+			psmt.setLong(2, pid);
 			psmt.executeUpdate();
 			System.out.println("INSTERTED...");
 			ds.close(psmt, con);
@@ -34,13 +34,14 @@ public class FavoriteDao {
 		}
 	}
 	
-	public List<Favorite> findFavo() {
-		String sql = "SELECT * FROM Favorite";
+	public List<Favorite> findFavo(Long uid) {
+		String sql = "SELECT * FROM Favorite WHERE uid = ?";
 		List<Favorite> fvList = new ArrayList<Favorite>();
 
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);
+			psmt.setLong(1, uid);
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
 				Favorite fv = new Favorite();
