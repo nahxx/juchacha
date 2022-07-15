@@ -54,6 +54,16 @@ html, body {
 	   });
    }
    
+   // 주차장 마커 이미지
+   var ParkingmarkerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+   var ParkingimageSize = new kakao.maps.Size(32, 36);
+   var ParkingimageOptions = {
+		   spriteOrigin: new kakao.maps.Point(10, 72),
+		   spriteSize: new kakao.maps.Size(46, 108)
+   };
+   var ParkingmarkerImage = new kakao.maps.MarkerImage(ParkingmarkerImageSrc, ParkingimageSize, ParkingimageOptions);
+
+   
    // 마커 생성
    // 현재 위치 마커
    var marker = new kakao.maps.Marker({
@@ -68,6 +78,7 @@ html, body {
 		   map: map, // 마커를 표시할 지도
 		   position: positions[i].latlng, // 마커 표시 위치
 		   title: positions[i].title, // 마커 타이틀
+		   image: ParkingmarkerImage// 마커 이미지
 	   });
 	   
 	   // 아래 코드는 위의 마커를 생성하는 코드에서 clickable: true 와 같이
@@ -88,7 +99,7 @@ html, body {
     marker.setMap(map);
     
     // 현재 위치 마커 위에 콘텐츠 표시
-    var content = '<div style="width: 85px; height: 26px; margin-top: -70px; background: white; border: 1px solid lightgray; font-size: 16px; text-align: center;">현재 위치</div>';
+    var content = '<div style="width: 85px; height: 26px; margin-bottom: -150px; background: white; border: 1px solid lightgray; font-size: 16px; text-align: center;">현재 위치</div>';
     var position = new kakao.maps.LatLng(35.8660426, 128.5938422);
     
     // 커스텀 오버레이 생성 생성

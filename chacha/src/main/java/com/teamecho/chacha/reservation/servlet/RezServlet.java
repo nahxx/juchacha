@@ -1,6 +1,7 @@
 package com.teamecho.chacha.reservation.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -17,7 +18,6 @@ import com.teamecho.chacha.parking.domain.ParkingLot;
 import com.teamecho.chacha.parking.service.ParkingLotService;
 import com.teamecho.chacha.reservation.domain.Reservation;
 import com.teamecho.chacha.reservation.service.ReservationService;
-import com.teamecho.chacha.user.domain.User;
 import com.teamecho.chacha.user.service.UserService;
 
 @WebServlet("/reservation/rez.do")
@@ -44,6 +44,13 @@ public class RezServlet extends HttpServlet {
 		String userId = (String) session.getAttribute("userId"); // 로그인에서 던져준 session의 유저아이디값 받아옴
 		
 		// 2. 유효성 검증 및 변환
+		if(userId == null || userId.length() == 0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인 후 예약해 주세요.'); location.href='/chacha';</script>"); // 경고창 띄우기
+			writer.close(); // close를 해주면 response.reDirect가 안되므로 alert에서 location.href 속성을 사용하여 페이지를 이동시켜준다.
+			return;
+		}
 		
 		// 3. 비즈니스 서비스 호출
 		parking = pService.findParkingLotByPid(pId);
@@ -70,7 +77,7 @@ public class RezServlet extends HttpServlet {
 		String start_time = request.getParameter("startTime");
 		String end_time = request.getParameter("endTime");
 		
-		if(type.equals("A")) {
+		if(type.equals("A")) { // 시간당이라면
 			// 시작시간
 			dateStr = "2022-" + month + "-" + start_date + " " + start_time +":00:00";
 			timestamp_start = Timestamp.valueOf(dateStr);

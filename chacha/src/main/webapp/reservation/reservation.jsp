@@ -7,6 +7,7 @@
 <title>주차차</title>
 <link rel="stylesheet" href="../css/default.css">
 <link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/footer.css">
 <link rel="stylesheet" href="../css/reservation.css">
 <style>
 	.title-wrap {
@@ -187,6 +188,9 @@
         <input type="submit" name="submit" value="예약하기">
       </form>
     </div>
+    <footer>
+	    <%@ include file="/incl/footer.jsp" %>
+	</footer>
     <script type="text/javascript">
    		 $(function() {
     	  let date = new Date();
@@ -194,6 +198,7 @@
     	  let day = date.getDate(); // 현재 일자
     	  let hour; // 현재 시간
     	  let nextHour; // 종료 시간담을 변수
+    	  
     	  if(date.getHours() == 9) {
     		  hour = "0" + date.getHours();
     		  nextHour = 10;
@@ -225,12 +230,12 @@
     				  $('.t').removeClass("off");
     				  $('.startT').removeClass("off");
     				  $('.endT').removeClass("off");
-    			  } else if($(this).find('input[type=radio]').val() == "B") { // 종일권이라면
+    			  } else if($(this).find('input[type=radio]').val() == "B") { // 종일권이라면 일까지만 표시
     				  $('.startD').removeClass("off");
     				  $('.t').addClass("off");
     				  $('.startT').addClass("off");
     				  $('.endT').addClass("off");
-    			  } else if($(this).find('input[type=radio]').val() == "C") { // 정기권이라면
+    			  } else if($(this).find('input[type=radio]').val() == "C") { // 정기권이라면 월까지만 표시
     				  $('.startD').addClass("off");
     				  $('.t').addClass("off");
     				  $('.startT').addClass("off");

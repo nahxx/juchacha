@@ -4,11 +4,12 @@ body {
 }
 .wrap {
 	width: 60%;
-	height: 100%;
+	height: auto;
 	margin: 0 auto;
 	margin-top: 40px;
 	padding: 100px;
 	box-sizing: border-box;
+	text-align: center;
 }
 /*
 .wrap h3 {
@@ -48,12 +49,13 @@ body {
 	width: 100%;
 	height: 100%;
 	text-align: center;
-	line-height: 150px;
 }
 .rezInfo table tr td.review div a {
 	display: inline-block;
 	width: 100%;
 	height: 100%;
+	padding-top: 65px;
+	box-sizing: border-box;
 	font-size: 18px;
 	color: #888;
 	font-weight: bold;
@@ -75,6 +77,7 @@ body {
 	font-size: 20px;
 	color: #1A3C40;
 	font-weight: bold;
+	text-align: left;
 }
 .rez .type {
 	display: flex;
@@ -100,7 +103,7 @@ body {
 
 .rez label select {
 	/*width: 90px;*/
-	width: 44%;
+	width: 43%;
 	height: 40px;
 	border: 1px solid #EDE6DB;
 	padding: 0 15px;
@@ -132,7 +135,7 @@ body {
 	width: 150px;
     height: 50px;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 80px;
     background: #417D7A;
     border: none;
     border-radius: 30px;
@@ -161,7 +164,7 @@ span.color {
 	margin-right: 5px;
 }
 .btn {
-	display: block;
+	display: inline-block;
 	width: 150px;
     height: 50px;
     margin: 0 auto;
@@ -174,4 +177,17 @@ span.color {
     font-size: 20px;
     color: white;
     cursor: pointer;
+}
+.btn + .btn {
+	margin-left: 50px;
+}
+
+@media (max-width: 1530px) {
+	.rez .startM, .rez .startD, .rez .startT, .rez .endT {
+		display: block;
+	}
+	.rez .startM + label, .rez .startD + label, .rez .startT + label, .rez .endT + label {
+		margin-left: 0;
+		margin-top: 20px;
+	}
 }
