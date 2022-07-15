@@ -79,15 +79,15 @@ INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 4, '별로네요.
 
  -- 바우처 목록형성 
 INSERT INTO Voucher(vType, buyTime)
-VALUES('A', 1));
+VALUES('A', 1);
 INSERT INTO Voucher(vType, buyTime)
-VALUES('A', 3));
+VALUES('A', 3);
 INSERT INTO Voucher(vType, buyTime)
-VALUES('A', 5));
+VALUES('A', 5);
 INSERT INTO Voucher(vType, buyTime)
-VALUES('B', 0));
+VALUES('B', 0);
 INSERT INTO Voucher(vType, buyTime)
-VALUES('C', 0));
+VALUES('C', 0);
 
  -- 주차장 키워드
 INSERT INTO Parking_Keyword (keyword, pid)
