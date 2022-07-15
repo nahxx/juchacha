@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.teamecho.chacha.parking.domain.ParkingLot;
 import com.teamecho.chacha.parking.service.ParkingLotService;
@@ -20,13 +21,16 @@ public class GetParkingLotByPoint extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ParkingLotService ps = ParkingLotService.getInstance();
+		HttpSession session = request.getSession(false);
+		String userId = (String) session.getAttribute("userId");
 		double pointx = Double.valueOf(request.getParameter("pointX"));
 		double pointy = Double.valueOf(request.getParameter("pointY"));
+		
 		ParkingLot pl = ps.findParkingLotByPoint(pointx, pointy);
 		List<Review> re = ps.getAllReview(pl.getPid());
 		request.setAttribute("ParkingLot", pl);
 		request.setAttribute("space", ps.getParkingLotSpaces(pointx, pointy));
-		request.setAttribute("favorite",true );
+		request.setAttribute("favorite",ps.isValidFavorite(pl.getPid(), ps.getUid(userId)) );
 		
 		if (re.size() !=0 || re != null) {
 			request.setAttribute("review", re);

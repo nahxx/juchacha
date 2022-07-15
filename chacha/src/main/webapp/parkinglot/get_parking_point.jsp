@@ -12,6 +12,17 @@
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/footer.css">
   <style>
+  	@font-face {
+     src: url("/chacha/css/Jalnan.ttf");
+     font-family: "Jalnan";
+   }
+   .gnb ul li a {
+     line-height: 70px;
+     font-size: 20px;
+     color: white;
+     font-family: "Jalnan";
+   } 
+   
   	body { overflow: auto; }
     .wrap {
       width: 100%;
