@@ -32,10 +32,28 @@ public class AddUserServlet extends HttpServlet {
 	    
 	    List<String> err = new ArrayList<String>();
 	    if(userId == null || userId.length() == 0) {
-	    	err.add("id는 필수입력 정보입니다.");
+	    	err.add("아이디는 필수입력 정보입니다.");
 	    }
 	    if (passwd == null || passwd.length() == 0) {
-	    	err.add("Passwd 필수입력정보입니다.");
+	    	err.add("비밀번호 필수입력정보입니다.");
+	    }
+	    if (userName == null || userName.length() == 0) {
+	    	err.add("이름 필수입력정보입니다.");
+	    }
+	    if (userPhone == null || userPhone.length() == 0) {
+	    	err.add("휴대폰번호 필수입력정보입니다.");
+	    }
+	    if (userPhone2 == null || userPhone2.length() == 0) {
+	    	err.add("휴대폰번호 필수입력정보입니다.");
+	    }
+	    if (addr1 == null || addr1.length() == 0) {
+	    	err.add("주소 필수입력정보입니다.");
+	    }
+	    if (addr2 == null || addr2.length() == 0) {
+	    	err.add("주소 필수입력정보입니다.");
+	    }
+	    if (licenseNumber == null || licenseNumber.length() == 0) {
+	    	err.add("차량번호 필수입력정보입니다.");
 	    }
 	    User user = new User();
 	    user.setUserId(userId);

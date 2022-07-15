@@ -36,7 +36,6 @@ public class LoginServlet extends HttpServlet {
 		// 사용자 확인이 됐을때
 		HttpSession session = request.getSession(true);
 		session.setAttribute("userId", userId);
-		
 		// 로그인 성공 후 next page
 		response.sendRedirect("/chacha/parkinglot/get_parking.do");
 	}

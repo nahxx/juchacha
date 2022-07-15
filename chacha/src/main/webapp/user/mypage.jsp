@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -278,6 +279,7 @@ section {
             <li><a href="/chacha/user_update.do" class="mypage_list">정보 수정하기</a></li>
             <li><a href="/chacha/reservation/rez_checking.do" class="mypage_list">예약정보</a></li>
             <li><a href="/chacha/favorite/list.do" class="mypage_list">즐겨찾기 목록</a></li>
+            <li><a href="#" class="mypage_list">구매목록 확인</a></li>
           </ul>
         </div>
       </div>
