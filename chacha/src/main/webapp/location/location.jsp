@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +67,7 @@
       width: 80px;
       height: 50px;
     }
-    button.btn-inner {
+    input.btn-inner {
       color: white;
       border-style: none;
       height: 100%;
@@ -81,13 +82,33 @@
 		position: absolute;
 		top: 80px;
 		bottom: 0;
-		right: 0;
+		right: -500px;
 		width: 350px;
 		height: calc(100vh - 80px);
 		background: white;
 		border: 1px solid #EDE6DB;
 		overflow: auto;
 		z-index: 1;
+	}
+	.searchList.on {
+		animation: onAni 1s linear forwards;
+	}
+	
+	@keyframes onAni {
+		from {
+			right: -500px;
+		}
+		to {
+			right: 0px;
+		}
+	}
+	@keyframes offAni {
+		from {
+			right: 0px;
+		}
+		to {
+			right: -500px;
+		}
 	}
 	.btn_close{
 		width:50px;
@@ -144,6 +165,14 @@
 	.searchList .searchTbl tr td {
 		width: 200px;
 	}
+	td.addr {
+		display: inline-block;
+		height: 30px;
+		line-height: 30px;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
 	.pbtn {
 	display: inline-block;
 	width: 60px;
@@ -180,7 +209,14 @@
 	.searchList .table-wrap:last-child:after {
 		display: none;
 	}
+	.searchList .table-wrap + .table-wrap {
+		margin-top: 70px;
+	}
+	.searchList .table-wrap:last-child {
+		margin-bottom: 70px;
+	}
 </style>
+<script type="text/javascript" src="../js/jquery.js"></script>
 </head>
 <body>
 <header>
@@ -195,17 +231,22 @@
       <form action="/chacha/parkinglot/parking_search.do" method="get">
          <input type="text" name="keyword" placeholder="검색하기">
          <div class="i-btn">
-                <div class="btn">
-               <input type="submit" class="btn-inner">검색</input>
-                </div>
-              </div>
+            <div class="btn">
+               <input type="submit" class="btn-inner" value="검색">
+            </div>
+         </div>
       </form>
    </div>
 </div>
 <!-- 검색목록 -->
-<div class="searchList on">
-	<button class="btn_close" type="button">위로 올리기</button>
-	<h5>지도 내 주차장 <span>5</span></h5>
+<div class="searchList ${ON}">
+	<button class="btn_close" type="button"></button>
+	<c:if test="${empty search_str}">
+		<h5>주변 주차장 <span>${fn:length(ParkingLotList)}</span></h5>
+	</c:if>
+	<c:if test="${not empty search_str}">
+		<h5>지도 내 주차장 <span>${fn:length(ParkingLotList)}</span></h5>
+	</c:if>
 	<c:forEach var="parking" items="${ParkingLotList}">
 		<div class="table-wrap">
 			<table class="searchTbl">
@@ -215,14 +256,14 @@
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td>${parking.parkingAddr}</td>
+					<td class="addr">${parking.parkingAddr}</td>
 				</tr>
 				<tr>
 					<th>연락처</th>
 					<td>${parking.parkingTel}</td>
 				</tr>
 			</table>
-			<button class="pbtn" onclick="location.href='/chacha/parking/get_parking_point.do?pointX=' + ${parking.pointX} + '&pointY=' + ${parking.pointY}'">더 보기</button>
+			<button class="pbtn" onclick="location.href='/chacha/parking/get_parking_point.do?pointX=${parking.pointX}&pointY=${parking.pointY}'">더 보기</button>
 		</div>
 	</c:forEach>
 </div>
@@ -320,6 +361,14 @@
     // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
     // marker.setMap(null);
     
+    console.log("${search_str}")
+    // 제이쿼리(on클래스 추가 및 삭제)
+    $(function() {
+    	$('.btn_close').click(function() {
+    		$('.searchList').css("animation", "offAni 1s linear forwards");
+    		$('.searchList').removeClass("on");
+    	});
+    });
 </script>
 </body>
 </html>
