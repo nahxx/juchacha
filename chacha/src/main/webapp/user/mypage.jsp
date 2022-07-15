@@ -206,6 +206,27 @@ section {
 	width: 100%;
 	font-size: 18px;
 }
+.info-list li > a:before {
+  position: absolute;
+	content: '';
+	height: 14px;
+	width: 0;
+  bottom: 3px;
+	left: 50%;
+	background: #EDE6DB;
+	z-index: -10;
+	transition: 0.7s;
+}
+.info-list li > a.on:before {
+  position: absolute;
+	content: '';
+	height: 14px;
+	width: 70%;
+  bottom: 3px;
+	left: 36px;
+	background: #EDE6DB;
+	z-index: -10;
+}
 #footer {
   height: 160px;
   background: #f1f1f1;
@@ -254,9 +275,9 @@ section {
         </div>
         <div class="content list">
           <ul class="info-list">
-            <li><a href="/chacha/user_update.do">정보 수정하기</a></li>
-            <li><a href="/chacha/reservation/rez_checking.do">예약정보</a></li>
-            <li><a href="/chacha/favorite/list.do">즐겨찾기 목록</a></li>
+            <li><a href="/chacha/user_update.do" class="mypage_list">정보 수정하기</a></li>
+            <li><a href="/chacha/reservation/rez_checking.do" class="mypage_list">예약정보</a></li>
+            <li><a href="/chacha/favorite/list.do" class="mypage_list">즐겨찾기 목록</a></li>
           </ul>
         </div>
       </div>
@@ -265,5 +286,18 @@ section {
       <%@ include file="/incl/footer.jsp" %>
     </footer>
   </section>
+  <script type="text/javascript">
+		window.onload = function(){
+			let mypage_list = document.getElementsByClassName('mypage_list');
+			for(let i=0;i<mypage_list.length;i++){
+				mypage_list[i].onmouseover = function(){
+					mypage_list[i].classList.add('on');
+				}
+				mypage_list[i].onmouseout = function() {
+					mypage_list[i].classList.remove('on');
+				}
+			}
+		}
+  </script>
 </body>
 </html>
