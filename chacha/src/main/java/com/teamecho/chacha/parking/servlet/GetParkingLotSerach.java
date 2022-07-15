@@ -19,24 +19,21 @@ public class GetParkingLotSerach extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ParkingLotService ps = ParkingLotService.getInstance();
 		String search_str = (String) request.getParameter("keyword");
-		String nullStr = "";
 		
-		if(search_str == null || search_str.length() == 0) {
-			List<ParkingLot> list = ps.findAllParkingLot();
-			request.setAttribute("nullStr", nullStr);
-			request.setAttribute("ParkingLotList", list);
-			request.setAttribute("ON", "on");
-			request.getRequestDispatcher("/location/location.jsp").forward(request, response);
-			return ;
-		}
+//		if(search_str == null || search_str.length() == 0) {
+//			List<ParkingLot> list = ps.findAllParkingLot();
+//			request.setAttribute("search_str", search_str);
+//			request.setAttribute("ParkingLotList", list);
+//			request.setAttribute("ON", "on");
+//			request.getRequestDispatcher("/location/location.jsp").forward(request, response);
+//			return ;
+//		}
 		
 		List<ParkingLot> list = ps.findSearchParkingLot(search_str);
 		
-		nullStr += "not null";
-		request.setAttribute("nullStr", nullStr);
+		request.setAttribute("search_str", search_str);
 		request.setAttribute("ParkingLotList", list);
 		request.setAttribute("ON", "on");
 		request.getRequestDispatcher("/location/location.jsp").forward(request, response);
 	}
-
 }
