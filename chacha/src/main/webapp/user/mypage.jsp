@@ -6,6 +6,16 @@
 <meta charset="UTF-8">
 <title>주차차</title>
 <style>
+	@font-face {
+	  src: url("/chacha/css/Jalnan.ttf");
+	  font-family: "Jalnan";
+	}
+	.gnb ul li a {
+	  line-height: 70px;
+	  font-size: 20px;
+	  color: white;
+	  font-family: "Jalnan";
+	} 
 body, html {
 	width: 100%;
 	height: 100%;
@@ -137,6 +147,8 @@ section {
 	text-align: center;
 	padding: 0 8px;
 	position: relative;
+	font-family: "Jalnan";
+	
 }
 .container .title-wrap .title:before {
 	position: absolute;
@@ -164,6 +176,10 @@ section {
 	justify-content: center;
 	align-items: center;
 	margin-top: 30px;
+	font-family: "Jalnan";
+}
+.content h4 {
+	font-size: 18px;
 }
 
 .list {

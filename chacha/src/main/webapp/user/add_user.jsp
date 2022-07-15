@@ -10,6 +10,17 @@
   <link rel="stylesheet" href="../css/default.css">
   <link rel="stylesheet" href="../css/header.css">
   <style>
+  @font-face {
+	  src: url("/chacha/css/Jalnan.ttf");
+	  font-family: "Jalnan";
+	}
+	.gnb ul li a {
+	  line-height: 70px;
+	  font-size: 20px;
+	  color: white;
+	  font-family: "Jalnan";
+	} 
+  
     section {
       height: 100%;
       overflow: hidden;
@@ -31,6 +42,7 @@
       height: 100%;
       font-size: 36px;
       text-align: center;
+      font-family: "Jalnan";
     }
     .container > #content-wrapper {
       display: flex;
@@ -129,12 +141,14 @@
       font-size:20px;
       background: none;
       cursor: pointer;
+      font-family: "Jalnan";
     }
     .i-btn .in-btn {
       font-size: 20px;
       color: white;
       line-height: 50px;
       text-align: center;
+      font-family: "Jalnan";
     }
     .i-btn .in-btn:hover {
       font-weight: normal;

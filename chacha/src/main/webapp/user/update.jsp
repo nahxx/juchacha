@@ -9,6 +9,16 @@
   <meta charset="utf-8">
   <title>주차차</title>
   <style>
+  @font-face {
+	  src: url("/chacha/css/Jalnan.ttf");
+	  font-family: "Jalnan";
+	}
+	.gnb ul li a {
+	  line-height: 70px;
+	  font-size: 20px;
+	  color: white;
+	  font-family: "Jalnan";
+	} 
 body, html {
 	width: 100%;
 	height: 100%;
@@ -136,6 +146,7 @@ section {
 	height: 100%;
 	font-size: 36px;
 	text-align: center;
+	font-family: "Jalnan";
 }
 
 .container>#content-wrapper {
@@ -264,6 +275,7 @@ button.btn-inner {
 	font-size: 20px;
 	background: none;
 	cursor: pointer;
+	font-family: "Jalnan";
 }
 
 .i-btn .in-btn {
@@ -271,6 +283,7 @@ button.btn-inner {
 	color: white;
 	line-height: 50px;
 	text-align: center;
+	font-family: "Jalnan";
 }
 
 .i-btn .in-btn:hover {

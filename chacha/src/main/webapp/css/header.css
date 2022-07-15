@@ -1,4 +1,8 @@
 @charset "UTF-8";
+@font-face {
+	src: url("../css/Jalnan.ttf");
+	font-family: "Jalnan";
+}
 
 #header {
 	height: 80px;
@@ -69,10 +73,11 @@ ul li:first-child {
 	margin-left: 0;
 }
 
-a {
+.gnb ul li a {
 	line-height: 70px;
 	font-size: 20px;
 	color: white;
+	font-family: "Jalnan";
 }
 
 a:hover {
