@@ -6,28 +6,52 @@
 <title>주차차</title>
 <link rel="stylesheet" href="../css/default.css">
 <link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/footer.css">
 <style>
+	@font-face {
+     src: url("/chacha/css/Jalnan.ttf");
+     font-family: "Jalnan";
+   	}
+   	.gnb ul li a {
+     line-height: 70px;
+     font-size: 20px;
+     color: white;
+     font-family: "Jalnan";
+   	}
 	.wrap {
       width: 100%;
-      height: calc(100vh - 30px);
+      min-height: calc(100vh - 160px);
+      height: auto;
     }
     .container{
       width: 800px;
       margin: 0 auto;
     } 
-    .container .title-wrap {
+    .title-wrap {
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 0 80px;
       line-height: 60px;
-      padding-top: 200px;
+      padding-top: 230px;
     }
-     .container .title-wrap .title {
+     .title-wrap .title {
       height: 100%;
       font-size: 36px;
       text-align: center;
+      position: relative;
+      font-family: "Jalnan";
     }
+    .title-wrap .title:before {
+	   position: absolute;
+	   content: '';
+	   width: 100%;
+	   height: 14px;
+	   bottom: 7px;
+	   left: 0;
+	   z-index: -1;
+	   background: #EDE6DB;
+	}
     .ratingsContainer{
       display: flex;
       height: 100%;
@@ -96,7 +120,13 @@
       width: 150px;
       height: 50px;
       cursor: pointer;
+      font-family: "Jalnan";
     }
+    .i-btn > input[type=submit]:hover {
+	   color : #417D7A;
+	   background-color: #fff;
+	   border : 1px solid #417D7A;
+	}
 </style>
 </head>
 <body>
@@ -129,5 +159,8 @@
 			</form>
 		</div>
    	</div>
+	<footer>
+		<%@ include file="/incl/footer.jsp"%>
+	</footer>
 </body>
 </html>
