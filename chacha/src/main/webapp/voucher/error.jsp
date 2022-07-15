@@ -8,17 +8,6 @@
 <link rel="stylesheet" href="../css/default.css">
 <link rel="stylesheet" href="../css/header.css">
 <style>
-@font-face {
-     src: url("/chacha/css/Jalnan.ttf");
-     font-family: "Jalnan";
-   }
-   .gnb ul li a {
-     line-height: 70px;
-     font-size: 20px;
-     color: white;
-     font-family: "Jalnan";
-   } 
-   
 .title-wrap {
 	   text-align: center;
 	   margin-bottom: 30px;
@@ -130,18 +119,7 @@ display : flex;
       height: 100%;
       width: 100%;
     }
-    .i-btn > input:first-child {
-      justify-content: center;
-      border-style: none;
-      font-size: 20px;
-      background: #417D7A;
-      color: white;
-      border-radius: 30px;
-      width: 150px;
-      height: 50px;
-      cursor: pointer;
-    }
-    .i-btn > input:last-child {
+    .i-btn > button {
       justify-content: center;
       margin-left: 75px;
       border-style: none;
@@ -157,11 +135,6 @@ display : flex;
         line-height: 56px;
         display: inline-flex;
     }
-    .i-btn > input:hover{
-     color : #417D7A;
-     background-color: #fff;
-     border : 1px solid #417D7A;
-   }
 </style>
 </head>
 <body>
@@ -169,65 +142,18 @@ display : flex;
 		<%@ include file="/incl/header.jsp" %>
 	</div>
 <div class="wrapper">
-		<div class="title-wrap">
-        	<h3 class="title">주차권 구입</h3>
-     	</div>
-	<form name="form" action="voucher.do" method="post" class="form">
+	<form name="form">
 	<div class ="wrap">
 		<div>
 			<label class="option_item">
-			<input type="checkbox" class="checkbox" name="voucher" value="A.1">
 			<div class="option_inner">
-				<div class="tickmark"></div>
-				<div class="name">1시간 <br> 주차권</div>
-			</div>
-			</label>
-		</div>
-		<div>
-			<label class="option_item">
-			<input type="checkbox" class="checkbox" name="voucher" value="A.3">
-			<div class="option_inner">
-				<div class="tickmark"></div>
-				<div class="name">3시간 <br> 주차권</div>
-			</div>
-			</label>
-		</div>
-		<div>
-			<label class="option_item">
-			<input type="checkbox" class="checkbox" name="voucher" value="A.5">
-			<div class="option_inner">
-				<div class="tickmark"></div>
-				<div class="name">5시간 <br> 주차권</div>
-			</div>
-			</label>
-		</div>
-		<div>
-			<label class="option_item">
-			<input type="checkbox" class="checkbox" name="voucher" value="B.0">
-			<div class="option_inner">
-				<div class="tickmark"></div>
-				<div class="icon">
-					<i class="fab" aria-hidden="true"></i>
-				</div>
-				<div class="name">종일권</div>
-			</div>
-			</label>
-		</div>
-		<div>
-			<label class="option_item">
-			<input type="checkbox" class="checkbox" name="voucher" value="C.0">
-			<div class="option_inner">
-				<div class="tickmark"></div>
-				<div class="icon">
-					<i class="fab" aria-hidden="true"></i>
-				</div>
-				<div class="name">정기권</div>
+				<div class="name">구매하실 사항을 선택해주시길 바랍니다.</div>
 			</div>
 			</label>
 		</div>
 		</div>
 	<div class="i-btn">
-	   <input type="submit" class="gbtn" value="구매하기">
+	   <button type="button" class="btn" ><a href="/chacha/voucher/voucher.jsp">주차권 구매로 이동</a></button>
 	 </div>
 	</form>	
 </div>

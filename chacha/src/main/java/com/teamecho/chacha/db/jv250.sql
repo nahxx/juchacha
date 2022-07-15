@@ -75,8 +75,6 @@ CREATE TABLE Favorite (
    CONSTRAINT Favorite_Pid_FK FOREIGN KEY (pid) REFERENCES ParkingLot(pid)
 )AUTO_INCREMENT = 1;
 
-INSERT INTO Favorite (uid, pid) VALUES (1, 2);
-
 CREATE TABLE Review (
    rvid				BIGINT			PRIMARY KEY AUTO_INCREMENT,      
    uid				BIGINT			NOT NULL,
@@ -95,7 +93,7 @@ CREATE TABLE Voucher_use (
    vuse				VARCHAR(1)		NOT NULL	DEFAULT 'N',
    uid				BIGINT			NOT NULL,
    vid				BIGINT			NOT NULL,
-   rid				BIGINT			NOT NULL,
+   rid				BIGINT				NULL,
    regDate			TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP,
    
    CONSTRAINT Voucher_use_Uid_FK FOREIGN KEY (uid) REFERENCES UserInfo(uid),

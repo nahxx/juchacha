@@ -2,35 +2,36 @@ package com.teamecho.chacha.voucher.service;
 
 import java.util.*;
 
-import com.teamecho.chacha.voucher.domain.Voucher;
+import com.teamecho.chacha.voucher.domain.VoucherUse;
+import com.teamecho.chacha.user.dao.UserDao;
 import com.teamecho.chacha.voucher.dao.VoucherDao;
+import com.teamecho.chacha.voucher.dao.VoucherUseDao;
 
 public class VoucherService {
 	private static final VoucherService voucherService = new VoucherService();
-	private List<Voucher> voucherList = new ArrayList<Voucher>();
+	private VoucherUseDao voucherUseDao;
 	private VoucherDao voucherDao;
+	private UserDao userDao;
 	
 	private VoucherService() {
+		voucherUseDao = new VoucherUseDao();
 		voucherDao = new VoucherDao();
+		userDao = new UserDao();
 	}
 	
 	public static VoucherService getInstance() {
 		return voucherService;
 	}
 	
-//	public void addVoucher(Voucher voucher) {
-//		voucherList.add(voucher);
-//	}
-	
-	public List<Voucher> getAllVouchers() {
-		return voucherDao.findAllVouchers();
+	public void addVoucher(List<VoucherUse> voucherUseList) {
+		voucherUseDao.addVoucherUse(voucherUseList);
 	}
 	
-	public Voucher getfindVoucherByvType(String vType) {
-		return voucherDao.findVoucherByvType(vType);
+	public long getVid(String vType, int buyTime) {
+		return voucherDao.getVoucherId(vType, buyTime);
 	}
 	
-//	public void setUpdateVoucher(Voucher voucher) {
-//		voucherDao.updateVoucher(voucher);
-//	}
+	public long getUid(String userId) {
+		return userDao.findUIdByUserId(userId);
+	}
 }
