@@ -19,14 +19,13 @@ public class FavoriteDao {
 		ds = (DataSource) namingService.getAttribute("dataSource");
 	}
 
-	public void addFavo(Favorite fv) {
-		String sql = "INSERT INTO Favorite(uid, pid) "
-				+ " VALUES (?, ?);";
+	public void addFavo(Long pid, Long uid) {
+		String sql = "INSERT INTO Favorite(uid, pid) VALUES (?, ?);";
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);
-			psmt.setLong(1, fv.getUid());
-			psmt.setLong(2, fv.getPid());
+			psmt.setLong(1, pid);
+			psmt.setLong(2, uid);
 			psmt.executeUpdate();
 			System.out.println("INSTERTED...");
 			ds.close(psmt, con);
@@ -57,14 +56,14 @@ public class FavoriteDao {
 		return fvList;
 	}
 
-	public void deleFavo(Favorite fv) {
-		String sql = "DELETE FROM Favorite WHERE pid = ?;";
+	public void deleFavo(Long pid, Long uid) {
+		String sql = "DELETE FROM Favorite WHERE pid = ? AND uid =?";
 
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);
-			psmt.setLong(1, fv.getPid());
-			psmt.setLong(2, fv.getUid());
+			psmt.setLong(1, pid);
+			psmt.setLong(2, uid);
 			psmt.executeUpdate();
 			System.out.println("DELETE...");
 			ds.close(psmt, con);

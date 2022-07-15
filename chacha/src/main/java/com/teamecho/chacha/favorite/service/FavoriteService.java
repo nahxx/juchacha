@@ -26,16 +26,16 @@ public class FavoriteService {
 		return service;
 	}
 	
-	public void addFavo(Favorite fv) {
-		dao.addFavo(fv);
+	public void addFavo(Long pid, Long uid) {
+		dao.addFavo(pid, uid);
 	}
 	
 	public List<Favorite> getAllFavo(){
 		return dao.findFavo();
 	}
 	
-	public void deleFavo(Favorite fv) {
-		dao.deleFavo(fv);
+	public void deleFavo(Long pid, Long uid) {
+		dao.deleFavo(pid, uid);
 	}
 	
 	public long findUIdByUserId(String userId)  {
@@ -53,4 +53,5 @@ public class FavoriteService {
 	public boolean isValidFavorite(Long pid, Long uid) {
 		return dao.isValidFavorite(pid, uid);
 	}
+
 }

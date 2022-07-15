@@ -25,25 +25,10 @@ public class FavoriteServlet extends HttpServlet {
 		
 		service = new FavoriteService();
 		fvList = service.getAllFavo();
-		
-//		plist = service.findAllParkingLot();
 
 		request.setAttribute("list", fvList);
 		request.getRequestDispatcher("favorite.jsp").forward(request, response);
 	}
-
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		
-//		HttpSession session = request.getSession();
-//		ParkingLot parkingName = (ParkingLot) session.getAttribute("parkingName");
-////		session.setAttribute("parkingName", parkingName);
-//
-////		ParkingLot pn = service.findParkingLotByPid(parkingName);
-//
-//		System.out.println(parkingName);
-//
-//	}
 
 }
  
