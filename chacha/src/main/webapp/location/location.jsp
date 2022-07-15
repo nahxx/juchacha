@@ -9,9 +9,19 @@
 <link rel="stylesheet" href="../css/default.css">
 <link rel="stylesheet" href="../css/header.css">
 <style type="text/css">
-html, body {
-   margin: 0;
-}
+	@font-face {
+	  src: url("/chacha/css/Jalnan.ttf");
+	  font-family: "Jalnan";
+	}
+	.gnb ul li a {
+     line-height: 70px;
+     font-size: 20px;
+     color: white;
+     font-family: "Jalnan";
+   	}
+	html, body {
+	   margin: 0;
+	}
 </style>
 </head>
 <body>
