@@ -10,17 +10,175 @@
 <link rel="stylesheet" href="../css/header.css">
 <style type="text/css">
 	@font-face {
-	  src: url("/chacha/css/Jalnan.ttf");
-	  font-family: "Jalnan";
+		src: url("/chacha/css/Jalnan.ttf");
+		font-family: "Jalnan";
 	}
 	.gnb ul li a {
-     line-height: 70px;
-     font-size: 20px;
-     color: white;
-     font-family: "Jalnan";
+	    line-height: 70px;
+	    font-size: 20px;
+	    color: white;
+	    font-family: "Jalnan";
    	}
 	html, body {
-	   margin: 0;
+		margin: 0;
+	}
+	body {
+		position: relative;
+	}
+	/* 검색창 */
+	.content {
+      position: absolute;
+      top: 80px;
+      left: 40px;
+      z-index: 20;
+      width: 400px;
+      height: 90px;
+   }
+    .search-wrap {
+      height: 100%;
+   }
+   .search-wrap > form {
+      display: flex;
+      height: 100%;
+      align-items: center;
+   }
+   .search-wrap > form > input {
+      height: 50px;
+      width: 300px;
+      padding-left: 10px;
+      font-size: 16px;
+      font-family: "Jalnan";
+      border-style: none;
+   }
+   .search-wrap > form > input:focus {
+      outline: none;
+   }
+   .i-btn {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .i-btn .btn {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      background: #417D7A;
+      width: 80px;
+      height: 50px;
+    }
+    button.btn-inner {
+      color: white;
+      border-style: none;
+      height: 100%;
+      width: 75px;
+      font-size:20px;
+      background: none;
+      cursor: pointer;
+      font-family: "Jalnan";
+    }
+	/* 검색리스트 */
+	.searchList {
+		position: absolute;
+		top: 80px;
+		bottom: 0;
+		right: 0;
+		width: 350px;
+		height: calc(100vh - 80px);
+		background: white;
+		border: 1px solid #EDE6DB;
+		overflow: auto;
+		z-index: 1;
+	}
+	.btn_close{
+		width:50px;
+		height:50px;
+		position:relative;
+		text-indent:-9999px;
+		float: right;
+		margin-top: 10px;
+		margin-right: 10px;
+		background: inherit ; 
+		border:none; 
+		box-shadow:none; 
+		border-radius:0; 
+		padding:0; 
+		overflow:visible; 
+		cursor:pointer;
+	}
+	.btn_close:before,.btn_close:after{
+		content:'';
+		width:30px;
+		height:1px;
+		position:absolute;
+		left:50%;
+		top:50%;
+		border-radius:4px;
+		background:#000
+	}
+	.btn_close:before{
+		transform:translate(-50%,-50%) rotate(-45deg)
+	}
+	.btn_close:after{
+		transform:translate(-50%,-50%) rotate(45deg)
+	}
+	.searchList h5 {
+		margin-top: 60px;
+		margin-left: 20px;
+		font-size: 26px;
+		color: #1A3C40;
+	}
+	.searchList h5 span {
+		color: #417D7A;
+	}
+	.searchList .searchTbl {
+		margin: 0 auto;
+		margin-top: 30px;
+	}
+	.searchList .searchTbl tr {
+		height: 30px;
+	}
+	.searchList .searchTbl tr th {
+		width: 100px;
+		color: #1A3C40;
+	}
+	.searchList .searchTbl tr td {
+		width: 200px;
+	}
+	.pbtn {
+	display: inline-block;
+	width: 60px;
+    height: 20px;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-right: 20px;
+    float: right;
+    background: #417D7A;
+    border: none;
+    border-radius: 30px;
+    line-height: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    font-family: "Jalnan";
+	}
+	.searchList .table-wrap {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	.searchList .table-wrap:after {
+		content: '';
+		position: absolute;
+		display: block;
+		left: 25px;
+		bottom: -40px;
+		width: 300px;
+		height: 3px;
+		background: #EDE6DB;
+	}
+	.searchList .table-wrap:last-child:after {
+		display: none;
 	}
 </style>
 </head>
@@ -28,7 +186,46 @@
 <header>
 	<%@ include file="/incl/header.jsp" %>
 </header>
+<!-- 지도 -->
 <div id="map" style="width:100%;height:100vh;"></div>
+
+<!-- 검색창 -->
+<div class="content">
+   <div class="search-wrap">
+      <form action="/chacha/parkinglot/parking_search.do" method="get">
+         <input type="text" name="keyword" placeholder="검색하기">
+         <div class="i-btn">
+                <div class="btn">
+               <input type="submit" class="btn-inner">검색</input>
+                </div>
+              </div>
+      </form>
+   </div>
+</div>
+<!-- 검색목록 -->
+<div class="searchList on">
+	<button class="btn_close" type="button">위로 올리기</button>
+	<h5>지도 내 주차장 <span>5</span></h5>
+	<c:forEach var="parking" items="${ParkingLotList}">
+		<div class="table-wrap">
+			<table class="searchTbl">
+				<tr>
+					<th>주차장명</th>
+					<td>${parking.parkingName}</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>${parking.parkingAddr}</td>
+				</tr>
+				<tr>
+					<th>연락처</th>
+					<td>${parking.parkingTel}</td>
+				</tr>
+			</table>
+			<button class="pbtn" onclick="location.href='/chacha/parking/get_parking_point.do?pointX=' + ${parking.pointX} + '&pointY=' + ${parking.pointY}'">더 보기</button>
+		</div>
+	</c:forEach>
+</div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1b4ff6e20d754b853ba624fa3a2f172d"></script>
 <script>
