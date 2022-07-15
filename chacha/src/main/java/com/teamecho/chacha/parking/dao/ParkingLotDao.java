@@ -204,4 +204,48 @@ public class ParkingLotDao {
 		}
 		return space;
 	}
+	
+	/**
+	 * 키워드로 주차장 목록 가져오기
+	 * @작성자 : 박동근
+	 * @return
+	 */
+	public List<ParkingLot> findSearchParkingLot(String str){	
+		String sql = "SELECT p.pid, p.parkingCode, p.parkingName, p.parkingAddr, p.parkingTel, p.timeCost, p.dayCost, p.monthCost, p.parkingSpace, p.pointX, p.pointY "
+				   + "FROM parkingLot p INNER JOIN parking_keyword pk ON p.pid = pk.pid "
+    			   + "WHERE pk.keyword like '%"+ str +"%' "
+				   + "GROUP BY p.pid";
+		List<ParkingLot> parkingdotList = new ArrayList<>();
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					ParkingLot p = new ParkingLot();
+					p.setPid(rs.getLong("pid"));
+					p.setParkingCode(rs.getString("parkingCode"));
+					p.setParkingName(rs.getString("parkingName"));
+					p.setParkingAddr(rs.getString("parkingAddr"));
+					p.setParkingTel(rs.getString("parkingTel"));
+					p.setTimeCost(rs.getDouble("timeCost"));
+					p.setDayCost(rs.getDouble("dayCost"));
+					p.setMonthCost(rs.getDouble("monthCost"));
+					p.setParkingSpace(rs.getInt("parkingSpace"));
+					p.setPointX(rs.getDouble("pointX"));
+					p.setPointY(rs.getDouble("pointY"));
+					
+					parkingdotList.add(p);
+				}
+			}finally {
+				ds.close(rs, pstmt, con);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return parkingdotList;
+	}
 }

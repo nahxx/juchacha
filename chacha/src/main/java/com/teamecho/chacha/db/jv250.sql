@@ -101,45 +101,11 @@ CREATE TABLE Voucher_use (
    CONSTRAINT Voucher_use_Rid_FK FOREIGN KEY (rid) REFERENCES Reservation(rid)
 )AUTO_INCREMENT = 1;
 
-
-INSERT INTO ParkingLot (parkingCode, parkingName, parkingAddr, parkingTel, timeCost, dayCost, monthCost, parkingSpace, pointX, pointY)
-VALUES ('A0001', '제일유료주차장', '대구광역시 중구 남산동 912-1', '053-423-8537', 1500, 10000, 50000, 20, 35.8643177, 128.5944989);
-
-INSERT INTO ParkingLot (parkingCode, parkingName, parkingAddr, parkingTel, timeCost, dayCost, monthCost, parkingSpace, pointX, pointY)
-VALUES ('A0002', '시원유료주차장', '대구광역시 중구 덕산동 124-40', '053-425-8109', 1000, 12000, 40000, 15, 35.8665196, 128.5943343);
-
-INSERT INTO ParkingLot (parkingCode, parkingName, parkingAddr, parkingTel, timeCost, dayCost, monthCost, parkingSpace, pointX, pointY)
-VALUES ('A0003', '동아민영주차장', '대구광역시 중구 남산동 939-7', '000-000-0000', 1300, 9000, 30000, 30, 35.8648274, 128.5915409);
-
-INSERT INTO Parkinglot_Use (useSpaces, pid)
-VALUES(10, 1);
-
-INSERT INTO Parkinglot_Use (useSpaces, pid)
-VALUES(14, 2);
-
-INSERT INTO Parkinglot_Use (useSpaces, pid)
-VALUES(17, 3);
-
-SELECT pu.useSpaces FROM ParkingLot p  INNER JOIN Parkinglot_Use pu ON p.pid = pu.pid WHERE p.pointX = 35.8665196 AND p.pointY = 128.5943343;
-INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '좋습니다', 5);
-INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 4);
-INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '별로입니다', 2);
-INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 3);
-
-SELECT * FROM UserInfo;
-SELECT * FROM ParkingLot;
-SELECT * FROM Favorite;
-
-DELETE FROM Favorite;
-
-INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '좋습니다', 5);
-INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 4);
-INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '별로입니다', 2);
-INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 3);
-INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 3, '굿굿', 4);
-
-INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)
- VALUES ('ssj', '98', "서수진", "010-8859-5122", "대구시 중구 광개토대왕" , "111러 4514", "Y");
- 
- INSERT INTO UserInfo (userId, passwd, userName, userPhone, addr, licenseNumber, userType)
- VALUES ('jin', '123', "관우", "010-2345-5432", "대구시 수성구 신매동" , "222나 1234", "Y");
+CREATE TABLE Parking_Keyword (
+   pkid				BIGINT   		PRIMARY KEY AUTO_INCREMENT, -- 1부터 자동으로 증가
+   keyword			VARCHAR(60)		NOT NULL,
+   pid				BIGINT			NOT NULL,
+   regDate			TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+   
+   CONSTRAINT Parking_Keyword_FK FOREIGN KEY (pid) REFERENCES ParkingLot(pid)   
+) AUTO_INCREMENT = 1;

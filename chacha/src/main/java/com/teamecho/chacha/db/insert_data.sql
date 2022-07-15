@@ -43,6 +43,12 @@ VALUES(14, 2);
 INSERT INTO Parkinglot_Use (useSpaces, pid)
 VALUES(17, 3);
 
+INSERT INTO Parkinglot_Use (useSpaces, pid)
+VALUES(13, 4);
+
+INSERT INTO Parkinglot_Use (useSpaces, pid)
+VALUES(28, 5);
+
 -- 리뷰데이터 강제 입력
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '여기 진짜 좋습니다', 5);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 1, '다음에 꼭 오도록 하겠습니다 !', 5);
@@ -71,9 +77,117 @@ INSERT INTO Review (uid, pid, content, star_rating) VALUES (4, 4, '그냥저냥�
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (5, 4, '최악입니다.', 1);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 4, '별로네요.', 2);
 
----주차권 입력 ----
-INSERT INTO Voucher(vType, buyTime) VALUES('A', 1);
-INSERT INTO Voucher(vType, buyTime) VALUES('A', 3);
-INSERT INTO Voucher(vType, buyTime) VALUES('A', 5);
-INSERT INTO Voucher(vType, buyTime) VALUES('B', 0);
-INSERT INTO Voucher(vType, buyTime) VALUES('C', 0);
+
+ -- 주차장 키워드
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당", 1);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당 주차장", 1);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당주차장", 1);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("주차장", 1);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("제일주차장", 1);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("제일유료주차장", 1);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("제일", 1);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구 주차장", 1);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구주차장", 1);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("남산동", 1);
+
+ -- 주차장 키워드
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당", 2);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당 주차장", 2);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당주차장", 2);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("주차장", 2);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("시원주차장", 2);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("시원유료주차장", 2);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("시원", 2);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("덕산동", 2);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구 주차장", 2);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구주차장", 2);
+
+ -- 주차장 키워드
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당", 3);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당 주차장", 3);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당주차장", 3);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("주차장", 3);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("동아민영주차장", 3);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("동아민영", 3);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("동아", 3);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("남산동", 3);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구 주차장", 3);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구주차장", 3);
+
+
+ -- 주차장 키워드
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당", 4);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당 주차장", 4);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당주차장", 4);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("주차장", 4);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("대성주차장", 4);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("대성유료주차장", 4);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("대성", 4);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("삼덕동", 4);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구 주차장", 4);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구주차장", 4);
+
+ -- 대구공영주차장
+ -- 주차장 키워드
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당 주차장", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("반월당주차장", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("주차장", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("대구공영주차장", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("공영주차장", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("공영", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("남산동", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구 주차장", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("중구주차장", 5);
+INSERT INTO Parking_Keyword (keyword, pid)
+VALUE("삼정그린코아", 5);

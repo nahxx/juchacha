@@ -56,4 +56,8 @@ public class ParkingLotService {
 	public Long getUid(String userId) {
 		return userDao.findUIdByUserId(userId);
 	}
+	
+	public List<ParkingLot> findSearchParkingLot(String str) {
+		return parkingLotDao.findSearchParkingLot(str);
+	}
 }

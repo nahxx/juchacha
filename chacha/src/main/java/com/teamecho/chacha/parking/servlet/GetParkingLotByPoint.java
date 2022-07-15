@@ -24,7 +24,7 @@ public class GetParkingLotByPoint extends HttpServlet {
 		ParkingLotService ps = ParkingLotService.getInstance();
 		HttpSession session = request.getSession(false);
 		String userId = (String) session.getAttribute("userId");
-		
+	
 		if(userId == null || userId.length() == 0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
