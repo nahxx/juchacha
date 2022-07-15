@@ -22,7 +22,9 @@ public class GetParkingLotSerach extends HttpServlet {
 		String nullStr = "";
 		
 		if(search_str == null || search_str.length() == 0) {
+			List<ParkingLot> list = ps.findAllParkingLot();
 			request.setAttribute("nullStr", nullStr);
+			request.setAttribute("ParkingLotList", list);
 			request.setAttribute("ON", "on");
 			request.getRequestDispatcher("/location/location.jsp").forward(request, response);
 		}
