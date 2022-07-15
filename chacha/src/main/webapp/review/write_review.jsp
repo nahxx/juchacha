@@ -101,7 +101,7 @@
 </head>
 <body>
 	<header>
-    <%@ include file="/incl/no_login_header.jsp" %>
+    	<%@ include file="/incl/header.jsp" %>
    </header>
    	<div class="wrap">
    		<div class="container">
