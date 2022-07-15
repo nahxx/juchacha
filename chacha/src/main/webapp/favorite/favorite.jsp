@@ -13,6 +13,11 @@
 <link rel="stylesheet" href="../css/footer.css">
 <link rel="stylesheet" href="../css/reservation.css">
 <style>
+@font-face {
+	src: url("/chacha/css/Jalnan.ttf");
+	font-family: "Jalnan";
+}
+
 .title-wrap {
 	text-align: center;
 	margin-bottom: 30px;
@@ -25,6 +30,7 @@
 	text-align: center;
 	padding: 0 8px;
 	position: relative;
+	font-family: "Jalnan";
 }
 
 .title-wrap .title:before {
@@ -32,7 +38,7 @@
 	content: '';
 	width: 100%;
 	height: 14px;
-	bottom: 7px;
+	bottom: -4px;
 	left: 0;
 	z-index: -1;
 	background: #EDE6DB;
