@@ -70,3 +70,10 @@ INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 4, '그닥입니�
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (4, 4, '그냥저냥이네요 ..', 3);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (5, 4, '최악입니다.', 1);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 4, '별로네요.', 2);
+
+---주차권 입력 ----
+INSERT INTO Voucher(vType, buyTime) VALUES('A', 1);
+INSERT INTO Voucher(vType, buyTime) VALUES('A', 3);
+INSERT INTO Voucher(vType, buyTime) VALUES('A', 5);
+INSERT INTO Voucher(vType, buyTime) VALUES('B', 0);
+INSERT INTO Voucher(vType, buyTime) VALUES('C', 0);

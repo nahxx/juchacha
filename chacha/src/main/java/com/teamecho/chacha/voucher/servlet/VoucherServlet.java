@@ -28,6 +28,14 @@ public class VoucherServlet extends HttpServlet {
 		String userId = (String) session.getAttribute("userId");
 		List<VoucherUse> voucherUseList = new ArrayList<VoucherUse>();
 		
+		if(userId == null || userId.length() == 0) {
+	         response.setContentType("text/html; charset=UTF-8");
+	         PrintWriter writer = response.getWriter();
+	         writer.println("<script>alert('로그인 후 사용 해주시기 바랍니다.'); location.href='/chacha';</script>"); // 경고창 띄우기
+	         writer.close(); // close를 해주면 response.reDirect가 안되므로 alert에서 location.href 속성을 사용하여 페이지를 이동시켜준다.
+	         return;
+	      }
+		
 		// 2. 유효성 검증 및 변환
 		if(voucherar == null || voucherar.length == 0) {
 			response.setContentType("text/html; charset=UTF-8");
