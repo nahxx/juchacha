@@ -63,8 +63,8 @@ public class FavoriteDao {
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);
-			psmt.setLong(1, fv.getUid());
-			psmt.setLong(2, fv.getPid());
+			psmt.setLong(1, fv.getPid());
+			psmt.setLong(2, fv.getUid());
 			psmt.executeUpdate();
 			System.out.println("DELETE...");
 			ds.close(psmt, con);
@@ -73,8 +73,8 @@ public class FavoriteDao {
 		}
 	}
 	
-	public boolean isValidPid(Long pid) {
-		String sql = "SELECT * FROM Favorite WHERE pid = ?";
+	public boolean isValidFavorite(Long pid, Long uid) {
+		String sql = "SELECT * FROM Favorite WHERE pid = ? AND uid =?";
 		int i = 0;
 		try {
 			Connection con = ds.getConnection();
@@ -82,6 +82,7 @@ public class FavoriteDao {
 			ResultSet rs = null;
 			
 			psmt.setLong(1, pid);
+			psmt.setLong(2, uid);
 			psmt.executeQuery();
 			rs = psmt.executeQuery();
 			if(rs.next()) {

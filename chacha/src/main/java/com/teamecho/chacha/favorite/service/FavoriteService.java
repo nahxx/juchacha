@@ -38,8 +38,8 @@ public class FavoriteService {
 		dao.deleFavo(fv);
 	}
 	
-	public long findUIdByUserId(String userId) {
-		return userdao.findUIdByUserId(userId);
+	public long findUIdByUserId(String userId)  {
+		return userdao.findUIdByUserId(userId) ;
 	}
 	
 	public ParkingLot getParkingLotByPid(long pid) {
@@ -50,7 +50,7 @@ public class FavoriteService {
 //		return pdao.findAllParkingLot();
 //	}
 	
-	public boolean isValidPid(Long pid) {
-		return dao.isValidPid(pid);
+	public boolean isValidFavorite(Long pid, Long uid) {
+		return dao.isValidFavorite(pid, uid);
 	}
 }
