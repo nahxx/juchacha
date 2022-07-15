@@ -11,6 +11,16 @@
 <link rel="stylesheet" href="../css/footer.css">
 <link rel="stylesheet" href="../css/reservation.css">
 <style type="text/css">
+	@font-face {
+	  src: url("/chacha/css/Jalnan.ttf");
+	  font-family: "Jalnan";
+	}
+	.gnb ul li a {
+     line-height: 70px;
+     font-size: 20px;
+     color: white;
+     font-family: "Jalnan";
+   	}
 	.title-wrap {
 	   text-align: center;
 	   margin-bottom: 30px;
@@ -22,16 +32,24 @@
 	   text-align: center;
 	   padding: 0 8px;
 	   position: relative;
+	   font-family: "Jalnan";
 	}
 	.title-wrap .title:before {
 	   position: absolute;
 	   content: '';
 	   width: 100%;
 	   height: 14px;
-	   bottom: 7px;
+	   bottom: -4px;
 	   left: 0;
 	   z-index: -1;
 	   background: #EDE6DB;
+	}
+	.wrap {
+		min-height: calc(100vh - 200px);
+		height: auto;
+	}
+	.rezInfo .success {
+		font-family: "Jalnan";
 	}
 </style>
 </head>

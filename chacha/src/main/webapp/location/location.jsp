@@ -56,10 +56,10 @@ html, body {
    
    // 주차장 마커 이미지
    var ParkingmarkerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
-   var ParkingimageSize = new kakao.maps.Size(32, 36);
+   var ParkingimageSize = new kakao.maps.Size(30, 36);
    var ParkingimageOptions = {
 		   spriteOrigin: new kakao.maps.Point(10, 72),
-		   spriteSize: new kakao.maps.Size(46, 108)
+		   spriteSize: new kakao.maps.Size(42, 108)
    };
    var ParkingmarkerImage = new kakao.maps.MarkerImage(ParkingmarkerImageSrc, ParkingimageSize, ParkingimageOptions);
 

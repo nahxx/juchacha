@@ -144,6 +144,7 @@ body {
     font-size: 20px;
     color: white;
     cursor: pointer;
+    font-family: "Jalnan";
 }
 .rez input[type=submit]:hover {
 	color : #417D7A;
@@ -177,9 +178,15 @@ span.color {
     font-size: 20px;
     color: white;
     cursor: pointer;
+    font-family: "Jalnan";
 }
 .btn + .btn {
 	margin-left: 50px;
+}
+.btn:hover {
+	color : #417D7A;
+	background-color: #fff;
+	border : 1px solid #417D7A;
 }
 
 @media (max-width: 1530px) {

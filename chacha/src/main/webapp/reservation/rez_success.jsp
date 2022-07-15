@@ -9,8 +9,21 @@
 <link rel="stylesheet" href="../css/footer.css">
 <link rel="stylesheet" href="../css/reservation.css">
 <style type="text/css">
+	@font-face {
+	  src: url("/chacha/css/Jalnan.ttf");
+	  font-family: "Jalnan";
+	}
+	.gnb ul li a {
+     line-height: 70px;
+     font-size: 20px;
+     color: white;
+     font-family: "Jalnan";
+   	}
 	.wrap {
 		height: calc(100vh - 200px);
+	}
+	.success {
+		font-family: "Jalnan";
 	}
 </style>
 <title>주차차</title>
