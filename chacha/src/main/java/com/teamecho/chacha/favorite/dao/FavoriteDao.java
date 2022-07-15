@@ -24,8 +24,8 @@ public class FavoriteDao {
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement psmt = con.prepareStatement(sql);
-			psmt.setLong(1, pid);
-			psmt.setLong(2, uid);
+			psmt.setLong(1, uid);
+			psmt.setLong(2, pid);
 			psmt.executeUpdate();
 			System.out.println("INSTERTED...");
 			ds.close(psmt, con);

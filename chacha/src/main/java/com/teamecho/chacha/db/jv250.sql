@@ -130,7 +130,7 @@ SELECT * FROM UserInfo;
 SELECT * FROM ParkingLot;
 SELECT * FROM Favorite;
 
-DELETE FROM review;
+DELETE FROM Favorite;
 
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (1, 1, '좋습니다', 5);
 INSERT INTO Review (uid, pid, content, star_rating) VALUES (2, 2, '굿', 4);
