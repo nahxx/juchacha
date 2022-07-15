@@ -14,6 +14,12 @@
 		src: url("/chacha/css/Jalnan.ttf");
 		font-family: "Jalnan";
 	}
+	@font-face {
+	    font-family: 'BMJUA';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
 	.gnb ul li a {
 	    line-height: 70px;
 	    font-size: 20px;
@@ -89,6 +95,7 @@
 		border: 1px solid #EDE6DB;
 		overflow: auto;
 		z-index: 1;
+		font-family: 'BMJUA';
 	}
 	.searchList.on {
 		animation: onAni 1s linear forwards;
