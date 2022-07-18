@@ -65,6 +65,7 @@
       height: 100%;
       width: 100%;
       padding: 0 80px;
+      padding-top: 20px;
     }
 	#reviewForm fieldset{
 	    display: inline-block;
@@ -141,7 +142,9 @@
 		    <form action="write_review.do" name="reviewForm" id="reviewForm" method="post">
 		    	<div class="ratingsContainer">
 					<fieldset>
-						<span class="text-bold">별점을 선택해주세요</span>
+						<!--
+						<span class="text-bold">별점을 선택해주세요</span> 
+						 -->
 						<input type="radio" name="star_rating" value="5" id="rate1"><label for="rate1">★</label>
 						<input type="radio" name="star_rating" value="4" id="rate2"><label for="rate2">★</label>
 						<input type="radio" name="star_rating" value="3" id="rate3"><label for="rate3">★</label>

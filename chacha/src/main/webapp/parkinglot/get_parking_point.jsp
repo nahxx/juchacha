@@ -15,18 +15,18 @@
   	@font-face {
      src: url("/chacha/css/Jalnan.ttf");
      font-family: "Jalnan";
-   }
+   	}
    .gnb ul li a {
      line-height: 70px;
      font-size: 20px;
      color: white;
      font-family: "Jalnan";
-   } 
-   
-  	body { overflow: auto; }
-    .wrap {
+   	}   
+   	body { overflow: auto; }  	
+   	.wrap {
       width: 100%;
       height: calc(100vh - 30px);
+      font-family: "Jalnan";
     }
 	.title-wrap {
       display: flex;
@@ -36,7 +36,7 @@
       line-height: 60px;
       padding-top: 150px;
     }
-     .title-wrap .title {
+    .title-wrap .title {
       height: 100%;
       font-size: 36px;
       text-align: center;
@@ -52,20 +52,21 @@
 	   left: 0;
 	   z-index: -1;
 	   background: #EDE6DB;
-	}
+	}	
     .parkingloth1 {
       margin-top: 50px;
-    }
+      font-family: "Jalnan";
+    }   
 	.parkingaddr {
 		margin-top : 20px;
 		margin-bottom : 20px;
+		font-family: "Jalnan";
 	}
     h1,
     h2,
     h4 {
       text-align: center;
     }
-
     table {
       margin: 0 auto;
       margin-bottom: 20px;
@@ -74,7 +75,6 @@
       border-collapse: collapse;
       border: 1px solid lightgray;
     }
-
     .btn {
       display: block;
       width: 150px;
@@ -101,26 +101,25 @@
       width: 800px;
       height: 200px;
     }
-
     .cost thead tr th,
     .space thead tr th,
     .review thead tr th{
       background-color: #417D7A;
       color: #fff;
       height: 40px;
-    }
+    }  
     .review-tit{
       position: relative;
       width: 800px;
       margin: 0 auto;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
       margin-top: 100px;
       padding-top: 50px;
       box-sizing: border-box;
       text-align: left;
       font-weight: bold;
 	  font-size: 28px;
-    }
+    }   
     .review-tit:before{
       content: "";
       display: block;
@@ -130,19 +129,40 @@
       right: 0;
       height: 1px;
       background: #EDE6DB;
-    }
+    }   
 	.review-info{
 	  width: 800px;
 	  margin: 0 auto;
-	  margin-bottom: 20px;
 	  font-weight: bold;
 	  font-size: 20px;
 	  background-color: white;
       color: black;
 	  text-align: left;
-	}
-	.review-info span{
-	 color : #417D7A;
+	}	
+	.review-info .re-avg{
+	  color : #417D7A;
+	}	
+	.star-ratings{
+	  display: inline-block;
+	  position: relative;
+	  width: max-content;
+	  font-size: 1.5em;
+	  color: transparent;
+	  text-shadow: 0 0 0 #f0f0f0;
+	}	
+	.star-ratings-fill{
+	  padding: 0;
+	  position: absolute;
+	  z-index: 1;
+	  display: flex;
+	  top: 0;
+	  left: 0;
+	  overflow: hidden;
+	  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+	}	
+	.star-ratings-base {
+	  z-index: 0;
+  	  padding: 0;
 	}
     .cost tbody tr td:first-child {
       width: 200px;
@@ -150,76 +170,81 @@
       text-align: center;
       color: #fff;
     }
-
     .cost tbody tr td:last-child {
       text-align: right;
     }
-
     .space tbody tr td:first-child {
       width: 200px;
       background-color: #417D7A;
       text-align: center;
       color: #fff;
     }
-
     .space tbody tr td:last-child {
       text-align: right;
     }
-
     .review {
-      margin-top: 20px;
+      margin-top: 10px;
       margin-bottom: 100px;
     }
-
     .review tbody tr.review-header {
       background-color: #417D7A;
       color: #fff;
       height: 40px;
       text-align: center;
     }
-
     .review tbody tr.review-title {
       height: 30px;
       text-align: center;
     }
-
     .review tbody tr.review-content {
       height: 150px;
     }
-
     .review tbody tr.review-content td:first-child {
       background-color: #417D7A;
       color: #fff;
       text-align: center;
       width: 130px;
-    }
+    }  
     .rating{
       font-size: 1em;
+	  position: relative;
+	  width: max-content; 
 	  color: transparent;
+	  text-shadow: 0 0 0 #f0f0f0;
+	  margin: 0 auto;
+    }   
+    .rating-fill{
+	  padding: 0;
+	  position: absolute;
+	  z-index: 1;
+	  display: flex;
+	  top: 0;
+	  left: 0;
+	  overflow: hidden;
 	  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-    }
+	}	
+	.rating-base {
+	  z-index: 0;
+  	  padding: 0;
+	}	
     .parkingloth1 input {
 	  display: inline-block;
 	  direction: rtl;
 	  border: 0;
+	}	
+	.parkingloth1 input[type=radio] {
+	   display: none;
+	}	
+	.parkingloth1 label {
+	   font-size: 1.25em;
+	   color: transparent;
+	   text-shadow: 0 0 0 #f0f0f0;
+	}	
+	.parkingloth1 input[type=radio]:checked ~ label {
+	   text-shadow: 0 0 0 #ED4652;
 	}
-
-.parkingloth1 input[type=radio] {
-   display: none;
-}
-
-.parkingloth1 label {
-   font-size: 1.25em;
-   color: transparent;
-   text-shadow: 0 0 0 #f0f0f0;
-}
-
-.parkingloth1 input[type=radio]:checked ~ label {
-   text-shadow: 0 0 0 #ED4652;
-}
   </style>
 </head>
-
 <body>
   <header>
     <%@ include file="/incl/header.jsp" %>
@@ -278,23 +303,22 @@
         </tr>
       </tbody>
     </table>
-    <input type="button" class="btn" value="예약페이지" onClick="location.href='/chacha/reservation/rez.do?pid=${ParkingLot.getPid()}'">
+    <input type="button" class="btn" value="예약하기" onClick="location.href='/chacha/reservation/rez.do?pid=${ParkingLot.getPid()}'">
 	   <h4 class="review-tit">리뷰</h4>
 	   <div class="review-info">
 	       전체 <span>${fn:length(review)}</span>개 <br> 
-           평균 <span>4.5</span>점
+           평균
+           <div class="star-ratings">
+           		<div class="star-ratings-fill" style="width:calc(${reAvg}/5*100%)">
+           			<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+           		</div>
+           		<div class="star-ratings-base">
+           			<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+           		</div>
+           </div>
+           <span class="re-avg">${reAvg}</span> / 5
        </div>
 	   <table border="1" class="review">
-	   <!-- 
-	   <thead>
-        <tr>
-          <th colspan="3">
-          	전체 <span>89</span>개 <br> 
-         	평균 <span>4.5</span>점
-          </th>
-        </tr>
-      </thead>
-	    -->
       <tbody>     
         <c:if test="${not empty review}">
         <c:forEach var="re" items="${review}">
@@ -305,10 +329,17 @@
         </tr>
           <tr class="review-title">
             <td>${re.getUser().getUserId()}</td>
-            <td class=rating>
-            <c:forEach var="i" begin="1" end="${re.getStar_rating()}">
-            	★
-            </c:forEach>
+            <td>
+            	<div class="rating">
+	            	<div class="rating-base">
+	           			<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+	           		</div>
+	           		<div class="rating-fill">
+			            <c:forEach var="i" begin="1" end="${re.getStar_rating()}">
+			            	<span>★</span>
+			            </c:forEach>
+		            </div>
+            	</div>	
             </td>
             <td>${re.getRegDate()}</td>
           </tr>
@@ -324,7 +355,5 @@
     <%@ include file="/incl/footer.jsp"%>
   </<footer>
   </div>
-  
 </body>
-
 </html>

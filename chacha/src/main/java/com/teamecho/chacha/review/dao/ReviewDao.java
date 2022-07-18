@@ -44,7 +44,7 @@ public class ReviewDao {
 	}
 	
 	public List<Review> findAll(Long pId){
-		String sql = "SELECT r.pid, r.content, r.star_rating, r.regDate, u.userId FROM Review r INNER JOIN UserInfo u ON r.uid = u.uid WHERE r.pid = ?";
+		String sql = "SELECT r.pid, r.content, r.star_rating, r.regDate, u.userId FROM Review r INNER JOIN UserInfo u ON r.uid = u.uid WHERE r.pid = ? order by r.regDate desc";
 
 		List<Review> reviewList = new ArrayList<>();
 		try {
@@ -89,8 +89,8 @@ public class ReviewDao {
 				rs = psmt.executeQuery();
 				while(rs.next()) {
 					rating_avg = rs.getFloat("avg");
-					System.out.println(rating_avg);
 				}
+				rating_avg = Math.round(rating_avg*10)/10.0;
 			}finally {
 				ds.close(rs, psmt, con);
 			}
