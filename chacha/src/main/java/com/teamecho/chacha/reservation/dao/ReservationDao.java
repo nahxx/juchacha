@@ -42,7 +42,7 @@ public class ReservationDao {
 	}
 
 	public List<Reservation> findReservationListByUid(long uid) {
-		String sql = "SELECT * FROM reservation WHERE uid = ?";
+		String sql = "SELECT * FROM reservation WHERE uid = ? ORDER BY regDate DESC";
 		List<Reservation> rList = new ArrayList<>();
 		try {
 			Connection con = null;
