@@ -22,8 +22,7 @@ public class GetParkingLotFavorite extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		
-		String cheking_str = "checked";
+		String cheking_str ="Checked";
 		String search_str = "";
 		String userId = (String) session.getAttribute("userId");
 		

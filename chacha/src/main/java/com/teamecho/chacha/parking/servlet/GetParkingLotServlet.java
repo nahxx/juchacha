@@ -18,8 +18,11 @@ public class GetParkingLotServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ParkingLotService ps = ParkingLotService.getInstance();
+		String cheking_str = "";
+		
 		List<ParkingLot> list = ps.findAllParkingLot();
 		request.setAttribute("ParkingLotList", list);
+		request.setAttribute("cheking_str", cheking_str);
 		request.getRequestDispatcher("/location/location.jsp").forward(request, response);
 	}
 
