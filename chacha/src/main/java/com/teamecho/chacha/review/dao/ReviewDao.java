@@ -73,4 +73,30 @@ public class ReviewDao {
 		}
 		return reviewList;
 	}
+	
+	public double findAvgOfRating(Long pId) {
+		String sql = "SELECT AVG(star_rating) as avg FROM Review WHERE pid=?";
+		
+		double rating_avg = 0.0;
+		try {
+			Connection con = null;
+			PreparedStatement psmt = null;
+			ResultSet rs = null;
+			try {
+				con = ds.getConnection();
+				psmt = con.prepareStatement(sql);
+				psmt.setLong(1, pId);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+					rating_avg = rs.getFloat("avg");
+					System.out.println(rating_avg);
+				}
+			}finally {
+				ds.close(rs, psmt, con);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return rating_avg;
+	}
 }

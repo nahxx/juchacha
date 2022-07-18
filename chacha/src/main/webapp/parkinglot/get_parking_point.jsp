@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
 
@@ -28,9 +28,33 @@
       width: 100%;
       height: calc(100vh - 30px);
     }
-
+	.title-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 80px;
+      line-height: 60px;
+      padding-top: 150px;
+    }
+     .title-wrap .title {
+      height: 100%;
+      font-size: 36px;
+      text-align: center;
+      position: relative;
+      font-family: "Jalnan";
+    }
+    .title-wrap .title:before {
+	   position: absolute;
+	   content: '';
+	   width: 100%;
+	   height: 14px;
+	   bottom: 7px;
+	   left: 0;
+	   z-index: -1;
+	   background: #EDE6DB;
+	}
     .parkingloth1 {
-      margin-top: 90px;
+      margin-top: 50px;
     }
 	.parkingaddr {
 		margin-top : 20px;
@@ -80,12 +104,46 @@
 
     .cost thead tr th,
     .space thead tr th,
-    .review thead tr th {
+    .review thead tr th{
       background-color: #417D7A;
       color: #fff;
       height: 40px;
     }
-
+    .review-tit{
+      position: relative;
+      width: 800px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      margin-top: 100px;
+      padding-top: 50px;
+      box-sizing: border-box;
+      text-align: left;
+      font-weight: bold;
+	  font-size: 28px;
+    }
+    .review-tit:before{
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #EDE6DB;
+    }
+	.review-info{
+	  width: 800px;
+	  margin: 0 auto;
+	  margin-bottom: 20px;
+	  font-weight: bold;
+	  font-size: 20px;
+	  background-color: white;
+      color: black;
+	  text-align: left;
+	}
+	.review-info span{
+	 color : #417D7A;
+	}
     .cost tbody tr td:first-child {
       width: 200px;
       background-color: #417D7A;
@@ -110,6 +168,7 @@
 
     .review {
       margin-top: 20px;
+      margin-bottom: 100px;
     }
 
     .review tbody tr.review-header {
@@ -134,11 +193,16 @@
       text-align: center;
       width: 130px;
     }
+    .rating{
+      font-size: 1em;
+	  color: transparent;
+	  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
     .parkingloth1 input {
-   display: inline-block;
-   direction: rtl;
-   border: 0;
-}
+	  display: inline-block;
+	  direction: rtl;
+	  border: 0;
+	}
 
 .parkingloth1 input[type=radio] {
    display: none;
@@ -161,6 +225,9 @@
     <%@ include file="/incl/header.jsp" %>
   </header> 
   <div class="wrap">
+  		<div class="title-wrap">
+			<h3 class="title">주차장 정보</h3>
+		</div>
   		<c:if test="${favorite == true}">
   			<h1 class="parkingloth1">${ParkingLot.getParkingName()}
          		<input type="radio" name ="heart" id="rate1" onClick="location.href='/chacha/favorite/favorite.do?pid=${ParkingLot.getPid()}'" checked><label for="rate1">♥</label>
@@ -206,19 +273,28 @@
           <td>${ParkingLot.getParkingSpace()} 대</td>
         </tr>
         <tr>
-          <td>현재 주차중인 차량 수</td>
-          <td>${space} 대</td>
+          <td>주차 가능한 주차공간</td>
+          <td>${ParkingLot.getParkingSpace() - space} 대</td>
         </tr>
       </tbody>
     </table>
     <input type="button" class="btn" value="예약페이지" onClick="location.href='/chacha/reservation/rez.do?pid=${ParkingLot.getPid()}'">
-  
+	   <h4 class="review-tit">리뷰</h4>
+	   <div class="review-info">
+	       전체 <span>${fn:length(review)}</span>개 <br> 
+           평균 <span>4.5</span>점
+       </div>
 	   <table border="1" class="review">
-      <thead>
+	   <!-- 
+	   <thead>
         <tr>
-          <th colspan="3">리뷰</th>
+          <th colspan="3">
+          	전체 <span>89</span>개 <br> 
+         	평균 <span>4.5</span>점
+          </th>
         </tr>
       </thead>
+	    -->
       <tbody>     
         <c:if test="${not empty review}">
         <c:forEach var="re" items="${review}">
@@ -229,7 +305,11 @@
         </tr>
           <tr class="review-title">
             <td>${re.getUser().getUserId()}</td>
-            <td>${re.getStar_rating()}</td>
+            <td class=rating>
+            <c:forEach var="i" begin="1" end="${re.getStar_rating()}">
+            	★
+            </c:forEach>
+            </td>
             <td>${re.getRegDate()}</td>
           </tr>
           <tr class="review-content">

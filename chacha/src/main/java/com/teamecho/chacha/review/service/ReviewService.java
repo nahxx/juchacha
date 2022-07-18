@@ -46,5 +46,9 @@ public class ReviewService {
 	public List<Review> getAllReviews(Long pId){
 		return reviewDao.findAll(pId);
 	}
+	
+	public double getAvgOfRating(Long pId) {
+		return reviewDao.findAvgOfRating(pId);
+	}
 
 }
