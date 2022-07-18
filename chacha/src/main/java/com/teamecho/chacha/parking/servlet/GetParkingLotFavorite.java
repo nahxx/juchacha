@@ -23,7 +23,8 @@ public class GetParkingLotFavorite extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		
-		String search_str = (String) request.getParameter("keyword");
+		String cheking_str = "checked";
+		String search_str = "";
 		String userId = (String) session.getAttribute("userId");
 		
 		List<Favorite> flist = ps.findFavo(ps.getUid(userId));
@@ -33,7 +34,7 @@ public class GetParkingLotFavorite extends HttpServlet {
 			ParkingLot pl = ps.findParkingLotByPid(f.getPid());
 			plist.add(pl);
 		}
-		
+		request.setAttribute("cheking_str", cheking_str);
 		request.setAttribute("search_str", search_str);
 		request.setAttribute("ParkingLotList", plist);
 		request.getRequestDispatcher("/location/location.jsp").forward(request, response);
