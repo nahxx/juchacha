@@ -242,6 +242,10 @@
                <input type="submit" class="btn-inner" value="검색">
             </div>
          </div>
+         <div>
+	         <label for="check">즐겨찾기 목록 선택</label>
+	         <input type="checkbox" id="check" ${cheking_str}>
+         </div>
       </form>
    </div>
 </div>
@@ -249,10 +253,20 @@
 <div class="searchList ${ON}">
 	<button class="btn_close" type="button"></button>
 	<c:if test="${empty search_str}">
-		<h5>주변 주차장 <span>${fn:length(ParkingLotList)}</span></h5>
+		<c:if test="${empty cheking_str}">
+			<h5>주변 주차장 <span>${fn:length(ParkingLotList)}</span></h5>
+		</c:if>
+		<c:if test="${not empty cheking_str}">
+			<h5>즐겨찾기 주차장 <span>${fn:length(ParkingLotList)}</span></h5>
+		</c:if>
 	</c:if>
 	<c:if test="${not empty search_str}">
-		<h5>지도 내 주차장 <span>${fn:length(ParkingLotList)}</span></h5>
+		<c:if test="${empty cheking_str}">
+			<h5>지도 내 주차장 <span>${fn:length(ParkingLotList)}</span></h5>
+		</c:if>
+		<c:if test="${not empty cheking_str}">
+			<h5>즐겨찾기 주차장 <span>${fn:length(ParkingLotList)}</span></h5>
+		</c:if>
 	</c:if>
 	<c:forEach var="parking" items="${ParkingLotList}">
 		<div class="table-wrap">
@@ -376,6 +390,22 @@
     		$('.searchList').removeClass("on");
     	});
     });
+    
+    // 체크박스로 즐겨찾기 추가 삭제
+    let checkbox = document.getElementById("check");
+    checkbox.addEventListener("click", function(){
+    	console.log(checkbox.checked);
+    	if(checkbox.checked == true) {
+    		
+    		location.href='/chacha/parkinglot/favorite_parking.do';
+    		checkbox.checked = true;
+    	} else {
+    		
+    		location.href='/chacha/parkinglot/get_parking.do';
+    		checkbox.checked = false;
+    	}
+    });
+    
 </script>
 </body>
 </html>
