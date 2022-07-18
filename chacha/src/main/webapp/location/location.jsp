@@ -35,11 +35,11 @@
 	/* 검색창 */
 	.content {
       position: absolute;
-      top: 80px;
+      top: 110px;
       left: 40px;
       z-index: 20;
-      width: 400px;
-      height: 90px;
+      width: 380px;
+      height: 60px;
    }
     .search-wrap {
       height: 100%;
@@ -48,6 +48,7 @@
       display: flex;
       height: 100%;
       align-items: center;
+      flex-wrap: wrap;
    }
    .search-wrap > form > input {
       height: 50px;
@@ -59,6 +60,29 @@
    }
    .search-wrap > form > input:focus {
       outline: none;
+   }
+   .search-wrap .favorite {
+   	  width: 100%;
+   	  display: flex;
+   	  justify-content: flex-end;
+   	  font-family: "Jalnan";
+   	  height: 30px;
+   	  line-height: 30px;
+   }
+   .search-wrap .favorite .favorite-wrap {
+   	  position: relative;
+   	  display: inline-block;
+   	  background: #417D7A;
+   	  width: 58%;
+   	  padding-left: 10px;
+   }
+   .search-wrap .favorite .favorite-wrap > label{
+   	  margin-right: 10px;
+   	  font-size: 20px;
+   	  color: white;
+   }
+   .search-wrap .favorite .favorite-wrap > input {
+   	  border-style: none;
    }
    .i-btn {
       display: flex;
@@ -83,6 +107,43 @@
       cursor: pointer;
       font-family: "Jalnan";
     }
+	
+	input.checkbox {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		display: none;
+	}
+	
+	.checkbox:checked ~ .option_inner{
+		border-color: #417D7A;
+		color: black;
+	}
+	
+	.tickmark{
+		position: absolute;
+		top: 1px;
+		right: 5px;
+		border: 14px solid;
+		border-color: #417D7A;
+		display: none;
+	}
+	
+	.checkbox:checked + .tickmark{
+		display: block;
+	}
+	
+	.tickmark:before{
+		content: "";
+		position: absolute;
+		top: -11px;
+		left: -8px;
+		width: 15px;
+		height: 5px;
+		border: 3px solid;
+		border-color: transparent transparent #fff #fff;
+		transform: rotate(-45deg);
+	}
 	/* 검색리스트 */
 	.searchList {
 		position: absolute;
@@ -242,9 +303,12 @@
                <input type="submit" class="btn-inner" value="검색">
             </div>
          </div>
-         <div>
-	         <label for="check">즐겨찾기 목록 선택</label>
-	         <input type="checkbox" id="check" ${cheking_str}>
+         <div class="favorite">
+         	<div class="favorite-wrap">
+	         	<label for="check">즐겨찾기 목록 선택</label>
+	         	<input type="checkbox" id="check" class="checkbox" ${cheking_str}>
+	         	<div class="tickmark"></div>
+         	</div>
          </div>
       </form>
    </div>
