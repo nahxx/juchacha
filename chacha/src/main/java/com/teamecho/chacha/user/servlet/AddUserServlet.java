@@ -55,6 +55,13 @@ public class AddUserServlet extends HttpServlet {
 	    if (licenseNumber == null || licenseNumber.length() == 0) {
 	    	err.add("차량번호 필수입력정보입니다.");
 	    }
+	    RequestDispatcher dispatcher = null;
+	    if(err.size() > 0) {
+	    	request.setAttribute("error", err);
+	    	dispatcher = request.getRequestDispatcher("/error/error.jsp");
+	    	dispatcher.forward(request, response);
+	    	return ;
+	    }
 	    User user = new User();
 	    user.setUserId(userId);
 	    user.setPasswd(passwd);
@@ -66,16 +73,6 @@ public class AddUserServlet extends HttpServlet {
 	    userService = UserService.getInstance();
 	    userService.addUser(user);
 	    request.setAttribute("user",user);
-	    
-	    
-	    RequestDispatcher dispatcher = null;
-	    if(err.size() > 0) {
-		    request.setAttribute("error", err);
-		    dispatcher = request.getRequestDispatcher("/error/error.jsp");
-		    dispatcher.forward(request, response);
-	    	return ;
-	    }
-	    
 	    
 	    response.sendRedirect("../");
 	}

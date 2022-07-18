@@ -13,6 +13,7 @@
           <div class="right-gnb">
             <ul>
               <li><a href="/chacha/voucher/voucher.jsp">구매하기</a></li>
+              <li><a href="/chacha/review/review_checking.do">리뷰작성</a></li>
               <li><a href="/chacha/my_page.do">마이페이지</a></li>
               <li><a href="/chacha/logout.do">로그아웃</a></li>
             </ul>

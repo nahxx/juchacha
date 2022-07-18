@@ -6,7 +6,7 @@ DROP TABLE Voucher;
 DROP TABLE Parkinglot_Use;
 DROP TABLE Parkinglot;
 DROP TABLE UserInfo;
-
+DROP TABLE Parking_keyword;
 
 CREATE TABLE UserInfo(
    uid				BIGINT			PRIMARY KEY AUTO_INCREMENT,

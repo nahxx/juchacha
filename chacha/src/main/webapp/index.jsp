@@ -31,16 +31,31 @@
       align-items: center;
     }
     .container .title-wrap {
-      width: 100%;
-      line-height: 60px;
-      padding-top: 150px;
-    }
-    .container .title-wrap .title {
-      height: 100%;
-      font-size: 36px;
-      text-align: center;
-      font-family: "Jalnan";
-    }
+	  width: 100%;
+	  line-height: 60px;
+	  padding-top: 150px;
+	  text-align: center;
+	}
+
+	.container .title-wrap .title {
+	  display: inline-block;
+	  height: 100%;
+	  font-size: 36px;
+	  text-align: center;
+	  padding: 0 8px;
+	  position: relative;
+	  font-family: "Jalnan";
+	}
+	.container .title-wrap .title:before {
+	  position: absolute;
+	  content: '';
+	  width: 100%;
+	  height: 14px;
+	  bottom: 7px;
+	  left: 0;
+	  z-index: -1;
+	  background: #EDE6DB;
+	}
     .container > .form-wrap {
       display: flex;
       height: 100%;
