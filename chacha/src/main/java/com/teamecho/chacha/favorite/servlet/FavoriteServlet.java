@@ -21,7 +21,7 @@ import com.teamecho.chacha.user.service.UserService;
 public class FavoriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ParkingLotService pservice = ParkingLotService.getInstance();
-	private UserService uservice = UserService.getInstance();
+	private UserService userservice = UserService.getInstance();
 	private FavoriteService service;
 	private List<Favorite> fvList;
 	
@@ -30,9 +30,7 @@ public class FavoriteServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 
 		String userId = (String) session.getAttribute("userId");
-		long uId = uservice.findUIdByUserId(userId);
-		System.out.println(uId);
-
+		long uId = userservice.findUIdByUserId(userId);
 		
 		service = new FavoriteService();
 		

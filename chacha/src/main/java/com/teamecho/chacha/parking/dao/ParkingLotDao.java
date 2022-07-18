@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.teamecho.chacha.db.*;
+import com.teamecho.chacha.favorite.domain.Favorite;
 import com.teamecho.chacha.parking.domain.ParkingLot;
 
 public class ParkingLotDao {
@@ -248,4 +249,5 @@ public class ParkingLotDao {
 		}
 		return parkingdotList;
 	}
+
 }

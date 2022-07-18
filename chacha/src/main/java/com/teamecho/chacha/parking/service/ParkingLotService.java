@@ -3,6 +3,7 @@ package com.teamecho.chacha.parking.service;
 import java.util.List;
 
 import com.teamecho.chacha.favorite.dao.FavoriteDao;
+import com.teamecho.chacha.favorite.domain.Favorite;
 import com.teamecho.chacha.parking.dao.ParkingLotDao;
 import com.teamecho.chacha.parking.domain.ParkingLot;
 import com.teamecho.chacha.review.dao.ReviewDao;
@@ -59,5 +60,9 @@ public class ParkingLotService {
 	
 	public List<ParkingLot> findSearchParkingLot(String str) {
 		return parkingLotDao.findSearchParkingLot(str);
+	}
+	
+	public List<Favorite> findFavo(Long uid) {
+		return favoriteDao.findFavo(uid);
 	}
 }

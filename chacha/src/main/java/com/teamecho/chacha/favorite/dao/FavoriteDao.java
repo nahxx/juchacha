@@ -27,7 +27,6 @@ public class FavoriteDao {
 			psmt.setLong(1, uid);
 			psmt.setLong(2, pid);
 			psmt.executeUpdate();
-			System.out.println("INSTERTED...");
 			ds.close(psmt, con);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,7 +48,6 @@ public class FavoriteDao {
 				fv.setPid(rs.getLong("pid"));
 				fvList.add(fv);
 			}
-			System.out.println("SELECTED...");
 			ds.close(rs, psmt, con);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,7 +64,6 @@ public class FavoriteDao {
 			psmt.setLong(1, pid);
 			psmt.setLong(2, uid);
 			psmt.executeUpdate();
-			System.out.println("DELETE...");
 			ds.close(psmt, con);
 		} catch (Exception e) {
 			e.printStackTrace();
