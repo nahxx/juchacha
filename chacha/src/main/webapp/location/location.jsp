@@ -73,17 +73,56 @@
    	  position: relative;
    	  display: inline-block;
    	  background: #417D7A;
-   	  width: 58%;
+   	  /* width: 58%; */
    	  padding-left: 10px;
    }
    .search-wrap .favorite .favorite-wrap > label{
    	  margin-right: 10px;
    	  font-size: 20px;
    	  color: white;
+   	  width: 100%;
+   	  display: block;
+   	  cursor: pointer;
    }
    .search-wrap .favorite .favorite-wrap > input {
    	  border-style: none;
    }
+   .search-wrap .favorite .favorite-wrap > label.Checked {
+        margin-right: 40px;
+   }
+	
+	.checkbox {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		display: none;
+	}
+	
+	.tickmark{
+		position: absolute;
+		top: 1px;
+		right: 5px;
+		border: 14px solid;
+		border-color: #417D7A;
+		display: none;
+		cursor: pointer;
+	}
+	
+	.checkbox:checked + .tickmark{
+		display: block;
+	}
+	
+	.tickmark:before{
+		content: "";
+		position: absolute;
+		top: -11px;
+		left: -8px;
+		width: 15px;
+		height: 5px;
+		border: 3px solid;
+		border-color: transparent transparent #fff #fff;
+		transform: rotate(-45deg);
+	}
    .i-btn {
       display: flex;
       align-items: center;
@@ -107,43 +146,6 @@
       cursor: pointer;
       font-family: "Jalnan";
     }
-	
-	input.checkbox {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		display: none;
-	}
-	
-	.checkbox:checked ~ .option_inner{
-		border-color: #417D7A;
-		color: black;
-	}
-	
-	.tickmark{
-		position: absolute;
-		top: 1px;
-		right: 5px;
-		border: 14px solid;
-		border-color: #417D7A;
-		display: none;
-	}
-	
-	.checkbox:checked + .tickmark{
-		display: block;
-	}
-	
-	.tickmark:before{
-		content: "";
-		position: absolute;
-		top: -11px;
-		left: -8px;
-		width: 15px;
-		height: 5px;
-		border: 3px solid;
-		border-color: transparent transparent #fff #fff;
-		transform: rotate(-45deg);
-	}
 	/* 검색리스트 */
 	.searchList {
 		position: absolute;
@@ -305,7 +307,7 @@
          </div>
          <div class="favorite">
          	<div class="favorite-wrap">
-	         	<label for="check">즐겨찾기 목록 선택</label>
+	         	<label for="check" class="${cheking_str}">즐겨찾기 목록 선택</label>
 	         	<input type="checkbox" id="check" class="checkbox" ${cheking_str}>
 	         	<div class="tickmark"></div>
          	</div>
@@ -453,22 +455,37 @@
     		$('.searchList').css("animation", "offAni 1s linear forwards");
     		$('.searchList').removeClass("on");
     	});
+    	$('.tickmark').click(function() {
+    		$('.Checked').removeClass("Checked");
+    		$('.checkbox').attr("checked", false);	
+    		$('.searchList').css("animation", "offAni 1s linear forwards");
+    		$('.searchList').removeClass("on");
+    		
+    		setTimeout(function() {
+    			location.href='/chacha/parkinglot/get_parking.do';
+    		}, 800);
+
+    	});
     });
     
     // 체크박스로 즐겨찾기 추가 삭제
     let checkbox = document.getElementById("check");
     checkbox.addEventListener("click", function(){
-    	console.log(checkbox.checked);
     	if(checkbox.checked == true) {
-    		
     		location.href='/chacha/parkinglot/favorite_parking.do';
-    		checkbox.checked = true;
     	} else {
+    		$('.Checked').removeClass("Checked");
+    		$('.checkbox').attr("checked", false);	
+    		$('.searchList').css("animation", "offAni 1s linear forwards");
+    		$('.searchList').removeClass("on");
+
+    		setTimeout(function() {
+    			location.href='/chacha/parkinglot/get_parking.do';
+    		}, 800);
     		
-    		location.href='/chacha/parkinglot/get_parking.do';
-    		checkbox.checked = false;
     	}
     });
+    
     
 </script>
 </body>
