@@ -60,6 +60,6 @@ public class VoucherServlet extends HttpServlet {
 		voucherService.addVoucher(voucherUseList);
 		
 		//4.다음 페이지로 이동
-		response.sendRedirect("/chacha/user/mypage.jsp");
+		response.sendRedirect("/chacha/voucher/voucher_list.do");
 	}
 }

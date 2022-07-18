@@ -3,10 +3,10 @@ package com.teamecho.chacha.voucher.domain;
 import java.sql.Timestamp;
 
 public class Voucher {
-	private long vid;
-	private String vType;
-	private int buyTime;
-	private Timestamp regDate;
+	private long vid; //voucher 키값
+	private String vType; // voucher의 타입 (ex: 시간당, 종일권, 정기권)
+	private int buyTime; // voucher가 적용가능한 시간
+	private Timestamp regDate; 
 	
 	public Voucher() {
 		

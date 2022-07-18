@@ -49,7 +49,7 @@
 	.wrapper {
 		width: 975px;
 		margin: 100px auto 	0;
-		height: calc(100vh - 340px);
+		min-height: calc(100vh - 340px);
 	}
 	
 	.form .option_item{
@@ -134,6 +134,7 @@
       justify-content: center;
       align-items: center;
       margin-top: 30px;
+      margin-bottom: 30px;
       padding: 0 80px;
       height: 100%;
       width: 100%;

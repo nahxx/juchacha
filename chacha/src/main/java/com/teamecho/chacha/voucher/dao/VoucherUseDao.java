@@ -28,7 +28,6 @@ public class VoucherUseDao {
 					pstmt.setLong(2,voucherUse.getVid());
 					pstmt.executeUpdate();
 				}finally {
-					System.out.println("INSERTED....");
 					ds.close(pstmt, con);
 				}	
 			}catch(Exception e) {
@@ -55,7 +54,6 @@ public class VoucherUseDao {
 	            vu.setVid(rs.getLong("vid"));
 	            vuList.add(vu);
 	         }
-	         System.out.println("SELECTED...");
 	         ds.close(rs, psmt, con);
 	      } catch (SQLException e) {
 	         e.printStackTrace();
@@ -66,7 +64,7 @@ public class VoucherUseDao {
 	public List<VoucherUseList> findVoucherUseList(long uid) {
 	      String sql = "SELECT v.vtype, v.buyTime, vu.useTime, vu.vuse, vu.regDate"
 	      		+ " FROM Voucher_use vu INNER JOIN Voucher v ON vu.vid = v.vid"
-	      		+ " WHERE vu.uid = ?";
+	      		+ " WHERE vu.uid = ? ORDER BY vu.regDate DESC";
 	      List<VoucherUseList> vuList = new ArrayList<VoucherUseList>();
 
 	      try {
@@ -83,7 +81,6 @@ public class VoucherUseDao {
 				vu.setRegDate(rs.getTimestamp("regDate"));
 				vuList.add(vu);
 	         }
-	         System.out.println("SELECTED...");
 	         ds.close(rs, psmt, con);
 	      } catch (SQLException e) {
 	         e.printStackTrace();

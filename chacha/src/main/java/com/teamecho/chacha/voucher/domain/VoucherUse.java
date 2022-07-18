@@ -1,12 +1,12 @@
 package com.teamecho.chacha.voucher.domain;
 
 public class VoucherUse {
-	private long vuid;
-	private int useTime;
-	private String vuse;
-	private long uid;
-	private long vid;
-	private long rid;
+	private long vuid; // voucheruse 키값
+	private int useTime; // 주차장 사용한 시간
+	private String vuse; // voucher 사용 유무
+	private long uid; // user id
+	private long vid; // voucher id
+	private long rid; // reservation id
 	
 	public VoucherUse() {
 		
