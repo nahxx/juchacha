@@ -50,8 +50,7 @@ public class RezCheckingServlet extends HttpServlet {
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			format.format(rez.getEnd_time());
 			rListStr += "<table>";
-			rListStr += "<tr><th>주차장명</th><td>" + parking.getParkingName() + "</td>";
-			rListStr += "<td class='review' rowspan=\"3\"></td></tr>";
+			rListStr += "<tr><th>주차장명</th><td>" + parking.getParkingName() + "</td></tr>";
 			rListStr += "<tr><th>예약시간</th><td>" + format.format(rez.getStart_time()) + " ~ " + format.format(rez.getEnd_time()) + "</td></tr>";
 			rListStr += "<tr><th>정산금액</th><td>" + rez.getCost() + "원</td></tr>";
 			rListStr += "</table>";
