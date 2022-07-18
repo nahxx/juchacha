@@ -452,6 +452,8 @@
     // 제이쿼리(on클래스 추가 및 삭제)
     $(function() {
     	$('.btn_close').click(function() {
+    		$('.Checked').removeClass("Checked");
+    		$('.checkbox').attr("checked", false);	
     		$('.searchList').css("animation", "offAni 1s linear forwards");
     		$('.searchList').removeClass("on");
     	});
