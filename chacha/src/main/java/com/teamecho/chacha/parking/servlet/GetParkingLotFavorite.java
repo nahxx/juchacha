@@ -33,6 +33,15 @@ public class GetParkingLotFavorite extends HttpServlet {
 		long uId = us.findUIdByUserId(userId);
 		
 		List<Favorite> flist = ps.findFavo(uId);
+		List<ParkingLot> plist = new ArrayList<>();
+		
+		for(Favorite f : flist) {
+			long fpid = f.getPid();
+			ParkingLot pl = ps.findParkingLotByPid(fpid);
+			plist.add(pl);
+		}
+		
+		request.setAttribute("falist", plist);
 		
 		List<ParkingLot> list = ps.findSearchParkingLot(search_str);
 		request.setAttribute("search_str", search_str);
