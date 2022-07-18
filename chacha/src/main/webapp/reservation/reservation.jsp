@@ -211,18 +211,22 @@
     	  let nextHour; // 종료 시간담을 변수
     	  
     	  if(date.getHours() == 9) {
-    		  hour = "0" + date.getHours();
-    		  nextHour = 10;
+    		  hour = date.getHours() + 1;
+    		  nextHour = date.getHours() + 2;
     	  }
-    	  if(date.getHours() < 10) {
-    		  hour = "0" + date.getHours();
-    		  nextHour = date.getHours() + 1
+
+    	  if(date.getHours() < 9) {
+    		  if(date.getHours() < 8) {
+    			  nextHour = "0" + (date.getHours() + 2);
+    		  } else if(date.getHours() == 8) {
+    			  nextHour = date.getHours() + 2
+    		  }
+    		  hour = "0" + (date.getHours() + 1);
     	  } else {
-    		  hour = date.getHours();
-    		  nextHour = date.getHours() + 1
+    		  hour = date.getHours() + 1;
+    		  nextHour = date.getHours() + 2
     	  }
     	  
-    	  console.log(hour);
     	  $('.startMonth').val(month).attr("selected", "selected"); // 현재 월로 selected
     	  $('.startDate').val(day).attr("selected", "selected"); // 현재 일로 selected
     	  $('.startTime').val(hour).attr("selected", "selected"); // 현재 시로 selected
