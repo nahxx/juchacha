@@ -36,6 +36,7 @@ public class GetParkingLotFavorite extends HttpServlet {
 		request.setAttribute("cheking_str", cheking_str);
 		request.setAttribute("search_str", search_str);
 		request.setAttribute("ParkingLotList", plist);
+		request.setAttribute("ON", "on");
 		request.getRequestDispatcher("/location/location.jsp").forward(request, response);
 	}
 

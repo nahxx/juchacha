@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.teamecho.chacha.parking.domain.ParkingLot;
 import com.teamecho.chacha.parking.service.ParkingLotService;
 import com.teamecho.chacha.review.domain.Review;
+import com.teamecho.chacha.review.service.ReviewService;
 
 
 @WebServlet("/parking/get_parking_point.do")
@@ -22,6 +23,7 @@ public class GetParkingLotByPoint extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ParkingLotService ps = ParkingLotService.getInstance();
+		ReviewService rs = ReviewService.getInstance();
 		HttpSession session = request.getSession(false);
 		String userId = (String) session.getAttribute("userId");
 	
@@ -38,9 +40,11 @@ public class GetParkingLotByPoint extends HttpServlet {
 		
 		ParkingLot pl = ps.findParkingLotByPoint(pointx, pointy);
 		List<Review> re = ps.getAllReview(pl.getPid());
+		Double reAvg = rs.getAvgOfRating(pl.getPid());
 		request.setAttribute("ParkingLot", pl);
 		request.setAttribute("space", ps.getParkingLotSpaces(pointx, pointy));
 		request.setAttribute("favorite",ps.isValidFavorite(pl.getPid(), ps.getUid(userId)) );
+		request.setAttribute("reAvg", reAvg);
 		
 		if (re.size() !=0 || re != null) {
 			request.setAttribute("review", re);
