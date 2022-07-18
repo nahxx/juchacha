@@ -89,11 +89,13 @@
       font-size: 20px;
       color: white;
       cursor: pointer;
+      font-family: "Jalnan";
     }
 	.btn:hover{
 	  color : #417D7A;
 	  background-color: #fff;
 	  border : 1px solid #417D7A;
+	  font-family: "Jalnan";
 	}
     .cost,
     .space,
