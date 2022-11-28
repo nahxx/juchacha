@@ -205,10 +205,16 @@
     <script type="text/javascript">
    		 $(function() {
     	  let date = new Date();
-    	  let month = "0" + (date.getMonth() + 1); // 현재 월
+    	  let month; // 현재 월
     	  let day = date.getDate(); // 현재 일자
     	  let hour; // 현재 시간
     	  let nextHour; // 종료 시간담을 변수
+    	  
+    	  if((date.getMonth() + 1) < 10) {
+    		  month = "0" + (date.getMonth() + 1);
+    	  } else {
+    		  month = date.getMonth() + 1;
+    	  }
     	  
     	  if(date.getHours() == 9) {
     		  hour = date.getHours() + 1;
